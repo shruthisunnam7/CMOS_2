@@ -45,12 +45,16 @@ B means Body
 PMOS is inverted to nmos
 # THRESHOLD VOLTAGE 
 <img width="1027" height="515" alt="image" src="https://github.com/user-attachments/assets/168eb4f5-e5ab-45a6-affe-76594534a1cf" />
-*vt = function of x,y,z 
-*gate to source voltage =0 ,ground drain source and bulk 
-*Here we can observe that the substrate and diffusion looks like PN junction diode and these are connected back to back.
-*both junctions are off , channel has high resistance ,no connectivity between source and drain 
-*apply small posituve potentional at gate ,means metal gate is positively charged forms oxide capacitance as a result it will repell all the positive charge in the substrate, leaving behind negative charges and there is an accumilation of negative charges and as it behaves like a pn junction diode there is a formation of depletion layer . 
-*increase the gate voltage expect more positive charge gets repelled and more depletion region increase and finally reach at a point complete p substrate converted to n type surface this phenomenon is called strong inversion and the voltage at which strong inversion occcurrs is called threshold voltage . 
+* let us take vt is a function of x,y,z .
+* Vgs=0 and drain ,source and bulk are connected to ground .
+* Here we can observe that the substrate and diffusion looks like PN junction diode and these are connected back to back.
+* Both junctions are off due to 0V bias hence channel has high resistance therefore no connectivity between source and drain .
+* Apply a small positive potential at VGS and the metal gate becomes positively charged and forms an oxide capacitance. As a result, it repels the positive charges in the substrate, leaving behind negative charges.
+* This causes an accumulation of negative charges near the surface. Since it behaves like a pn junction diode, a depletion layer is formed.
+* As the gate voltage increases, more positive charges are repelled, and the depletion region increases further. Eventually, it reaches a point where the p-type substrate surface is completely converted into an n-type surface.
+* This phenomenon is called strong inversion, and the voltage at which strong inversion occurs is known as the threshold voltage vt.
+* further increase in vgs there are no +ve particles near gate area to repel.so it will attracts negative charges from heavily doped ntype region.By this the channel width increases but there is no change in depletion width.There is a formation of continuous connection between to difusion regions through channel ormed in substrate.
+* 
 
 
 
