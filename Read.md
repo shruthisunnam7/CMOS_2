@@ -88,6 +88,7 @@ B means Body
   
 * further increase in vgs there are no +ve particles near gate area to repel.so it will attracts negative charges from heavily doped ntype region.By this the channel width increases but there is no change in depletion width.There is a formation of continuous connection between to difusion regions through channel ormed in substrate.
 #  How Body terminal in deciding thershold voltage 
+<img width="729" height="655" alt="image" src="https://github.com/user-attachments/assets/e4d68997-7b02-4cb7-9ae8-3a8396007666" />
 
 * when vsb has some positive potential to source ,
  
