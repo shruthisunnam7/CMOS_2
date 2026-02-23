@@ -43,6 +43,7 @@ It allows us to validate theoretical equations using practical simulations.
 <img width="1600" height="409" alt="image" src="https://github.com/user-attachments/assets/4d3a98b8-f1dc-4d2b-84c2-1da17749ebc3" />
 The figure shows a buffer circuit with given specifications and output load. To calculate the delay of the buffer, we use delay tables based on input slew rate and output load. From the delay tables of CBUF1 and CBUF2, we can see that even for the same input slew and load values, the delay differs. This difference occurs because the NMOS and PMOS transistors in the two buffers have different W/L ratios, which change their drive strength and switching behavior.
 # NMOS BASIC ELEMENTS IN CIRCUIT DESIGN
+
 <img width="1600" height="1338" alt="image" src="https://github.com/user-attachments/assets/9d270771-18eb-4555-9f63-e673226d8f0f" />
 STRUCTURE OF NMOS DEVICE 
 * N channel mosfet constructed on p substarte
@@ -84,8 +85,10 @@ B means Body
 * This phenomenon is called strong inversion, and the voltage at which strong inversion occurs is known as the threshold voltage vt.
   
 * further increase in vgs there are no +ve particles near gate area to repel.so it will attracts negative charges from heavily doped ntype region.By this the channel width increases but there is no change in depletion width.There is a formation of continuous connection between to difusion regions through channel ormed in substrate.
+#  How Body terminal in deciding thershold voltage 
 
-  
+* when vsb has some positive potential to source ,
+ 
 
 
 
