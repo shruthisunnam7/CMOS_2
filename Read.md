@@ -5,6 +5,7 @@ The training emphasized both theoretical derivations and practical SPICE-based s
 
 # DAY 1
 # Basics of NMOS structure and operation ,Understanding Drain Current (Id) and Drain-to-Source Voltage (Vds) Regions of operation (Cutoff, Linear, Saturation)
+
 # Introduction to  circuit designs and SPICE simulations
 <img width="1000" height="800" alt="image" src="https://github.com/user-attachments/assets/deab1783-a221-4103-9079-e9f86df42924" /> 
 It is an inverter image where
@@ -13,3 +14,47 @@ It is an inverter image where
 * Gates of both transistors tied together → Vin
 * Drains connected together → Vout
 * Load capacitor (CL) connected at output
+* Circuit design ensures that PMOS and NMOS transistors are connected properly to achieve the required functionality, enabling the circuit to perform the desired operation efficiently.
+<img width="1018" height="900" alt="image" src="https://github.com/user-attachments/assets/cc8bb6ea-bacb-46c6-89a9-7bbabab06124" /> PMOS and NMOS characteristic curves are simulated using SPICE to understand their behavior. The resulting waveforms are analyzed to determine parameters such as delay  performance. The W/L ratio controls the amount of current flowing through the transistor where W is width of transistor and L is the  length of gate oxide of transistor, and this current influences the shape of the waveform. 
+# why do we need spice ?
+SPICE acts as the base tool for verifying CMOS circuit behavior. It helps in analyzing:
+* NMOS and PMOS characteristics
+* Drain current (Id) behavior
+* Output waveform
+* Delay of the circuit
+* Effect of W/L ratio 
+It allows us to validate theoretical equations using practical simulations.
+<img width="1547" height="501" alt="image" src="https://github.com/user-attachments/assets/4b49291d-6f72-4a0d-aff5-8782538980cc" />
+<img width="1600" height="409" alt="image" src="https://github.com/user-attachments/assets/4d3a98b8-f1dc-4d2b-84c2-1da17749ebc3" />
+The figure shows a buffer circuit with given specifications and output load. To calculate the delay of the buffer, we use delay tables based on input slew rate and output load. From the delay tables of CBUF1 and CBUF2, we can see that even for the same input slew and load values, the delay differs. This difference occurs because the NMOS and PMOS transistors in the two buffers have different W/L ratios, which change their drive strength and switching behavior.
+# NMOS BASIC ELEMENTS IN CIRCUIT DESIGN
+<img width="1600" height="1338" alt="image" src="https://github.com/user-attachments/assets/9d270771-18eb-4555-9f63-e673226d8f0f" />
+STRUCTURE OF NMOS DEVICE 
+* N channel mosfet constructed on p substarte 
+* Four terminal device 
+* Isolation region created from SiO2 is present used to differntiate  two different transistor characteristics 
+* Two n+ diffusion region are present near the SiO2 layer in which one is SOURCE and other is DRAIN.
+* It has a Gate oxide layer over p substrate 
+* A Poly-Si or metal gate  placed on top of the gate oxide layer which forms gate terminal and drives nmos .
+There are a few abbreviations:
+G means Gate
+S means Source
+D means Drain
+B means Body
+* Body terminal is connected directly to P substrate and it is grounded.It is important in finding threshold voltage the nmos.
+PMOS is inverted to nmos
+# THRESHOLD VOLTAGE 
+<img width="1027" height="515" alt="image" src="https://github.com/user-attachments/assets/168eb4f5-e5ab-45a6-affe-76594534a1cf" />
+*vt = function of x,y,z 
+*gate to source voltage =0 ,ground drain source and bulk 
+*Here we can observe that the substrate and diffusion looks like PN junction diode and these are connected back to back.
+*both junctions are off , channel has high resistance ,no connectivity between source and drain 
+*apply small posituve potentional at gate ,means metal gate is positively charged forms oxide capacitance as a result it will repell all the positive charge in the substrate, leaving behind negative charges and there is an accumilation of negative charges and as it behaves like a pn junction diode there is a formation of depletion layer . 
+*increase the gate voltage expect more positive charge gets repelled and more depletion region increase and finally reach at a point complete p substrate converted to n type surface this phenomenon is called strong inversion and the voltage at which strong inversion occcurrs is called threshold voltage . 
+
+
+
+
+
+
+
