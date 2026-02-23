@@ -6,5 +6,10 @@ The training emphasized both theoretical derivations and practical SPICE-based s
 # DAY 1
 # Basics of NMOS structure and operation ,Understanding Drain Current (Id) and Drain-to-Source Voltage (Vds) Regions of operation (Cutoff, Linear, Saturation)
 # Introduction to  circuit designs and SPICE simulations
-<img width="1000" height="800" alt="image" src="https://github.com/user-attachments/assets/deab1783-a221-4103-9079-e9f86df42924" />
-
+<img width="1000" height="800" alt="image" src="https://github.com/user-attachments/assets/deab1783-a221-4103-9079-e9f86df42924" /> 
+It is an inverter image where
+* PMOS connected to VDD (Pull-up network)
+* NMOS connected to VSS (Pull-down network)
+* Gates of both transistors tied together → Vin
+* Drains connected together → Vout
+* Load capacitor (CL) connected at output
