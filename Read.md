@@ -16,9 +16,12 @@ It is an inverter image where
 - Load capacitor (CL) connected at output
 - Circuit design ensures that PMOS and NMOS transistors are connected properly to achieve the required functionality, enabling the circuit to perform the desired operation efficiently.
 <img width="1018" height="900" alt="image" src="https://github.com/user-attachments/assets/cc8bb6ea-bacb-46c6-89a9-7bbabab06124" />
+
 - PMOS and NMOS characteristic curves are simulated using SPICE to understand their behavior. The resulting waveforms are analyzed to determine parameters such as delay  performance.
+  
 - The W/L ratio controls the amount of current flowing through the transistor where W is width of transistor and L is the  length of gate oxide of transistor, and this current influences the shape of the waveform. 
 # why do we need spice ?
+
 SPICE acts as the base tool for verifying CMOS circuit behavior. It helps in analyzing:
 * NMOS and PMOS characteristics
 * Drain current (Id) behavior
