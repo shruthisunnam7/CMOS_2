@@ -90,12 +90,15 @@ B means Body
 #  How Body terminal in deciding thershold voltage 
 <img width="729" height="655" alt="image" src="https://github.com/user-attachments/assets/e4d68997-7b02-4cb7-9ae8-3a8396007666" />
 
-* when vsb has some positive potential to source ,
+* when vsb has 0 positive potential to source ,
  
 
 
 
 
+<img width="873" height="515" alt="image" src="https://github.com/user-attachments/assets/25f84efd-beb1-4c0c-b9b7-c94b46af93db" />
 
+when vsb has some positive potentional the source and negative potential to body junction that is vsb is positive the depletion layer width is more due to additibal reverse bias that is applied to pn junction .
 
+*Due to +vsb ,few charges from channel are pulled tpwards source s 
 
