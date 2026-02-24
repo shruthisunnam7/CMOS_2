@@ -1,4 +1,4 @@
-# CMOS -CIRCUIT DESIGN AND SPICE SIMULATIONS IN SKY 130
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/3bc46e1d-850b-4a9c-b1f3-d733702f5d94" /># CMOS -CIRCUIT DESIGN AND SPICE SIMULATIONS IN SKY 130
 This intensive 10-day workshop focused on CMOS circuit design and SPICE simulation using SKY130 130nm technology. The course was structured progressively, enabling participants to build a strong foundation in MOSFET physics, CMOS inverter design, switching behavior, noise analysis, and variation effects.
 
 The training emphasized both theoretical derivations and practical SPICE-based simulations to understand real-world transistor-level circuit behavior.
@@ -113,8 +113,24 @@ B means Body
   
   <img width="642" height="553" alt="image" src="https://github.com/user-attachments/assets/a58d12af-23c7-4ae8-aa55-3d36e51bd0f5" />
 
-  # NMOS RESISTIVE OPERATION WITH SMALL VDS
+  # NMOS RESISTIVE OPERATION WITH SMALL DRAIN TO SOURCE VOLTAGE 
 
-  Vgs > Vt
-  vgs =1v vhannel width increases ,induced charges are propotional to vgs-vt 
+* It is also known as the Linear Region of operation
+*  observe changes when Vgs > Vt .
+*  Induced charges (Qi) α (Vgs-Vt) .
+*  when vt = 0.45v ,vgs = 1v, vgs > vt transitor turn on and conducting channel is present between source and drain and we can see  source is connected to ground and drain  is connected to some potential ,there will be a voltage gradient present across the channel . Also effective length is less than actual channel length .
+*  lets plot a graph ,'x' is along the channel and 'y' is perpendicular to channel , y axis represents width , when x=0,1,2,3...,n  at every point v1,v2 ,..,vn the voltage will be different ,all values are different because of small voltage applied ie vds .
+*  Let V(x) be the voltage at any point 'x' along the channel
+  and  Vgs-V(x) is the gate-to-channel voltage at that point
+Therefore, in the channel, induced charge at any point 'x' Qi(x) α - ((Vgs-V(x))-Vt)
 
+
+  <img width="965" height="620" alt="image" src="https://github.com/user-attachments/assets/d4f033e3-5900-4cd6-b44d-cd49f555a7cf" />
+
+  
+
+  
+  
+*  v(x) is voltage at a point x along channel
+*  
+  
