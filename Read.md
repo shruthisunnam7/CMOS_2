@@ -1,4 +1,4 @@
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/3bc46e1d-850b-4a9c-b1f3-d733702f5d94" /># CMOS -CIRCUIT DESIGN AND SPICE SIMULATIONS IN SKY 130
+<img width="965" height="620" alt="image" src="https://github.com/user-attachments/assets/129d840c-9783-47c4-9ae8-44e0dfd3bdf6" /><img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/3bc46e1d-850b-4a9c-b1f3-d733702f5d94" /># CMOS -CIRCUIT DESIGN AND SPICE SIMULATIONS IN SKY 130
 This intensive 10-day workshop focused on CMOS circuit design and SPICE simulation using SKY130 130nm technology. The course was structured progressively, enabling participants to build a strong foundation in MOSFET physics, CMOS inverter design, switching behavior, noise analysis, and variation effects.
 
 The training emphasized both theoretical derivations and practical SPICE-based simulations to understand real-world transistor-level circuit behavior.
@@ -119,18 +119,39 @@ B means Body
 *  observe changes when Vgs > Vt .
 *  Induced charges (Qi) α (Vgs-Vt) .
 *  when vt = 0.45v ,vgs = 1v, vgs > vt transitor turn on and conducting channel is present between source and drain and we can see  source is connected to ground and drain  is connected to some potential ,there will be a voltage gradient present across the channel . Also effective length is less than actual channel length .
-*  lets plot a graph ,'x' is along the channel and 'y' is perpendicular to channel , y axis represents width , when x=0,1,2,3...,n  at every point v1,v2 ,..,vn the voltage will be different ,all values are different because of small voltage applied ie vds .
-*  Let V(x) be the voltage at any point 'x' along the channel
-  and  Vgs-V(x) is the gate-to-channel voltage at that point
-Therefore, in the channel, induced charge at any point 'x' Qi(x) α - ((Vgs-V(x))-Vt)
+  
+*  <img width="965" height="620" alt="image" src="https://github.com/user-attachments/assets/234eceb1-96ff-43f3-be5d-e809891c1a38" />
 
+*  lets plot a graph ,'x' is along the channel and 'y' is perpendicular to channel , y axis represents width , when x=0,1,2,3...,n  at every point v1,v2 ,..,vn the voltage will be different ,all values are different because of small voltage applied ie vds . Every point on x axis will vary w.r.t to Vgs-V(x), this will decide the current equation. where V(x) be the voltage at any point 'x' along the channel and  Vgs-V(x) is the gate-to-channel voltage at that point .
+  
+# drift current theory 
+We know the effective channel voltage will vary w.r.t x, for example at x=0, Vgs=1V and V(x)=0, So the Vgs-Vx=1V. At x=Vds=0.05V, Vgs-Vx=0.95V. 
+ * The induced charge at any point 'x' is  Qi(x) α - ((Vgs-V(x))-Vt) ie  Qi(x) = -cox ((Vgs-V(x))-Vt)
+   
+<img width="531" height="553" alt="image" src="https://github.com/user-attachments/assets/17a4710e-94a3-41df-9917-05ba8d561fff" />
 
-  <img width="965" height="620" alt="image" src="https://github.com/user-attachments/assets/d4f033e3-5900-4cd6-b44d-cd49f555a7cf" />
+From device point of view ,we have  2 kinds of currents in 
+** drift current : current due to potential differnce 
+
+**diffusion current : current due to difference in carrier concentration
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/ebdef17f-9787-45a7-9983-db3b7aa98fdc" />
+
+# Drain current model for linear region of operation 
+
+*drain  current id = (velocity of charge carriers * available charge) over the chanel width .
+
+* velocity vn(x) = product of mobility and electric field .small distance of L there is a change in voltage ,as a result of change in voltage ,velocity differs .
+  
+* vn(x) = μn.dv/dx .
+ 
+<img width="599" height="900" alt="image" src="https://github.com/user-attachments/assets/78b39a84-03e2-4560-97bd-8f2129e55125" />
+
+we will integrate the above equation 
+
+<img width="619" height="183" alt="image" src="https://github.com/user-attachments/assets/1bc82a41-91ba-4e56-8a1c-14de16bb9c17" />
+
+<img width="580" height="332" alt="image" src="https://github.com/user-attachments/assets/0f5e944d-5451-4722-b7be-1c5a6f36b821" />
 
   
-
-  
-  
-*  v(x) is voltage at a point x along channel
-*  
-  
+<img width="888" height="597" alt="image" src="https://github.com/user-attachments/assets/895a46e4-56e8-4c8f-87ec-3df64cbe10f8" />
