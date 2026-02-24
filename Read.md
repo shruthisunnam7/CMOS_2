@@ -271,7 +271,9 @@ Here we will see how to model this NMOS transistor. The model parameters are alr
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/f40003ca-92b5-4312-8754-1f44a99fd391" />
 
+These are the parameters coming from foundry ,we can use it in spice by .MODEL as stated above .Here we can state parameters in its respective positions as it has predeined positions for diffrent values.
 we just plug in this packaged file in .mod file and call this file in top level SPICE netlist.
+
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/7a4e702d-f360-42af-a02e-9f3be1fdf454" />
 
-* All these models can be stored in .lib format .
+* All these models can be stored in .lib format .This can be used in spice console .
