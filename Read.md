@@ -1,4 +1,4 @@
-# CMOS -CIRCUIT DESIGN AND SPICE SIMULATIONS IN SKY 130
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/deb30871-7225-40b8-954a-d0a65c9832fe" /># CMOS -CIRCUIT DESIGN AND SPICE SIMULATIONS IN SKY 130
 This intensive 10-day workshop focused on CMOS circuit design and SPICE simulation using SKY130 130nm technology. The course was structured progressively, enabling participants to build a strong foundation in MOSFET physics, CMOS inverter design, switching behavior, noise analysis, and variation effects.
 
 The training emphasized both theoretical derivations and practical SPICE-based simulations to understand real-world transistor-level circuit behavior.
@@ -147,8 +147,8 @@ From device point of view ,we have  2 kinds of currents in
  
 <img width="599" height="900" alt="image" src="https://github.com/user-attachments/assets/78b39a84-03e2-4560-97bd-8f2129e55125" />
 
-we will integrate the above equation,where limits of dV will be from 0 to Vds and limits of dx will be from 0 to L.
-
+Integrating the above equation with x ranging from 0 to l and V from 0 to 𝑉 from 0 to vds .
+	​
 <img width="619" height="183" alt="image" src="https://github.com/user-attachments/assets/1bc82a41-91ba-4e56-8a1c-14de16bb9c17" />
 
 Here, Cox, W/L, Vgs, un and Vt are the 'technology parameters', we will simulate usinf SPICE and find out the characteristics.
@@ -161,4 +161,21 @@ The equation is simplified into this form where kn' is Cox * mobility. still we 
 
 we need to find the impact of Vds and Vgs on Id drain current.The NMOS works in linear region only when Vds <= Vgs-Vt.
 
-*For calculating Id drift current for diferent conditions on Vgs and Vgs to find it's sweeping ranges we are using an engine to do all the work which is SPICE simulation to get drain current waveforms.
+# SPICE conclusion to resistive operation 
+
+<img width="729" height="221" alt="image" src="https://github.com/user-attachments/assets/1154ef38-6afa-4269-ad46-ae8e95a3263a" />
+
+This section analyzes the effect of vgs and vds on the drain current .
+
+A MOSFET operates in the linear (resistive) region when: Vds < (Vgs − Vt) ,Where:
+* Vt = 0.45 V
+  
+* Vgs = 0.5 V, 1 V, 1.5 V, 2 V, 2.5 V
+  
+* (Vgs − Vt) = 0.05 V, 0.55 V, 1.05 V, 1.55 V, 2.05 V
+  
+For each Vgs value, Vds is swept from 0 to (Vgs − Vt) to maintain linear operation.
+SPICE simulation is performed to sweep Vds, calculate Id, and verify resistive behavior of the MOSFET.
+
+# SATURATION REGION 
+
