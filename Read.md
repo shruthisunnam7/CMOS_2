@@ -267,9 +267,9 @@ The MOSFET is defined with a width (W) of 1.8μ and a long channel length (L) of
 
 Here we will see how to model this NMOS transistor. The model parameters are already given, so it is easy to create the model using them. These parameters are available in the technology file. The NMOS model can be found in the file with the same or a similar model name.
 
-<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/caa8aca2-0f21-4554-b652-2c4307daacd4" />
-
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/f40003ca-92b5-4312-8754-1f44a99fd391" />
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/caa8aca2-0f21-4554-b652-2c4307daacd4" />
 
 These are the parameters coming from foundry ,we can use it in spice by .MODEL as stated above .Here we can state parameters in its respective positions as it has predeined positions for diffrent values.
 we just plug in this packaged file in .mod file and call this file in top level SPICE netlist.
