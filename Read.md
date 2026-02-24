@@ -201,8 +201,15 @@ when Drain-source voltage exceeds the value (Vgs-Vt), the region of operation is
 
 <img width="734" height="640" alt="image" src="https://github.com/user-attachments/assets/584a15e7-c939-4509-b667-ef66dcc1eeb0" />
 
-In saturation region the channel voltage remains constant = vgs-vt . 
-drain current was  linear function of  vds 
-replace vds by vgs-vt 
+In saturation region the channel voltage remains constant = vgs-vt . Drain current was  linear function of  vds 
+*To get drain current equation in saturation region we will replace Vds as Vgs-Vt.
+
 <img width="637" height="366" alt="image" src="https://github.com/user-attachments/assets/ef922a68-4d9f-4c5c-96ed-20aaff2621a3" />
 
+At first , the MOSFET seems to act like a perfect current source. But in reality, when we increase vds
+,the depletion region at the drain gets larger, which shortens the effective channel. This causes the drain current Id to slightly depend on vds . 
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/d89ec2eb-b8cf-4020-8d8d-36125c4dca3e" />
+ this is called channel modulation .
+
+ <img width="1600" height="312" alt="image" src="https://github.com/user-attachments/assets/e74e9892-b699-4538-a243-136d19bd378a" />
