@@ -1,4 +1,4 @@
-<img width="965" height="620" alt="image" src="https://github.com/user-attachments/assets/129d840c-9783-47c4-9ae8-44e0dfd3bdf6" /><img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/3bc46e1d-850b-4a9c-b1f3-d733702f5d94" /># CMOS -CIRCUIT DESIGN AND SPICE SIMULATIONS IN SKY 130
+# CMOS -CIRCUIT DESIGN AND SPICE SIMULATIONS IN SKY 130
 This intensive 10-day workshop focused on CMOS circuit design and SPICE simulation using SKY130 130nm technology. The course was structured progressively, enabling participants to build a strong foundation in MOSFET physics, CMOS inverter design, switching behavior, noise analysis, and variation effects.
 
 The training emphasized both theoretical derivations and practical SPICE-based simulations to understand real-world transistor-level circuit behavior.
@@ -147,11 +147,18 @@ From device point of view ,we have  2 kinds of currents in
  
 <img width="599" height="900" alt="image" src="https://github.com/user-attachments/assets/78b39a84-03e2-4560-97bd-8f2129e55125" />
 
-we will integrate the above equation 
+we will integrate the above equation,where limits of dV will be from 0 to Vds and limits of dx will be from 0 to L.
 
 <img width="619" height="183" alt="image" src="https://github.com/user-attachments/assets/1bc82a41-91ba-4e56-8a1c-14de16bb9c17" />
 
+Here, Cox, W/L, Vgs, un and Vt are the 'technology parameters', we will simulate usinf SPICE and find out the characteristics.
+
 <img width="580" height="332" alt="image" src="https://github.com/user-attachments/assets/0f5e944d-5451-4722-b7be-1c5a6f36b821" />
 
+The equation is simplified into this form where kn' is Cox * mobility. still we simplify this equation into linear form.This equation is suitable only for Vds value is small.so we can neglect square term from the equation.So we get Id=Kn*(Vgs-Vt)
   
 <img width="888" height="597" alt="image" src="https://github.com/user-attachments/assets/895a46e4-56e8-4c8f-87ec-3df64cbe10f8" />
+
+we need to find the impact of Vds and Vgs on Id drain current.The NMOS works in linear region only when Vds <= Vgs-Vt.
+
+*For calculating Id drift current for diferent conditions on Vgs and Vgs to find it's sweeping ranges we are using an engine to do all the work which is SPICE simulation to get drain current waveforms.
