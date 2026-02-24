@@ -104,4 +104,17 @@ B means Body
 
 *Increase in depletion width leads to accumilate  more  negative charges , as the terminal is connected  to positive potential there will be more accumilation of negative charges in vsb positive side .
 
-*Due to +vsb ,few charges from channel are pulled towards source ,further increase in vgs semiconductor surface inverts to n type material at voltage vgs=vt+1 .In presence of substrate bias vsb additional potential is required for strong inversion 
+*Due to +vsb ,few charges from channel are pulled towards source ,further increase in vgs semiconductor surface inverts to n type material at voltage vgs=vto+1 .In presence of substrate bias vsb additional potential is required for strong inversion .
+# THRESHOLD VOLTAGE EQUATION 
+
+<img width="1600" height="580" alt="image" src="https://github.com/user-attachments/assets/2b1934d6-26ee-4fd9-9826-adb2fd7f4fcc" />
+
+* Body  effect coefficient equation:
+  
+  <img width="642" height="553" alt="image" src="https://github.com/user-attachments/assets/a58d12af-23c7-4ae8-aa55-3d36e51bd0f5" />
+
+  # NMOS RESISTIVE OPERATION WITH SMALL VDS
+
+  Vgs > Vt
+  vgs =1v vhannel width increases ,induced charges are propotional to vgs-vt 
+
