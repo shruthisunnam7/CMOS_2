@@ -1,4 +1,4 @@
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/deb30871-7225-40b8-954a-d0a65c9832fe" /># CMOS -CIRCUIT DESIGN AND SPICE SIMULATIONS IN SKY 130
+# CMOS -CIRCUIT DESIGN AND SPICE SIMULATIONS IN SKY 130
 This intensive 10-day workshop focused on CMOS circuit design and SPICE simulation using SKY130 130nm technology. The course was structured progressively, enabling participants to build a strong foundation in MOSFET physics, CMOS inverter design, switching behavior, noise analysis, and variation effects.
 
 The training emphasized both theoretical derivations and practical SPICE-based simulations to understand real-world transistor-level circuit behavior.
@@ -165,7 +165,7 @@ we need to find the impact of Vds and Vgs on Id drain current.The NMOS works in 
 
 <img width="729" height="221" alt="image" src="https://github.com/user-attachments/assets/1154ef38-6afa-4269-ad46-ae8e95a3263a" />
 
-This section analyzes the effect of vgs and vds on the drain current .
+We need to find the impact of Vgs and Vds on the drain current equation using diffferent values of vgs and vds . If we consider different values of Vgs, under what condition the device will remain in Linear region depends on (Vgs-Vt) should be greater than Vds.
 
 A MOSFET operates in the linear (resistive) region when: Vds < (Vgs − Vt) ,Where:
 * Vt = 0.45 V
@@ -178,4 +178,5 @@ For each Vgs value, Vds is swept from 0 to (Vgs − Vt) to maintain linear opera
 SPICE simulation is performed to sweep Vds, calculate Id, and verify resistive behavior of the MOSFET.
 
 # SATURATION REGION 
+
 
