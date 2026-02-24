@@ -87,18 +87,21 @@ B means Body
 * This phenomenon is called strong inversion, and the voltage at which strong inversion occurs is known as the threshold voltage vt.
   
 * further increase in vgs there are no +ve particles near gate area to repel.so it will attracts negative charges from heavily doped ntype region.By this the channel width increases but there is no change in depletion width.There is a formation of continuous connection between to difusion regions through channel ormed in substrate.
+
+* The channel has bridged the gap between source to drain regions. But as there is no Drain voltage so the elctrons will not move, this is "Cut Off Region"
+  
 #  How Body terminal in deciding thershold voltage 
+
 <img width="729" height="655" alt="image" src="https://github.com/user-attachments/assets/e4d68997-7b02-4cb7-9ae8-3a8396007666" />
 
-* when vsb has 0 positive potential to source ,
+* when vsb = 0 there is no positive potential applied between the source and body, increasing the gate to source voltage the depletion layer increase , further increase in vgs there will cause  surface inversion that is vgs=vto where vto threshold voltage at which surface inversion occurs in the absence of vsb .
  
-
-
-
-
 <img width="873" height="515" alt="image" src="https://github.com/user-attachments/assets/25f84efd-beb1-4c0c-b9b7-c94b46af93db" />
 
-when vsb has some positive potentional the source and negative potential to body junction that is vsb is positive the depletion layer width is more due to additibal reverse bias that is applied to pn junction .
+* when vsb has some positive potentional applied  to the source and negative potential  applied to body junction ,the depletion layer width gets widenes due to additibal reverse bias that is applied to pn junction .
 
-*Due to +vsb ,few charges from channel are pulled tpwards source s 
+  <img width="837" height="625" alt="image" src="https://github.com/user-attachments/assets/67a5e48e-1206-4687-9dac-c07b70179b98" />
 
+*Increase in depletion width leads to accumilate  more  negative charges , as the terminal is connected  to positive potential there will be more accumilation of negative charges in vsb positive side .
+
+*Due to +vsb ,few charges from channel are pulled towards source ,further increase in vgs semiconductor surface inverts to n type material at voltage vgs=vt+1 .In presence of substrate bias vsb additional potential is required for strong inversion 
