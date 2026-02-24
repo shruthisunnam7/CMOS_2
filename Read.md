@@ -1,4 +1,4 @@
-# CMOS -CIRCUIT DESIGN AND SPICE SIMULATIONS IN SKY 130
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/75764fe3-7f45-4a8e-91cc-8c06ef6b6e1b" /># CMOS -CIRCUIT DESIGN AND SPICE SIMULATIONS IN SKY 130
 This intensive 10-day workshop focused on CMOS circuit design and SPICE simulation using SKY130 130nm technology. The course was structured progressively, enabling participants to build a strong foundation in MOSFET physics, CMOS inverter design, switching behavior, noise analysis, and variation effects.
 
 The training emphasized both theoretical derivations and practical SPICE-based simulations to understand real-world transistor-level circuit behavior.
@@ -201,7 +201,8 @@ when Drain-source voltage exceeds the value (Vgs-Vt), the region of operation is
 
 <img width="734" height="640" alt="image" src="https://github.com/user-attachments/assets/584a15e7-c939-4509-b667-ef66dcc1eeb0" />
 
-In saturation region the channel voltage remains constant = vgs-vt . Drain current was  linear function of  vds 
+In saturation region the channel voltage remains constant = vgs-vt . Drain current was  linear function of  vds .
+
 *To get drain current equation in saturation region we will replace Vds as Vgs-Vt.
 
 <img width="637" height="366" alt="image" src="https://github.com/user-attachments/assets/ef922a68-4d9f-4c5c-96ed-20aaff2621a3" />
@@ -210,6 +211,67 @@ At first , the MOSFET seems to act like a perfect current source. But in reality
 ,the depletion region at the drain gets larger, which shortens the effective channel. This causes the drain current Id to slightly depend on vds . 
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/d89ec2eb-b8cf-4020-8d8d-36125c4dca3e" />
- this is called channel modulation .
+
+The drain current equation is given below and  λ is  called channel length modulation .
 
  <img width="1600" height="312" alt="image" src="https://github.com/user-attachments/assets/e74e9892-b699-4538-a243-136d19bd378a" />
+
+# Introduction to spice 
+
+* SPICE is a software its a engine that has predefined models and models are part of engine we need to feed correct values inputs  to the engine and correct netlist to the engine ,and it will derive some wave forms , these waveforms are used to calculate delay of the cell, basic backups for delays . 
+
+* STEP 1:  correct spice setup
+
+  <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/a1c11953-6307-45c4-adf4-3729b0767e4c" />
+
+we need to feed models correct way so that spice understands and evaluates as expected .
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/b95fae12-9c73-4ea2-97a3-70447a281a04" />
+
+Technology constants are circled in yellow clr ,every technology node has unique value ,these are provided to engine through special file called model file . these has to correct to derive correct voltage and waveforms .
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/3cf1d7f9-79e9-4f2d-9022-576af1c580cb" />
+
+when spice model parameters +spice netlist added to spice software it gives graphs of the output 
+
+*SPICE Netlist We need to feed the device into SPICE engine in certain manner, the circuit equivalent of given mosfet is as shown below.
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/678d1fca-d7b0-414d-a9ce-abe26ff67c14" />
+
+# Circuit description in SPICE syntax
+* Defining nodes 
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/522129d1-b7da-4daa-807c-3910322d7d6d" />
+
+* Node means having no obstruction between two points ie If two terminals are directly connected by a wire, they belong to the same node.
+
+* In circuit design, there is no strict restriction on node naming; nodes can be assigned any numerical value or meaningful label for easy identification.
+  
+* A MOSFET is a four-terminal device consisting of drain (D), gate (G), source (S), and substrate (bulk).
+
+ * 4 nodes defines complete spice netlist .
+ <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/62aed6fa-867f-4a1f-ad9e-f27aa2940bd8" />
+ 
+ * Names of node in,n1,0,vdd .the MOSFET is represented by the letter M. The drain terminal is connected to VDD, the gate is connected to node n1, and both the source and substrate are connected to ground (0 V), making it a DGSS configuration.
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/36a49d73-da23-404e-acaa-d4196c4a3c07" />
+
+The MOSFET is defined with a width (W) of 1.8μ and a long channel length (L) of 1.2μ. Any component whose name starts with the letter R represents a resistor; for example, R1  is connected between the input node and node n1, with a resistance value of 55 ohms.
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/ef1e0fe6-a578-4da6-93a0-0e30fd291e0e" />
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/ed50544b-74c1-4e4c-b0de-985b6b6eb4c1" />
+
+ The technology file is defined by including all the necessary model parameters and constraints required for proper device operation and simulation, ensuring that the circuit follows the fabrication process specifications.
+
+# Define technology parameters 
+
+Here we will see how to model this NMOS transistor. The model parameters are already given, so it is easy to create the model using them. These parameters are available in the technology file. The NMOS model can be found in the file with the same or a similar model name.
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/caa8aca2-0f21-4554-b652-2c4307daacd4" />
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/f40003ca-92b5-4312-8754-1f44a99fd391" />
+
+we just plug in this packaged file in .mod file and call this file in top level SPICE netlist.
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/7a4e702d-f360-42af-a02e-9f3be1fdf454" />
+
+All these models can be stored in .lib format .
