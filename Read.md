@@ -277,3 +277,5 @@ we just plug in this packaged file in .mod file and call this file in top level 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/7a4e702d-f360-42af-a02e-9f3be1fdf454" />
 
 * All these models can be stored in .lib format .This can be used in spice console .
+
+bb
