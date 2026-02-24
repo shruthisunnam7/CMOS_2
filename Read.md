@@ -113,7 +113,7 @@ B means Body
   
   <img width="642" height="553" alt="image" src="https://github.com/user-attachments/assets/a58d12af-23c7-4ae8-aa55-3d36e51bd0f5" />
 
-  # NMOS RESISTIVE OPERATION WITH SMALL DRAIN TO SOURCE VOLTAGE 
+  #  L1 NMOS RESISTIVE OPERATION WITH SMALL DRAIN TO SOURCE VOLTAGE 
 
 * It is also known as the Linear Region of operation
 *  observe changes when Vgs > Vt .
@@ -124,7 +124,7 @@ B means Body
 
 *  lets plot a graph ,'x' is along the channel and 'y' is perpendicular to channel , y axis represents width , when x=0,1,2,3...,n  at every point v1,v2 ,..,vn the voltage will be different ,all values are different because of small voltage applied ie vds . Every point on x axis will vary w.r.t to Vgs-V(x), this will decide the current equation. where V(x) be the voltage at any point 'x' along the channel and  Vgs-V(x) is the gate-to-channel voltage at that point .
   
-# drift current theory 
+# L2 Drift current theory 
 We know the effective channel voltage will vary w.r.t x, for example at x=0, Vgs=1V and V(x)=0, So the Vgs-Vx=1V. At x=Vds=0.05V, Vgs-Vx=0.95V. 
  * The induced charge at any point 'x' is  Qi(x) α - ((Vgs-V(x))-Vt) ie  Qi(x) = -cox ((Vgs-V(x))-Vt)
    
@@ -137,7 +137,7 @@ From device point of view ,we have  2 kinds of currents in
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/ebdef17f-9787-45a7-9983-db3b7aa98fdc" />
 
-# Drain current model for linear region of operation 
+# L3 Drain current model for linear region of operation 
 
 *drain  current id = (velocity of charge carriers * available charge) over the chanel width .
 
@@ -161,7 +161,7 @@ The equation is simplified into this form where kn' is Cox * mobility. still we 
 
 we need to find the impact of Vds and Vgs on Id drain current.The NMOS works in linear region only when Vds <= Vgs-Vt.
 
-# SPICE conclusion to resistive operation 
+# L4 SPICE conclusion to resistive operation 
 
 <img width="729" height="221" alt="image" src="https://github.com/user-attachments/assets/1154ef38-6afa-4269-ad46-ae8e95a3263a" />
 
@@ -177,6 +177,32 @@ A MOSFET operates in the linear (resistive) region when: Vds < (Vgs − Vt) ,Whe
 For each Vgs value, Vds is swept from 0 to (Vgs − Vt) to maintain linear operation.
 SPICE simulation is performed to sweep Vds, calculate Id, and verify resistive behavior of the MOSFET.
 
-# SATURATION REGION 
+#  L5 SATURATION REGION 
 
+when Drain-source voltage exceeds the value (Vgs-Vt), the region of operation is called "Saturation Region" .
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/1ece8121-74c0-49ac-b831-3694ebcb7674" />
+
+* vgs is constant at 1v , vt is constant at 0.45 v and vds is increased gradually from 0.05 v to observe vgs-vds ie channel voltage .
+
+  <img width="1600" height="650" alt="image" src="https://github.com/user-attachments/assets/48234bd7-17e6-430e-8e2a-190b17e82bdc" />
+
+* When Vgs-Vds is greater than Vt, there will be a conducting channel.
+  
+* When Vgs-Vds is equal to Vt,  Inversion has happened at drain side and it is equal to Vt, therefore channel will start disappearing at drain side.
+  
+<img width="1600" height="659" alt="image" src="https://github.com/user-attachments/assets/4763e7f7-c3ed-49fd-b555-9ee35a8c43f6" />
+
+* The phenomenon where channel gets disapper is called PINCH -OFF phenomenon .
+  
+* When Vgs-Vds<=Vt, there is no channel present near the Drain terminal, this region is saturation region .
+  
+# L6 DRAIN CURRENT MODEL FOR SATURATION REGION OF OPERATION 
+
+<img width="734" height="640" alt="image" src="https://github.com/user-attachments/assets/584a15e7-c939-4509-b667-ef66dcc1eeb0" />
+
+In saturation region the channel voltage remains constant = vgs-vt . 
+drain current was  linear function of  vds 
+replace vds by vgs-vt 
+<img width="637" height="366" alt="image" src="https://github.com/user-attachments/assets/ef922a68-4d9f-4c5c-96ed-20aaff2621a3" />
 
