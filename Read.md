@@ -1,4 +1,4 @@
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/75764fe3-7f45-4a8e-91cc-8c06ef6b6e1b" /># CMOS -CIRCUIT DESIGN AND SPICE SIMULATIONS IN SKY 130
+# CMOS -CIRCUIT DESIGN AND SPICE SIMULATIONS IN SKY 130
 This intensive 10-day workshop focused on CMOS circuit design and SPICE simulation using SKY130 130nm technology. The course was structured progressively, enabling participants to build a strong foundation in MOSFET physics, CMOS inverter design, switching behavior, noise analysis, and variation effects.
 
 The training emphasized both theoretical derivations and practical SPICE-based simulations to understand real-world transistor-level circuit behavior.
@@ -274,4 +274,4 @@ Here we will see how to model this NMOS transistor. The model parameters are alr
 we just plug in this packaged file in .mod file and call this file in top level SPICE netlist.
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/7a4e702d-f360-42af-a02e-9f3be1fdf454" />
 
-All these models can be stored in .lib format .
+* All these models can be stored in .lib format .
