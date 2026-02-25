@@ -278,4 +278,26 @@ we just plug in this packaged file in .mod file and call this file in top level 
 
 * All these models can be stored in .lib format .This can be used in spice console .
 
-bb
+2 VDS ARE LEFT 
+
+# DAY -2  L1 SPICE SIMULATIONS FOR LOWER NODES AND VELOCITY SATURATION 
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/ec641455-cafb-4e33-8a37-77f8c77fcb9f" />
+
+*The blue line in the graph represents the condition Vds = Vgs − Vt. This line separates the graph into two operating regions:
+1. Linear Region:
+In this region, Vds is small. Because of this, the current equation behaves almost linearly. Even though Vds is small, it still affects the diffusion current. As a result, the graph appears nearly straight, showing a linear relationship between Id and Vds.
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/ff11773b-d685-4abd-899b-3d90043c4e07" />
+
+2. Saturation Region:
+When Vds reaches the value equal to (Vgs − Vt), the device enters saturation. In this region, the drain current (Id) becomes almost constant according to the equation. However, due to channel length modulation, there is a slight increase in Id instead of it being perfectly constant. Therefore, the graph looks nearly flat but with a small slope.
+
+* We can also see that when Vgs = 0, the drain current Id is zero. As Vgs increases beyond the threshold voltage, Id increases accordingly.
+
+
+
+
+
+
+
+
