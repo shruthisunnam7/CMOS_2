@@ -336,8 +336,24 @@ For lower nodes there are four regions of operation ,they are : cutoff, linear,s
 VELOCITY SATURATION : For lower values of electric field  the velocity tends to linear function of electric field  and after certain point  it saturates .
 
 <img width="1258" height="572" alt="image" src="https://github.com/user-attachments/assets/70a84914-8043-4ac4-935d-0f2189edccd3" />
-at lower fields velocity tends to be at li
 
+at lower fields velocity tends to be at linear function 
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/35f61cf9-9ebe-4b6d-8386-39a303835028" />
+
+at higher fields velocity tends to be constant due to scattering effect.
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/45238389-de17-4e7d-af5a-657d23924696" />
+
+we need to add velocity constant in the below equation 
+
+<img width="1600" height="504" alt="image" src="https://github.com/user-attachments/assets/5fdca34a-9fea-4bb8-a397-cceddbb0222e" />
+
+we simplify the above equation using 2 different modes.
+1. Long channel (>250nm)
+2. Short channel (<250nm)
+*In both modes major working regions regions are same.
+
+*In short channel we can observe extra region namely "velocity saturation".
 
 
 
