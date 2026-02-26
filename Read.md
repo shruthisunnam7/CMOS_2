@@ -371,15 +371,18 @@ we simplify the above equation using 2 different modes.
 
  1.When vgt = minimum value  ,it means vds and vdsat are high . so mosfet works in saturation region .the current equation is in above image 
 
- <img width="1600" height="196" alt="image" src="https://github.com/user-attachments/assets/60bdc5d4-77b3-4e56-910e-2214de20370e" />
+ <img width="1600" height="586" alt="image" src="https://github.com/user-attachments/assets/3be89355-4a8e-470e-94e8-5580b890cfb8" />
+
 
  2. when vds = minimum value  , device enters into resistive or linear region of operation . When vds​ is small, the effect of the lambda (λ) term is very small, so we can ignore the term .
 
-<img width="772" height="688" alt="image" src="https://github.com/user-attachments/assets/e9dcb120-ebe5-4fea-bf36-e1a23617e417" />
+
+<img width="1600" height="602" alt="image" src="https://github.com/user-attachments/assets/42267b11-a86f-4891-8997-e83bbd1b94b4" />
 
 
 3. when vdsat= minimum value , device enters into velocity saturation region of operation . 
 
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/1a425842-d5f8-450e-bf60-85185958f972" />
 
 
 
