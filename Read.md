@@ -373,12 +373,9 @@ we simplify the above equation using 2 different modes.
 
  <img width="1600" height="586" alt="image" src="https://github.com/user-attachments/assets/3be89355-4a8e-470e-94e8-5580b890cfb8" />
 
-
  2. when vds = minimum value  , device enters into resistive or linear region of operation . When vds​ is small, the effect of the lambda (λ) term is very small, so we can ignore the term .
 
-
 <img width="1600" height="602" alt="image" src="https://github.com/user-attachments/assets/42267b11-a86f-4891-8997-e83bbd1b94b4" />
-
 
 3. when vdsat= minimum value , device enters into velocity saturation region of operation . 
 
@@ -487,10 +484,15 @@ Let us give the naming convention of the CMOS
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/3e7256c3-2323-4279-92df-3b1b2bfcaafd" />
 
 *	G = Gate, S = Source, D = Drain
+  
 *	Vgs = Gate – Source Voltage (controls transistor switching)
+  
 *	Vds = Drain – Source Voltage (across the transistor channel)
+  
 *	P, N = PMOS & NMOS respectively (used as subscripts)
+  
 *	IdsN = Drain–Source current through NMOS
+  
 *	IdsP = Drain–Source current through PMOS
 
 #  L3 PMOS/NMOS drain current v/s drain voltage
@@ -509,9 +511,11 @@ We derive the Vgs and Vds expressions for each transistor by observing circuit c
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/13c4e841-4ca4-4b4c-a240-0436a649bd34" />
 
 For NMOS (source = Vss = 0V):
-•	VgsN = Vin – Vss = Vin
-•	VdsN = Vout – Vss = Vout
-•	So, IdsN is a function of Vin and Vout
+*	VgsN = Vin – Vss = Vin
+  
+*	VdsN = Vout – Vss = Vout
+  
+*	So, IdsN is a function of Vin and Vout
 
 * The gate-to-source voltage of the NMOS is directly equal to the input voltage Vin, and the drain-to-source voltage is equal to the output voltage Vout. So, the NMOS drain current IdsN is a function of both Vin and Vout.
   
@@ -543,13 +547,81 @@ IdsP = – IdsN .This equation is very important. It means that whatever current
 PMOS IdsP vs VdsP Characteristic Curve
 
 Since PMOS operates with negative voltages:
-•	The X-axis is plotted as –VdsP (which corresponds to Vdd – Vout)
-•	The Y-axis is plotted as –IdsP (because PMOS current flows in the opposite direction)
-•	Multiple curves are drawn for –VgsP1 through –VgsP5 representing different input voltage conditions
+*	The X-axis is plotted as –VdsP (which corresponds to Vdd – Vout)
+
+*	The Y-axis is plotted as –IdsP (because PMOS current flows in the opposite direction)
+
+*	Multiple curves are drawn for –VgsP1 through –VgsP5 representing different input voltage conditions
 
 * The shape of the PMOS curve is similar to the NMOS curve but mirrored, since PMOS is structurally a complementary device.
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/0b51c4f8-2ca3-4b9c-83ea-c3ddbbea0274" />
 
+# L4 Step 1- Convert PMOS gate-source-voltage to Vin
 
+* We have seen various internal voltages, but actually in terms of user's perspective we can't see the internal voltages and only see the external Vin and Vout. From these we calculate the VTC and eventually we get to know the delay.
 
+* Now we will see the steps to obtain Voltage Transfer Characteristics(VTC) for static CMOS inverter: Assumption: Let us assume that it is a long channel device with Vdd=2V
+
+We will fix the Vgs values as shown below image ,Since Vdd = 2V, we assign actual values to the 5 PMOS gate-source voltage levels:
+
+<img width="1600" height="592" alt="image" src="https://github.com/user-attachments/assets/06babafb-e17c-47df-a173-72acaf0c48c9" />
+
+We know that Vgsp= Vin-Vdd, So we get the above values.So we get Vin = Vgsp+Vdd, we are trying to convert all the voltages as function of Vin and Vout.
+
+We will try to plot the graph of PMOS in terms of Idsn, the plot will be as shown below. We can see that the corresponding Vin value of Vgsp is being plotted as shown in the above table.
+
+<img width="1600" height="611" alt="image" src="https://github.com/user-attachments/assets/e6dbe2c2-dcbf-4432-ab12-b32efee6b440" />
+
+Since IdsP = – IdsN, the PMOS load curve is relabeled with Vin values on the Y-axis instead of the internal –VgsP labels. The five curves now correspond to:
+*	Vin = 0  →  (was –VgsP5 = –(–2) = 2V, PMOS strongly ON, highest current)
+  
+*	Vin = 0.5  →  (was –VgsP4)
+  
+*	Vin = 1  →  (was –VgsP3)
+  
+*	Vin = 1.5  →  (was –VgsP2)
+  
+*	Vin = 2  →  (was –VgsP1 = 0V, PMOS OFF, no current)
+
+*The order of Vin values on the PMOS curve is reversed compared to NMOS. This is because lower Vin makes VgsP more negative, turning PMOS on harder.
+
+# L5 Step2 & Step3 – Convert PMOS and NMOS drain-source-voltage to vout 
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/edd4f97c-03cd-4250-a57f-d45b19866869" />
+
+The original PMOS characteristic curve uses (-VdsP) as the X-axis and (-IdsP) as the Y-axis, because PMOS operates with negative voltages. To compare it with the NMOS curve and find the inverter operating point, both curves must be plotted on the same axes: X = Vout and Y = IdsN. This requires an axis conversion for the PMOS curve, while the NMOS curve is already in the correct form.
+pmos/...
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/3fa49a0c-2c7b-4802-9e12-d095fb78eb78" />
+
+X-axis Conversion:
+We know from the circuit that VdsP = Vout - Vdd. Rearranging this gives:
+Vout = Vdd + VdsP
+The original PMOS X-axis runs from 0 to Vdd in the direction of -VdsP (left to right). After conversion, the X-axis runs from Vdd to 0 in the Vout direction. This is why the PMOS load curve runs from right to left on the Vout axis.
+Y-axis Conversion:
+We apply the current continuity condition derived earlier:
+IdsP = -IdsN   =>   IdsN = -IdsP
+The original PMOS Y-axis shows -IdsP (to make the values positive). After applying this relation, the Y-axis becomes IdsN directly .
+*After conversion, the PMOS curves are labeled with Vin values. The Vin = 0 curve is the topmost curve (PMOS fully ON, maximum current). The Vin = 2 curve is the bottommost (PMOS fully OFF, zero current).
+
+Step 3 — NMOS Load Curve (No Conversion Needed)
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/bd5284d1-d703-4a37-a0c8-c7bbe8370c20" />
+
+For NMOS, the terminal voltages are:
+VgsN = Vin
+VdsN = Vout
+Since VdsN is already equal to Vout and the Y-axis is already IdsN, no conversion is needed. The NMOS characteristic curve in its standard form is directly the NMOS Load Curve
+# NMOS Vin Mapping
+image 
+NMOS Load Curve Behavior:
+*	Vin = 0V: NMOS is OFF (VgsN = 0 < Vtn), entire curve at zero current
+*	Vin = 2V: NMOS is fully ON, highest current curve
+*	As Vout increases from 0 to Vdd: curve rises steeply in linear region, then flattens in saturation
+*	Higher Vin gives higher curves (opposite to PMOS)
+final comparision 
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/f7fafe6d-fd4b-4aaf-ae6e-e0854719eb5f" />
+
+*	Both load curves now share the same axes: X = Vout (0 to Vdd), Y = IdsN
+*	For a given Vin, the NMOS and PMOS carry the same current in steady state
+*	The intersection of the NMOS and PMOS load curves for the same Vin gives the operating point (Vout at that Vin)
+*	Plotting these operating points for all Vin values gives the complete Voltage Transfer Characteristic (VTC)
