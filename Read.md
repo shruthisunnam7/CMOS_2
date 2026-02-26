@@ -433,6 +433,22 @@ case 2:
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/7e0cf1ab-a9fc-4fa7-8986-2d926c80831e" />
 
+let Vdd=5V, gate to source volatge
+
+By Observation: let Vdd=5V For PMOS: VgsP = Vin - Vdd = 0 - Vdd = -Vdd = -5 V It turn on the PMOS.Negative Vgs should be less than _Vts to turn ON and viceversa or NMOS.
+
+For NMOS: VgsN = Vin - Vss = 0 - 0 = 0 V Since VgsN = 0 V < Vtn → NMOS is OFF (open switch)
+
+* Equivalent Circuit for Vin = Vss The equivalent circuit shows: To represent PMOS we se resistor as wires has some resistance and it is denoted by Rn.
+
+ * It is non linear function of drain current.
+
+* NMOS is shown as open switch because Vin is zero,Vss is also 0,so there is no potential dierenc.
+
+* Vdd → Rp (PMOS ON) → Vout — Vdd charges output through Rp .
+  
+* Vout → open switch (NMOS OFF) → Vss — no path from output to ground .
+
 
 
 
