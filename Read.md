@@ -394,11 +394,39 @@ we simplify the above equation using 2 different modes.
  
 * A MOS transistor has three terminals: Gate, Source, and Drain.The gate controls the device,Carriers enter through the source and leave through the drain.
   
- *important parameter is |vgs| which is compared with threshold value to know wheather transistor is on or off .
+* important parameter is |vgs| which is compared with threshold value to know wheather transistor is on or off .
  
-* if |vgs| exceeds threshold value  then device turrns on .
+* if |vgs| exceeds threshold value  then device turns on .
  
-<img width="1503" height="606" alt="image" src="https://github.com/user-attachments/assets/f73c821b-7e81-4429-a5e9-f0b7d9e86df8" />
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/2f1297ab-e223-4db0-a0bc-b63feafa4f6a" />
+
+*Transistor as a Switch
+
+* With infinite OFF resistance when |Vgs| < |Vt| , No channel forms, so it acts like an open switch with very high (almost infinite) resistance.
+  
+* With finite ON resistance when |Vgs| > |Vt| ,A channel forms, so it behaves like a closed switch with low (finite) resistance.
+
+  ## cmos inverter circuit
+
+  <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/5c9d883d-4a19-4166-8222-1b87c20b5576" />
+  
+* cmos complementary metal oxide semiconductor .  it is a complemetary circuit for  both PMOS and NMOS  which allows complementary logic.
+
+*In a CMOS inverter, there are only two transistors: one PMOS and one NMOS.The PMOS has its source connected to Vdd, its gate connected to Vin, and its drain connected to Vout . The NMOS has its source connected to Vss (ground), its gate connected to Vin, and its drain also connected to Vout
+
+*When the input voltage vin = supply voltage vdd the PMOS gate and source are at the same potential. This makes the gate-to-source voltage of the PMOS equal to 0 V. Since this value is smaller than its threshold voltage, the PMOS cannot turn ON. so, it stays OFF and behaves like an open switch, meaning no current flows through it.
+
+ * At the same time, for the NMOS, the gate is at vdd and the source is at ground (0 V). So the gate-to-source voltage becomes equal to vdd. Because this voltage is higher than the NMOS threshold voltage, the NMOS turns ON. In this condition, it behaves like a closed switch with some resistance, allowing current to flow.
+
+   <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/01ee6cdd-84e8-4b4c-9663-42fda00aebac" />
+
+   
+ *When Vin=Vdd, the PMOS turns OFF (open switch) and the NMOS turns ON ,In this condition, the PMOS is OFF, so there is no connection between Vdd and the output. The NMOS is ON, so it connects the output to ground through its resistance RN  .Because of this, the output voltage is pulled down to 0 V. The load capacitor CL also discharges to 0 V.
+
+So, when Vin = HIGH (Vdd), the output becomes LOW (0 V). This is the normal inverter operation — a high input gives a low output.
+
+Here, the PMOS is OFF and the NMOS works in the linear region, acting like a resistor that pulls the output to ground.
+
 
   
 
