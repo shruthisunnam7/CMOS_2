@@ -302,7 +302,7 @@ When Vds reaches the value equal to (Vgs − Vt), the device enters saturation. 
  
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/a7c2702d-bbda-4112-9c29-d4a5d56d9f28" />
 
-# Drain current vs gate voltage for long and short channel device 
+# L2 Drain current vs gate voltage for long and short channel device 
 
 compare the two simulations :
 observation 1: 
@@ -325,6 +325,18 @@ by  spice simulating for Id s Vgs at constant vds .
 
 The plot we get is quadratic, it is only when Vds=2.5V .
 
+# L3 velocity saturation at lower and higher electric fields 
+
+observation 1: For long channel ,the drain current (Id) follows clear quadratic relationship with Vgs . and for short channel ,at lower vgs drain current still shows quadratic but drain current increases linearly with increasing gate voltage .This happens due to velocity saturation .
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/7d8fbd37-4041-4d99-9aa0-676f153d9c1a" />
+
+For lower nodes there are four regions of operation ,they are : cutoff, linear,saaturation and velocity saturation .
+
+VELOCITY SATURATION : For lower values of electric field  the velocity tends to linear function of electric field  and after certain point  it saturates .
+
+<img width="1258" height="572" alt="image" src="https://github.com/user-attachments/assets/70a84914-8043-4ac4-935d-0f2189edccd3" />
+at lower fields velocity tends to be at li
 
 
 
