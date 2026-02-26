@@ -419,13 +419,32 @@ we simplify the above equation using 2 different modes.
  * At the same time, for the NMOS, the gate is at vdd and the source is at ground (0 V). So the gate-to-source voltage becomes equal to vdd. Because this voltage is higher than the NMOS threshold voltage, the NMOS turns ON. In this condition, it behaves like a closed switch with some resistance, allowing current to flow.
 
    <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/01ee6cdd-84e8-4b4c-9663-42fda00aebac" />
-
    
+# L2 INTRODUCTION TO STANDARD MOS VOLTAGE CURRENT PARAMETERS 
+
+  CASE 1: Vin =Vdd  
  * When Vin=Vdd, the PMOS turns OFF (open switch) and the NMOS turns ON ,In this condition, the PMOS is OFF, so there is no connection between Vdd and the output. The NMOS is ON, so it connects the output to ground through its resistance RN  .Because of this, the output voltage is pulled down to 0 V. The load capacitor CL also discharges to 0 V.
 
 So, when Vin = HIGH (Vdd), the output becomes LOW (0 V). This is the normal inverter operation — a high input gives a low output.
 
 Here, the PMOS is OFF and the NMOS works in the linear region, acting like a resistor that pulls the output to ground.
+For PMOS:
+*	VgsP = Vin – Vdd = Vdd – Vdd = 0 V
+
+*	Since |VgsP| = 0 < |Vtp|, the PMOS does not turn on
+
+*	PMOS turns OFF → acts as an open switch (no connection between Vdd and Vout)
+
+For NMOS:
+*	VgsN = Vin – Vss = Vdd – 0 = Vdd
+
+*	Since VgsN = Vdd > Vtn, the NMOS turns on
+
+*	NMOS turns ON → acts as a closed switch with resistance Rn .
+  
+* The equivalent circuit for this case shows: Vdd → open switch (PMOS OFF) → disconnected, and Vout → Rn (NMOS ON) → Vss. Since the only path from the output node is through Rn to ground, the output voltage Vout is pulled down to 0 V. The load capacitor CL also discharges to 0 V through Rn.
+
+* When Vin = Vdd → Vout = 0 (Output is LOW). This is the inverting property of the CMOS inverter.
 
 case 2:
 
@@ -433,23 +452,41 @@ case 2:
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/7e0cf1ab-a9fc-4fa7-8986-2d926c80831e" />
 
-let Vdd=5V, gate to source volatge
-
-By Observation: let Vdd=5V For PMOS: VgsP = Vin - Vdd = 0 - Vdd = -Vdd = -5 V It turn on the PMOS.Negative Vgs should be less than _Vts to turn ON and viceversa or NMOS.
-
-For NMOS: VgsN = Vin - Vss = 0 - 0 = 0 V Since VgsN = 0 V < Vtn → NMOS is OFF (open switch)
-
-* Equivalent Circuit for Vin = Vss The equivalent circuit shows: To represent PMOS we se resistor as wires has some resistance and it is denoted by Rn.
-
- * It is non linear function of drain current.
-
-* NMOS is shown as open switch because Vin is zero,Vss is also 0,so there is no potential dierenc.
-
-* Vdd → Rp (PMOS ON) → Vout — Vdd charges output through Rp .
   
-* Vout → open switch (NMOS OFF) → Vss — no path from output to ground .
+* where Vin is "low" and equal to 0 V.
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/1a69c3c8-d95d-4896-bf38-ae6095458ddc" />
+
+For PMOS:
+•	VgsP = Vin – Vdd = 0 – Vdd = –Vdd
+•	Since |VgsP| = Vdd > |Vtp|, the PMOS turns ON
+•	PMOS turns ON → acts as a closed switch with resistance Rp
+
+For NMOS:
+*	VgsN = Vin – Vss = 0 – 0 = 0 V
+	
+*	Since VgsN = 0 < Vtn, the NMOS does not turn on
+	
+*	NMOS turns OFF → acts as an open switch (no path from Vout to Vss)
+	
+*	The equivalent circuit for this case shows:	Vdd → Rp (PMOS ON) → Vout, and Vout → open switch (NMOS OFF) → Vss.
+	
+*	Since there is no path from Vout to ground and there is a direct connection from Vdd through Rp to Vout, the output charges up to Vdd. The load capacitor CL charges to Vdd through Rp.
+
+* When Vin = 0 → Vout = Vdd (Output is HIGH). The output is the logical inversion of the input.
 
 
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/3e7256c3-2323-4279-92df-3b1b2bfcaafd" />
+
+*	G = Gate, S = Source, D = Drain
+*	Vgs = Gate – Source Voltage (controls transistor switching)
+*	Vds = Drain – Source Voltage (across the transistor channel)
+*	P, N = PMOS & NMOS respectively (used as subscripts)
+*	IdsN = Drain–Source current through NMOS
+*	IdsP = Drain–Source current through PMOS
+
+
+
+# L2 INTRODUCTION TO STANDARD MOS VOLTAGE CURRENT PARAMETERS 
 
 
 
