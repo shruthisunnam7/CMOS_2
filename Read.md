@@ -422,7 +422,7 @@ we simplify the above equation using 2 different modes.
    
 # L2 INTRODUCTION TO STANDARD MOS VOLTAGE CURRENT PARAMETERS 
 
-  CASE 1: Vin =Vdd  
+ # CASE 1: Vin =Vdd  
   
  * When Vin=Vdd, the PMOS turns OFF (open switch) and the NMOS turns ON ,In this condition, the PMOS is OFF, so there is no connection between Vdd and the output. The NMOS is ON, so it connects the output to ground through its resistance RN  .Because of this, the output voltage is pulled down to 0 V. The load capacitor CL also discharges to 0 V.
 
@@ -447,14 +447,14 @@ For NMOS:
 *	NMOS turns ON → acts as a closed switch with resistance Rn .
   
 * The equivalent circuit for this case shows: Vdd → open switch (PMOS OFF) → disconnected, and Vout → Rn (NMOS ON) → Vss.
-* 
+  
 * Since the only path from the output node is through Rn to ground, the output voltage Vout is pulled down to 0 V. The load capacitor CL also discharges to 0 V through Rn.
 
 * When Vin = Vdd → Vout = 0 (Output is LOW). This is the inverting property of the CMOS inverter.
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/7e0cf1ab-a9fc-4fa7-8986-2d926c80831e" />
 
-  case 2:
+  #case 2:
 
 * Vin is LOW (Vin = Vss = 0 V) We have analyzed the case when Vin is HIGH. Now we also need to analyze when vin=0 .By combining both cases, we can evaluate the total delay of the circuit.
 
@@ -493,27 +493,16 @@ Let us give the naming convention of the CMOS
 *	IdsN = Drain–Source current through NMOS
 *	IdsP = Drain–Source current through PMOS
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #  L3 PMOS/NMOS drain current v/s drain voltage
+
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/76e1b909-4bf9-41c8-8486-34a6a8131ea7" />
 
 The CMOS inverter consists of two transistors:
-•	PMOS: source connected to Vdd, gate connected to Vin, drain connected to Vout
-•	NMOS: source connected to Vss (GND), gate connected to Vin, drain connected to Vout
-•	Load capacitor CL is present at the output node
+*	PMOS: source connected to Vdd, gate connected to Vin, drain connected to Vout
+  
+*	NMOS: source connected to Vss (GND), gate connected to Vin, drain connected to Vout
+  
+*	Load capacitor CL is present at the output node
 Terminal Voltage Derivation
 We derive the Vgs and Vds expressions for each transistor by observing circuit connections.
 
@@ -527,9 +516,11 @@ For NMOS (source = Vss = 0V):
 * The gate-to-source voltage of the NMOS is directly equal to the input voltage Vin, and the drain-to-source voltage is equal to the output voltage Vout. So, the NMOS drain current IdsN is a function of both Vin and Vout.
   
 For PMOS (source = Vdd):
-•	VgsP = Vin – Vdd
-•	VdsP = Vout – Vdd
-•	Both are negative (since Vin ≤ Vdd and Vout ≤ Vdd), which is consistent with PMOS operation
+*	VgsP = Vin – Vdd
+	
+*	VdsP = Vout – Vdd
+  
+*	Both are negative (since Vin ≤ Vdd and Vout ≤ Vdd), which is consistent with PMOS operation
 
 * Both VgsP and VdsP are negative values since Vin and Vout are always less than or equal to Vdd. This is consistent with PMOS operation, which requires negative gate-to-source voltage to turn on.
 
@@ -539,13 +530,13 @@ IdsP = – IdsN .This equation is very important. It means that whatever current
   
 * The Id vs Vds characteristic curve for the NMOS transistor, the curve is plotted with IdsN on the Y-axis and VdsN on the X-axis, with multiple curves corresponding to different values of VgsN.
 
-Since VgsN = Vin and VdsN = Vout, each curve on the graph corresponds to a fixed input voltage, and the X-axis represents the output voltage Vout. The curve shows:
+* Since VgsN = Vin and VdsN = Vout, each curve on the graph corresponds to a fixed input voltage, and the X-axis represents the output voltage Vout. The curve shows:
 
-•	At lower values of VdsN, the NMOS operates in the linear (resistive) region where IdsN increases almost linearly with VdsN .
+*	At lower values of VdsN, the NMOS operates in the linear (resistive) region where IdsN increases almost linearly with VdsN .
 
-•	Beyond the pinch-off point (VdsN = VgsN – Vtn), the NMOS enters saturation and the current flattens out
+*	Beyond the pinch-off point (VdsN = VgsN – Vtn), the NMOS enters saturation and the current flattens out
 
-•	Higher values of VgsN (Vin) result in higher saturation currents – represented by the curves VgsN1 through VgsN5 from bottom to top
+*	Higher values of VgsN (Vin) result in higher saturation currents – represented by the curves VgsN1 through VgsN5 from bottom to top
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/bc8ac3cc-0f0e-4c6a-bbcf-1b157fee02d2" />
 
