@@ -282,6 +282,8 @@ we just plug in this packaged file in .mod file and call this file in top level 
 
 # DAY -2  L1 SPICE SIMULATIONS FOR LOWER NODES AND VELOCITY SATURATION 
 
+Result of spice simulation 
+
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/ec641455-cafb-4e33-8a37-77f8c77fcb9f" />
 
 *The blue line in the graph represents the condition Vds = Vgs − Vt. This line separates the graph into two operating regions:
@@ -290,9 +292,42 @@ In this region, Vds is small. Because of this, the current equation behaves almo
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/ff11773b-d685-4abd-899b-3d90043c4e07" />
 
 2. Saturation Region:
-When Vds reaches the value equal to (Vgs − Vt), the device enters saturation. In this region, the drain current (Id) becomes almost constant according to the equation. However, due to channel length modulation, there is a slight increase in Id instead of it being perfectly constant. Therefore, the graph looks nearly flat but with a small slope.
+When Vds reaches the value equal to (Vgs − Vt), the device enters saturation. In this region, the drain current (Id) becomes almost constant according to the equation. However, due to channel length modulation, there is a slight increase in Id instead of it being perfectly constant. Therefore, the graph looks nearly flat but with a small slope. below is cut off region .
 
 * We can also see that when Vgs = 0, the drain current Id is zero. As Vgs increases beyond the threshold voltage, Id increases accordingly.
+
+* when w/l is constant  and drain current should be constant but that doest happens with lower nodes ,Below is the spice deck where only the values of W and L is changed by keeping w=0.375 u,l=0.25u and other values remains same .  
+  
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/a0266d48-367e-43f4-9254-2651a5856ee9" />
+ 
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/a7c2702d-bbda-4112-9c29-d4a5d56d9f28" />
+
+# Drain current vs gate voltage for long and short channel device 
+
+compare the two simulations :
+observation 1: 
+
+* For long channel device Drain current at each and every gate voltage at vds=2.5 v there is Quadratic dependence ,its not linearly increasing with gate voltage .
+  
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/6d93e12d-f17d-4bba-8d62-6df78d0f9207" />
+
+* For short channel device initially at lower values of gate voltage we still have small amount of  quadratic dependence ,but  drain current linearly increasing with increasing  gate voltage .
+  
+*This happens due to VELOCITY SATURATION.
+
+*Now we will plot Id vs Vgs at different value of Vds or vds at constant .
+
+<img width="1392" height="900" alt="image" src="https://github.com/user-attachments/assets/f6056e01-b191-4dc9-aec9-66f0bd2b5afe" />
+
+by  spice simulating for Id s Vgs at constant vds .
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/41e62330-233d-4ac0-b635-343c1ea7c280" />
+
+The plot we get is quadratic, it is only when Vds=2.5V .
+
+
+
+
 
 
 
