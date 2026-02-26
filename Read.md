@@ -386,6 +386,23 @@ we simplify the above equation using 2 different modes.
 
 * The saturation current at lower nodes is smaller, not higher. This happens because velocity saturation makes the device enter saturation earlier than expected. As a result, the maximum current reached at lower nodes is much less compared to higher nodes
 
+  # cmos voltage transfer characteristrics
+  
+ The MOSFET switch model is a simplified but very powerful way to understand how digital logic works without solving complex equations. 
+ 
+ <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/641ff6b3-8895-442c-9354-6dbbad1628b5" />
+ 
+* A MOS transistor has three terminals: Gate, Source, and Drain.The gate controls the device,Carriers enter through the source and leave through the drain.
+  
+ *important parameter is |vgs| which is compared with threshold value to know wheather transistor is on or off .
+ 
+* if |vgs| exceeds threshold value  then device turrns on .
+ 
+<img width="1503" height="606" alt="image" src="https://github.com/user-attachments/assets/f73c821b-7e81-4429-a5e9-f0b7d9e86df8" />
+
+  
+
+
 
 
 
