@@ -355,9 +355,30 @@ we simplify the above equation using 2 different modes.
 
 *In short channel we can observe extra region namely "velocity saturation".
 
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/991ba605-cfef-4b5e-ab04-48b4b4b82c4a" />
+
+# L4 velocity saturation drain current 
+
+*lets call (vgs-vt)= vgt , we are dealing with higher values of  vgs.  we will use the drain current equation mentioned earlier.
+
+*There is also another important technology parameter called vdsat. It is the value of drain-to-source voltage at which the device just starts entering the velocity saturation region. vdsat ie voltage at which device velocity saturates and independent of vgs or vds .
+
+* when vgt =0 , there is no drain current .transistor enter into cut off region
+
+ lets derive drain current equations for each and every operation .
+ 
+ <img width="1599" height="606" alt="image" src="https://github.com/user-attachments/assets/c7d37482-7f2a-4d52-8df1-77bd196199f1" />
+
+ 1.When vgt = minimum value  ,it means vds and vdsat are high . so mosfet works in saturation region .the current equation is in above image 
+
+ <img width="1600" height="196" alt="image" src="https://github.com/user-attachments/assets/60bdc5d4-77b3-4e56-910e-2214de20370e" />
+
+ 2. when vds = minimum value  , device enters into resistive or linear region of operation . When vds​ is small, the effect of the lambda (λ) term is very small, so we can ignore the term .
+
+<img width="772" height="688" alt="image" src="https://github.com/user-attachments/assets/e9dcb120-ebe5-4fea-bf36-e1a23617e417" />
 
 
-
+3. when vdsat= minimum value , device enters into velocity saturation region of operation . 
 
 
 
