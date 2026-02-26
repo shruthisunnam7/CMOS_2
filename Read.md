@@ -453,10 +453,66 @@ For NMOS: VgsN = Vin - Vss = 0 - 0 = 0 V Since VgsN = 0 V < Vtn → NMOS is OFF 
 
 
 
+
+
+
+
+
+
+
+
+#  L3 PMOS/NMOS drain current v/s drain voltage
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/76e1b909-4bf9-41c8-8486-34a6a8131ea7" />
+
+The CMOS inverter consists of two transistors:
+•	PMOS: source connected to Vdd, gate connected to Vin, drain connected to Vout
+•	NMOS: source connected to Vss (GND), gate connected to Vin, drain connected to Vout
+•	Load capacitor CL is present at the output node
+Terminal Voltage Derivation
+We derive the Vgs and Vds expressions for each transistor by observing circuit connections.
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/13c4e841-4ca4-4b4c-a240-0436a649bd34" />
+
+For NMOS (source = Vss = 0V):
+•	VgsN = Vin – Vss = Vin
+•	VdsN = Vout – Vss = Vout
+•	So, IdsN is a function of Vin and Vout
+
+* The gate-to-source voltage of the NMOS is directly equal to the input voltage Vin, and the drain-to-source voltage is equal to the output voltage Vout. So, the NMOS drain current IdsN is a function of both Vin and Vout.
   
+For PMOS (source = Vdd):
+•	VgsP = Vin – Vdd
+•	VdsP = Vout – Vdd
+•	Both are negative (since Vin ≤ Vdd and Vout ≤ Vdd), which is consistent with PMOS operation
 
+* Both VgsP and VdsP are negative values since Vin and Vout are always less than or equal to Vdd. This is consistent with PMOS operation, which requires negative gate-to-source voltage to turn on.
 
+* Since both transistors share the same output drain node, the current flowing through PMOS must equal the current flowing through NMOS. The sign difference occurs due to the direction of current flow:
+IdsP = – IdsN .This equation is very important. It means that whatever current the PMOS supplies (charging CL), the NMOS must sink (discharging CL) in steady state. In transient conditions, the difference in these currents determines how quickly the output node charges or discharges
+* NMOS IdsN vs VdsN Characteristic Curve
+  
+* The Id vs Vds characteristic curve for the NMOS transistor, the curve is plotted with IdsN on the Y-axis and VdsN on the X-axis, with multiple curves corresponding to different values of VgsN.
 
+Since VgsN = Vin and VdsN = Vout, each curve on the graph corresponds to a fixed input voltage, and the X-axis represents the output voltage Vout. The curve shows:
+
+•	At lower values of VdsN, the NMOS operates in the linear (resistive) region where IdsN increases almost linearly with VdsN .
+
+•	Beyond the pinch-off point (VdsN = VgsN – Vtn), the NMOS enters saturation and the current flattens out
+
+•	Higher values of VgsN (Vin) result in higher saturation currents – represented by the curves VgsN1 through VgsN5 from bottom to top
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/bc8ac3cc-0f0e-4c6a-bbcf-1b157fee02d2" />
+
+PMOS IdsP vs VdsP Characteristic Curve
+
+Since PMOS operates with negative voltages:
+•	The X-axis is plotted as –VdsP (which corresponds to Vdd – Vout)
+•	The Y-axis is plotted as –IdsP (because PMOS current flows in the opposite direction)
+•	Multiple curves are drawn for –VgsP1 through –VgsP5 representing different input voltage conditions
+
+* The shape of the PMOS curve is similar to the NMOS curve but mirrored, since PMOS is structurally a complementary device.
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/0b51c4f8-2ca3-4b9c-83ea-c3ddbbea0274" />
 
 
 
