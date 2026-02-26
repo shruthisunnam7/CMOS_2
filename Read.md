@@ -423,12 +423,15 @@ we simplify the above equation using 2 different modes.
 # L2 INTRODUCTION TO STANDARD MOS VOLTAGE CURRENT PARAMETERS 
 
   CASE 1: Vin =Vdd  
+  
  * When Vin=Vdd, the PMOS turns OFF (open switch) and the NMOS turns ON ,In this condition, the PMOS is OFF, so there is no connection between Vdd and the output. The NMOS is ON, so it connects the output to ground through its resistance RN  .Because of this, the output voltage is pulled down to 0 V. The load capacitor CL also discharges to 0 V.
 
 So, when Vin = HIGH (Vdd), the output becomes LOW (0 V). This is the normal inverter operation — a high input gives a low output.
 
 Here, the PMOS is OFF and the NMOS works in the linear region, acting like a resistor that pulls the output to ground.
+
 For PMOS:
+
 *	VgsP = Vin – Vdd = Vdd – Vdd = 0 V
 
 *	Since |VgsP| = 0 < |Vtp|, the PMOS does not turn on
@@ -436,30 +439,35 @@ For PMOS:
 *	PMOS turns OFF → acts as an open switch (no connection between Vdd and Vout)
 
 For NMOS:
+
 *	VgsN = Vin – Vss = Vdd – 0 = Vdd
 
 *	Since VgsN = Vdd > Vtn, the NMOS turns on
 
 *	NMOS turns ON → acts as a closed switch with resistance Rn .
   
-* The equivalent circuit for this case shows: Vdd → open switch (PMOS OFF) → disconnected, and Vout → Rn (NMOS ON) → Vss. Since the only path from the output node is through Rn to ground, the output voltage Vout is pulled down to 0 V. The load capacitor CL also discharges to 0 V through Rn.
+* The equivalent circuit for this case shows: Vdd → open switch (PMOS OFF) → disconnected, and Vout → Rn (NMOS ON) → Vss.
+* 
+* Since the only path from the output node is through Rn to ground, the output voltage Vout is pulled down to 0 V. The load capacitor CL also discharges to 0 V through Rn.
 
 * When Vin = Vdd → Vout = 0 (Output is LOW). This is the inverting property of the CMOS inverter.
 
-case 2:
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/7e0cf1ab-a9fc-4fa7-8986-2d926c80831e" />
+
+  case 2:
 
 * Vin is LOW (Vin = Vss = 0 V) We have analyzed the case when Vin is HIGH. Now we also need to analyze when vin=0 .By combining both cases, we can evaluate the total delay of the circuit.
 
-<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/7e0cf1ab-a9fc-4fa7-8986-2d926c80831e" />
-
-  
-* where Vin is "low" and equal to 0 V.
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/1a69c3c8-d95d-4896-bf38-ae6095458ddc" />
 
 For PMOS:
-•	VgsP = Vin – Vdd = 0 – Vdd = –Vdd
-•	Since |VgsP| = Vdd > |Vtp|, the PMOS turns ON
-•	PMOS turns ON → acts as a closed switch with resistance Rp
+*	VgsP = Vin – Vdd = 0 – Vdd = –Vdd
+
+*	Since |VgsP| = Vdd > |Vtp|, the PMOS turns ON
+
+*	PMOS turns ON → acts as a closed switch with resistance Rp
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/64925900-a484-4215-83a3-1dfc34cb32b6" />
 
 For NMOS:
 *	VgsN = Vin – Vss = 0 – 0 = 0 V
@@ -474,6 +482,7 @@ For NMOS:
 
 * When Vin = 0 → Vout = Vdd (Output is HIGH). The output is the logical inversion of the input.
 
+Let us give the naming convention of the CMOS
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/3e7256c3-2323-4279-92df-3b1b2bfcaafd" />
 
@@ -486,7 +495,7 @@ For NMOS:
 
 
 
-# L2 INTRODUCTION TO STANDARD MOS VOLTAGE CURRENT PARAMETERS 
+
 
 
 
