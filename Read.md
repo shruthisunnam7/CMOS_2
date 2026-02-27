@@ -1702,6 +1702,8 @@ Both etching process variation and oxide thickness variation are examples of dev
  Here we look at oxide thickness as a source of variation in the CMOS inverter. The gate oxide layer grown during fabrication is not perfectly uniform, and this non-uniformity directly affects the Cox parameter in the drain current equation
 
 Single Inverter
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/6ee84560-fd30-4331-a09b-d4f1dbc3fa63" />
+
 The  single inverter has:
 •	PMOS connected to Vdd (Pull-up network)
 •	NMOS connected to Vss (Pull-down network)
@@ -1709,10 +1711,15 @@ The  single inverter has:
 •	Drains connected together at output (Out)
 
 Inverter Chain
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/91d3ac57-b168-4f9a-b254-e04ef01c9376" />
 
 When multiple inverters are placed in a chain, each inverter cell has the same layout structure with Poly Gate stripes running vertically and P Diff and N Diff regions alternating across the chain.
 
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/0cb0d68d-debe-4a50-9acf-d1516dc1e07a" />
+
 Ideal Oxidation Process
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/2452de41-a60f-45a8-b495-a3403456db58" />
+
 The gate oxide layer (SiO2) is grown on the P-substrate surface during fabrication. In the ideal oxidation process, the oxide grows uniformly to a designed thickness tox. The cross-section shows:
 •	tox — the gate oxide thickness, indicated at the top of the cross-section
 •	Gate oxide — the thin SiO2 dielectric layer grown on the P-substrate between source and drain
@@ -1721,13 +1728,21 @@ The gate oxide layer (SiO2) is grown on the P-substrate surface during fabricati
 •	P-substrate — the body of the transistor, connected to terminal B
 
 Ideal vs Actual Oxidation Process
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/bb5b8b06-b476-4719-bb98-7e3813089fb1" />
+
+
 During the actual fabrication process, the oxidation is not perfectly uniform across the wafer. The actual oxidation process produces a gate oxide layer with non-uniform thickness. This means tox varies from its designed value at different points on the wafer or even within the same die:
 •	Ideal Oxidation Process — tox is uniform and equals the designed value everywhere
 •	Actual Oxidation Process — tox varies locally. Some regions may have a thicker oxide (over-oxidation) and some may have a thinner oxide (under-oxidation)
 Effect of Oxide Thickness Variation on Drain Current
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/f794c838-40c1-4833-baf3-3b6f75940fa0" />
+
 The gate oxide capacitance per unit area Cox is given by: Cox = εox / tox
 where εox is the permittivity of the gate oxide material. The drain current equation for a MOSFET in the linear region is:
 Id = u Cox (W/L) [(Vgs - Vt)Vds - Vds²/2]
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/a2ddf792-6637-4346-a6e3-6bcea0a11881" />
 
  we can observe that oxide thickness variation directly impacts Cox and therefore Id:
 •	If tox is thicker than designed — Cox = εox/tox decreases, which reduces the drain current Id and weakens the transistor
@@ -1738,6 +1753,79 @@ Oxide thickness variation is one of two main sources of device variation in CMOS
 
 
 
+L3 
+Now we will be doing the SPICE simulation for device variations, and prove the robustness of CMOS inverter inspite of different extreme conditions.
+We will see the characteristics for Strong PMOS and week NMOS, this means PMOS width is wider and it has least resistance. Also for weak PMOS and strong PMOS, that means the width of NMOS is more than PMOS and it has least resitance.
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/0de59ef9-2ab3-45ab-af0a-c36564b79a9a" />
 
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/e99efc46-46d3-4737-bb90-90d386b1602a" />
 
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/b178d0e0-4eb1-40c0-91d2-423fbd8bd2b2" />
+
+<img width="959" height="745" alt="image" src="https://github.com/user-attachments/assets/f8f1ff42-672a-4d60-8193-66296ce716d1" />
+
+# L4 CONCLUSION 
+
+SPICE Simulation Setup — Strong PMOS and Strong NMOS Conditions
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/dc13e14e-7497-4ed3-953f-858e4471a133" />
+
+The SPICE simulation is set up to show the effect of device variation on the VTC. Five simulation runs are performed corresponding to different combinations of strong and weak PMOS and NMOS conditions:
+•	dc1.out (green) — one device variation condition
+
+•	dc2.out (red) — second device variation condition
+
+•	dc3.out (blue) — third device variation condition
+
+•	dc4.out (yellow) — fourth device variation condition
+
+•	dc5.out (purple) — fifth device variation condition
+
+The two device configurations shown are:
+•	Strong PMOS — the PMOS is stronger than the NMOS. Wp = 0.375u (shown with the P block larger in the inverter icon on the left)
+•	Strong NMOS — the NMOS is stronger than the PMOS. Wn = 1.875u (shown on the right with Wn highlighted in yellow)
+
+VTC Curves with Vin = Vout Diagonal Line
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/e4b8f25f-80ca-4976-8c5f-3e505ca619ba" />
+
+The Vin = Vout diagonal line is drawn on the same graph as all five VTC curves. The point where each VTC curve intersects this diagonal gives the switching threshold Vm for that particular device variation condition. We can observe that:
+•	The five VTC curves are spread across a wide range of input voltages
+•	Each curve intersects the Vin = Vout diagonal at a different point, giving a different Vm
+•	The leftmost curve (dc5.out, purple) has the lowest Vm — this is the Strong PMOS condition where the PMOS drives the output to ground much earlier
+•	The rightmost curve (dc1.out, green) has the highest Vm — this is the Strong NMOS condition where the NMOS keeps the output high for longer
+
+Shift in Vm due to Device Variation
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/721de9b8-3eed-4ba5-bffd-02d28b287452" />
+The annotation 'Shift in Vm' with a bracket on the left side of the plot shows the total range of Vm variation across all five conditions. The two yellow dashed lines mark:
+•	Lower dashed line — the lowest Vm (Strong PMOS case), approximately 0.7v
+•	Upper dashed line — the highest Vm (Strong NMOS case), approximately 1.4v
+•	The shift in Vm is significant — device variation causes Vm to move by approximately 0.7v across the range of conditions
+
+Variation in NMH and NML
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/44e2de71-c456-4c41-a10b-6cc982154cff" />
+
+In addition to the shift in Vm, device variation also causes variation in the noise margins:
+•	Variation in NMH — the top yellow dashed lines show the spread of VOH values across all five VTCs. For the Strong PMOS case, VOH is lower. For the Strong NMOS case, VOH is higher
+•	Variation in NML — the bottom yellow dashed lines show the spread of VOL values. For the Strong NMOS case, VOL is higher. For the Strong PMOS case, VOL is lower
+•	This means that device variation affects NMH = VOH − VIH and NML = VIL − VOL for every transistor on the chip
+
+CONCLUSION 
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/8f0d2748-a3cb-4f88-b78d-a524fa5403cf" />
+
+The important conclusion from the device variation simulation is that despite the spread in switching threshold Vm, noise margins NMH and NML across the five device variation conditions, the operation of the gate is intact:
+•	All five VTC curves still show a valid transition from logic HIGH (Vout ≈ Vdd) to logic LOW (Vout ≈ 0V)
+•	The inverter correctly inverts the input logic level (0/1 → 1/0) for all five conditions
+•	The variation in Vm, NMH, and NML affects the performance of the inverter but does not cause a functional failure
+•	The CMOS inverter is robust to device variation in terms of its basic logic operation .
+
+# L5 Sky130 Device Variation Labs
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/5c941019-054c-4275-988c-acc49ad31b7a" />
+
+We can see that the width of PMOS is quite large than that of NMOS. SO it is clearly strong PMOS and weak NMOS case. The Vm will be right shifted.
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/02a843f8-ba9f-437f-a096-a54210e0cf51" />
 
