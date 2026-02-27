@@ -1743,7 +1743,7 @@ We will now plot the VTC charactersitics for Vdd= 2.5V, 2V, 1.5V, 1V, 0.5V
 
 <img width="970" height="688" alt="image" src="https://github.com/user-attachments/assets/bdf3a131-2617-47e0-89ed-8a46d97e0a09" />
 
- # 5.2 L2 ADVANTAGES AND DISADVANTAGES USING LOW SUPPLY VOLTAGE
+ # 5.1 L2 ADVANTAGES AND DISADVANTAGES USING LOW SUPPLY VOLTAGE
 
 Here we use SPICE simulation to evaluate the effect of power supply scaling on the CMOS inverter. We look at how reducing the supply voltage affects the gain, energy, and delay characteristics of the inverter.
 
