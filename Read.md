@@ -1171,3 +1171,165 @@ In previous lecture we did simulation for only one condition.Here we will do sim
 
 From above simulation results we can observe that Rise delay is decreasing with ncrease in power of PMOS and all delay is incresing with decrease in power of CMOS.
 
+# L6 Applications of CMOS inverter in clock network and STA
+
+The transient SPICE simulation is run for all five Wp/Lp cases. The complete results table from the ngspice simulation:
+
+<img width="979" height="293" alt="image" src="https://github.com/user-attachments/assets/4048d25e-378e-49ff-a8b3-fc7833b1b38d" />
+
+*	As Wp/Lp increases, Vm increases from 0.99V towards 1.4V
+
+*	As Wp/Lp increases, Rise delay decreases (from 148ps to 37ps) — PMOS becomes stronger
+  
+*	As Wp/Lp increases, Fall delay increases (from 71ps to 88ps) — PMOS drives harder, load charges faster, output falls slower.
+
+Case 2: Wp/Lp = 2Wn/Ln – Clock Inverter/Buffer
+
+At Wp/Lp = 2Wn/Ln, the rise delay (80ps) and fall delay (76ps) are approximately equal. This is noted as:
+
+*	Approximately equal rise-fall delay
+  
+*	Typical characteristics for a clock inverter/buffer
+
+A clock inverter/buffer requires equal rise and fall delays to maintain a 50% duty cycle through the clock network. This is why Wp is typically sized to ~2x Wn for clock buffers
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/9179d556-8c65-45bf-bae1-f7c2bf336776" />
+
+
+Cases 3–5: Regular Inverter/Buffer – Preferred for Data Path
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/3ad42b17-2430-40b9-9a71-5e219bf25460" />
+
+
+For Wp/Lp = 3Wn/Ln, 4Wn/Ln, and 5Wn/Ln, the inverter is noted as:
+
+*	Regular inverter/buffer
+
+*	Preferred for data path
+
+In these cases, the PMOS is stronger and Vm is above Vdd/2 = 1.25V. The rise delay is much smaller than fall delay. These are typical for standard cell data path inverters where drive strength needs to be high.
+
+# Application in Clock Network – H-Tree Structure
+
+The clock signal is distributed across the chip using an H-Tree structure. The clock inverter/buffer (Wp/Lp ≈ 2Wn/Ln) is used at each node of the H-Tree to ensure equal rise and fall delays. The H-Tree check-list for clock network design includes:
+
+	1) SKEW – checked
+	
+	2) PULSE WIDTH – checked
+	
+    3) DUTY CYCLE
+	
+	4) LATENCY
+	
+	5) CLOCK TREE POWER
+	
+	6) SIGNAL INTEGRITY AND CROSSTALK
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/5de867d2-61bc-4c0b-8188-7a17e8145e7c" />
+
+Application in Static Timing Analysis (STA)
+
+The delay values from the CMOS inverter simulation are used directly in Static Timing Analysis (STA). The setup analysis for a single clock domain is shown below.
+
+Specifications:
+•	Clock Frequency (F) = 1GHz
+•	Clock Period (T) = 1/F = 1/1GHz = 1ns
+•	Skew (S) = 10ps = 0.01ns
+•	Uncertainty = 90ps = 0.09ns
+
+The setup timing condition is:
+
+(Theta + Delta1) < (T + Delta2 + 3x) – S – SU
+Where:
+•	Theta (Θ) = clock-to-Q delay of the Launch Flop
+•	Delta1 (Δ1) = data path delay through combinational logic
+•	T = clock period
+•	Delta2 (Δ2) = clock network delay to Capture Flop
+•	3x = uncertainty buffer
+•	S = clock skew
+•	SU = setup time of Capture Flop
+
+The SLACK must be ≥ 0:
+
+SLACK = Data Required Time – Data Arrival Time
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/5692787c-9d61-4e89-a78f-4511cf0e221f" />
+
+# NgspiceSky130-Day4-CMOS Noise Margin robustness evaluation
+
+# DAY 4.1 L1 Introduction to Noise Margin
+
+Static behavior evaluation focuses on the CMOS inverter robustness. In this lecture we look at Noise Margin, specifically NMH and NML.
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/9fd817e3-17f9-4810-9f74-7dca22397370" />
+
+Consider a CMOS inverter. Its function is:
+•	Input 0 gives output 1
+•	Input 1 gives output 0
+The Ideal I/O characteristic of an inverter shows a perfect step: Vout stays at Vdd for all Vin below Vdd/2, and drops instantly to 0 for all Vin above Vdd/2. This ideal step transition happens exactly at Vin = Vdd/2.
+
+# Ideal VTC with Infinite Slope
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/04fc3bcf-8c85-4c41-95f7-0c3b1dbb813f" />
+
+In the ideal case, the transition region has infinite slope. This means the inverter switches instantaneously between logic 0 and logic 1. There is no ambiguity in output for any input voltage
+# Actual VTC with Finite Slope
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/617e8b1d-6aed-472c-b5ec-a332342f8d3a" />
+
+In a real inverter, the VTC has a finite slope in the transition region. The output does not switch instantly. Because of this finite slope, we need to define voltage levels that guarantee correct logic operation. These are called noise margin parameters. The four key parameters are:
+•	VOH — Output High Voltage
+•	VOL — Output Low Voltage
+•	VIH — Input High Voltage
+•	VIL — Input Low Voltage
+
+VOH — Output High Voltage
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/01eb308e-0854-4b1d-99d0-a8037af0a5bc" />
+
+*	Any output voltage level between VOH and Vdd will be treated as logic '1'
+
+*	VOH is found on the VTC at the point where slope = -1 on the upper part of the transition
+
+*	VIL is the corresponding input voltage at this point (the lower transition boundary)
+
+VOL is the Output Low Voltage.
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/8b007321-3f1c-4f9b-a033-fda4094f016a" />
+
+*	Any output voltage level between 0 and VOL will be treated as logic '0'
+  
+*	VOL is found on the VTC at the point where slope = -1 on the lower part of the transition
+  
+*	VIH is the corresponding input voltage at this point (the upper transition boundary)
+
+# L2 Noise margin voltage parameters
+
+We will define all four noise margin voltage parameters on the actual VTC of the CMOS inverter and explain how they are determined using the slope = −1 criterion .
+
+Actual I/O Characteristic of a CMOS Inverter
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/b3774aad-ad07-4ca5-b37a-fdbb99b19a54" />
+
+The actual VTC of a CMOS inverter has a finite slope transition region. In this transition region, the output switches from HIGH to LOW. To define the valid logic levels, we identify four key voltage parameters from the actual VTC.
+
+Defining VIL and VIH from the Actual VTC
+
+The points VIL and VIH are determined by drawing tangent lines on the actual VTC curve at the points where the slope equals −1.
+•	VIL (Input Low Voltage): the Vin value where the VTC slope first reaches −1 on the upper part of the curve. For any input below VIL, the output is guaranteed to be HIGH.
+•	VIH (Input High Voltage): the Vin value where the VTC slope reaches −1 on the lower part of the curve. For any input above VIH, the output is guaranteed to be LOW.
+The region between VIL and VIH is the transition (undefined) region. Signals in this region do not guarantee a valid logic level at the output.
+
+Defining VOH and VOL from the VTC
+VOH and VOL are the output voltage levels corresponding to VIL and VIH respectively.
+•	VOH (Output High Voltage): the output voltage when Vin = VIL. Any output between VOH and Vdd is treated as logic '1'.
+•	VOL (Output Low Voltage): the output voltage when Vin = VIH. Any output between 0 and VOL is treated as logic '0'.
+
+Slope = −1 Criterion
+ 
+Fig 4: Two slope = −1 tangent points on the actual VTC. Upper tangent gives VIL and VOH. Lower tangent gives VIH and VOL
+The slope = −1 criterion is the standard method to determine the noise margin voltage parameters.
+•	On the actual VTC curve, draw tangent lines at the two inflection points where the slope of the curve equals exactly −1
+•	Upper inflection: where the curve just starts to fall steeply — this gives VIL (x-axis) and VOH (y-axis)
+•	Lower inflection: where the curve is completing its fall — this gives VIH (x-axis) and VOL (y-axis)
+This method is used because the slope of −1 represents the unity gain point. Any gain below this (magnitude < 1) means the inverter is in a stable region, and beyond it (magnitude > 1) the circuit is in the high-gain amplification region.
+
