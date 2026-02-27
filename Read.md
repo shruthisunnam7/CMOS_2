@@ -90,15 +90,20 @@ SPICE acts as the base tool for verifying CMOS circuit behavior. It helps in ana
   
 * Delay of the circuit
   
-* Effect of W/L ratio 
+* Effect of W/L ratio
+  
 It allows us to validate theoretical equations using practical simulations.
+
 <img width="1547" height="501" alt="image" src="https://github.com/user-attachments/assets/4b49291d-6f72-4a0d-aff5-8782538980cc" />
+
 <img width="1600" height="409" alt="image" src="https://github.com/user-attachments/assets/4d3a98b8-f1dc-4d2b-84c2-1da17749ebc3" />
+
 The figure shows a buffer circuit with given specifications and output load. To calculate the delay of the buffer, we use delay tables based on input slew rate and output load. From the delay tables of CBUF1 and CBUF2, we can see that even for the same input slew and load values, the delay differs. This difference occurs because the NMOS and PMOS transistors in the two buffers have different W/L ratios, which change their drive strength and switching behavior.
 
 # L2 NMOS BASIC ELEMENTS IN CIRCUIT DESIGN
 
 <img width="1600" height="1338" alt="image" src="https://github.com/user-attachments/assets/9d270771-18eb-4555-9f63-e673226d8f0f" />
+
 STRUCTURE OF NMOS DEVICE 
 * N channel mosfet constructed on p substarte
   
@@ -113,22 +118,28 @@ STRUCTURE OF NMOS DEVICE
 * A Poly-Si or metal gate  placed on top of the gate oxide layer which forms gate terminal and drives nmos .
 There are a few abbreviations:
 G means Gate
+
 S means Source
+
 D means Drain
+
 B means Body
+
 * Body terminal is connected directly to P substrate and it is grounded.It is important in finding threshold voltage the nmos.
 
 * PMOS is inverted to nmos
+  
 # L3 THRESHOLD VOLTAGE 
 
 <img width="1027" height="515" alt="image" src="https://github.com/user-attachments/assets/168eb4f5-e5ab-45a6-affe-76594534a1cf" />
+
 * let us take vt is a function of x,y,z .
   
 * Vgs=0 and drain ,source and bulk are connected to ground .
   
 * Here we can observe that the substrate and diffusion looks like PN junction diode and these are connected back to back.
   
-* Both junctions are off due to 0V bias hence channel has high resistance therefore no connectivity between source and drain .
+* Both junctions are off due to 0V bias hence channel has high resistance therefore no connectivity between source and drain 
   
 * Apply a small positive potential at VGS and the metal gate becomes positively charged and forms an oxide capacitance. As a result, it repels the positive charges in the substrate, leaving behind negative charges.
   
@@ -157,6 +168,7 @@ B means Body
 *Increase in depletion width leads to accumilate  more  negative charges , as the terminal is connected  to positive potential there will be more accumilation of negative charges in vsb positive side .
 
 *Due to +vsb ,few charges from channel are pulled towards source ,further increase in vgs semiconductor surface inverts to n type material at voltage vgs=vto+1 .In presence of substrate bias vsb additional potential is required for strong inversion .
+
 # THRESHOLD VOLTAGE EQUATION 
 
 <img width="1600" height="580" alt="image" src="https://github.com/user-attachments/assets/2b1934d6-26ee-4fd9-9826-adb2fd7f4fcc" />
@@ -169,7 +181,9 @@ B means Body
 
 * It is also known as the Linear Region of operation
 *  observe changes when Vgs > Vt .
+  
 *  Induced charges (Qi) α (Vgs-Vt) .
+  
 *  when vt = 0.45v ,vgs = 1v, vgs > vt transitor turn on and conducting channel is present between source and drain and we can see  source is connected to ground and drain  is connected to some potential ,there will be a voltage gradient present across the channel . Also effective length is less than actual channel length .
   
 *  <img width="965" height="620" alt="image" src="https://github.com/user-attachments/assets/234eceb1-96ff-43f3-be5d-e809891c1a38" />
@@ -177,6 +191,7 @@ B means Body
 *  lets plot a graph ,'x' is along the channel and 'y' is perpendicular to channel , y axis represents width , when x=0,1,2,3...,n  at every point v1,v2 ,..,vn the voltage will be different ,all values are different because of small voltage applied ie vds . Every point on x axis will vary w.r.t to Vgs-V(x), this will decide the current equation. where V(x) be the voltage at any point 'x' along the channel and  Vgs-V(x) is the gate-to-channel voltage at that point .
   
 # 1.1 L2 Drift current theory 
+
 We know the effective channel voltage will vary w.r.t x, for example at x=0, Vgs=1V and V(x)=0, So the Vgs-Vx=1V. At x=Vds=0.05V, Vgs-Vx=0.95V. 
  * The induced charge at any point 'x' is  Qi(x) α - ((Vgs-V(x))-Vt) ie  Qi(x) = -cox ((Vgs-V(x))-Vt)
    
@@ -481,6 +496,7 @@ Here again we are taking values for L=0.15u and W=0.39u, Keeping Vds constant at
 <img width="692" height="538" alt="image" src="https://github.com/user-attachments/assets/0f7a9c5f-934c-4e74-b5d9-8545ac860336" />
 
 # 2.1 L6  labs sky 130 vt 
+
 Now we will calculate Threshold Voltage Vt for Id vs Vgs curve.
 
 <img width="292" height="30" alt="image" src="https://github.com/user-attachments/assets/394bf262-73f8-4fb9-9c97-78cea21b8206" />
@@ -488,8 +504,6 @@ Now we will calculate Threshold Voltage Vt for Id vs Vgs curve.
 In the curve we can see that Vt is the value when current increases drastically for small change in Vgs. To calculate we will draw tangent on the curve and see where it touches.
 
 <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/2e3fc211-2ebc-49c5-b6fc-df812ac3bf5d" />
-
-
 
   # 2.2 L1 cmos voltage transfer characteristrics
   
@@ -750,19 +764,22 @@ final comparision
 
 Before merging, we have two separate Id vs Vout load curves derived from the previous lectures:
 NMOS Load Curve:
-•	X-axis = VdsN = Vout, Y-axis = IdsN
-•	Five curves for Vin = 0, 0.5, 1, 1.5, 2 V (bottom to top)
-•	Vin = 0 → NMOS OFF → IdsN = 0 (flat line at X-axis)
-•	Higher Vin → higher IdsN in saturation
+*	X-axis = VdsN = Vout, Y-axis = IdsN
+  
+*	Five curves for Vin = 0, 0.5, 1, 1.5, 2 V (bottom to top)
+  
+*	Vin = 0 → NMOS OFF → IdsN = 0 (flat line at X-axis)
+  
+*	Higher Vin → higher IdsN in saturation
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/e423bcbf-ca1e-45d6-9962-635d7c47cdcf" />
 
 PMOS Load Curve:
-•	X-axis = Vout (mapped from VdsP), Y-axis = IdsN (= |IdsP|)
-•	Five curves for Vin = 0, 0.5, 1, 1.5, 2 V (top to bottom)
-•	Vin = 0 → PMOS strongly ON → highest IdsP (topmost curve)
-•	Vin = 2 → PMOS OFF → IdsP = 0 (flat at X-axis)
-•   Vin ordering is reversed compared to NMOS because lower Vin makes VgsP more negative
+*	X-axis = Vout (mapped from VdsP), Y-axis = IdsN (= |IdsP|)
+*	Five curves for Vin = 0, 0.5, 1, 1.5, 2 V (top to bottom)
+*	Vin = 0 → PMOS strongly ON → highest IdsP (topmost curve)
+*	Vin = 2 → PMOS OFF → IdsP = 0 (flat at X-axis)
+*   Vin ordering is reversed compared to NMOS because lower Vin makes VgsP more negative
 since Vin and Vout are common to both PMOS and NMOS in the inverter, these two sets of curves can be placed on the same graph to find the operating points
 
 # Superimposing Load Curves – Finding Operating Points
@@ -770,59 +787,82 @@ since Vin and Vout are common to both PMOS and NMOS in the inverter, these two s
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/615b597a-ac0f-4124-a285-6e95c4224082" />
 
 Both load curves are placed on the same IdsN vs Vout plot. This is valid because:
-•	Vin is common to both PMOS and NMOS (both gates are tied together)
-•	Vout is common to both drains
-•	At steady state: IdsP = IdsN (current continuity at output node)
+*	Vin is common to both PMOS and NMOS (both gates are tied together)
+  
+*	Vout is common to both drains
+  
+*	At steady state: IdsP = IdsN (current continuity at output node)
 
 After superimposition, the corresponding Vin curves from PMOS and NMOS intersect each other. Each intersection point is the DC operating point (Vout) for that particular Vin value.
 
-•	For each Vin, there is exactly one intersection point between the PMOS and NMOS curves
-•	This intersection gives the unique Vout value for that Vin
-•	These (Vin, Vout) pairs form the data points of the VTC curve
+*	For each Vin, there is exactly one intersection point between the PMOS and NMOS curves
+  
+*	This intersection gives the unique Vout value for that Vin
+  
+*	These (Vin, Vout) pairs form the data points of the VTC curve
+  
 # VTC Point-by-Point Construction
+
 Reading the five intersection points from the superimposed plot:
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/4bcbe534-491d-41e4-b848-83cfa7a6dc12" />
 
 Vin = 0 V:
-•	NMOS: OFF (VgsN = 0 < Vtn) → IdsN = 0, curve is flat at zero
-•	PMOS: strongly ON (VgsP = –Vdd, maximum drive)
-•	Intersection at Vout = Vdd = 2 V
-•	VTC point: (0 V, 2 V) | Transistor states: PMOS linear, NMOS off
+*	NMOS: OFF (VgsN = 0 < Vtn) → IdsN = 0, curve is flat at zero
+  
+*	PMOS: strongly ON (VgsP = –Vdd, maximum drive)
+  
+*	Intersection at Vout = Vdd = 2 V
+  
+*	VTC point: (0 V, 2 V) | Transistor states: PMOS linear, NMOS off
 
 Vin = 0.5 V:
-•	NMOS barely ON (VgsN = 0.5 V, just above Vtn)
-•	PMOS still strongly ON (VgsP = –1.5 V)
-•	Intersection: 1.5 < Vout < 2 V
-•	VTC point: (0.5 V, ~1.5–2 V) | Transistor states: PMOS linear, NMOS saturation
+*	NMOS barely ON (VgsN = 0.5 V, just above Vtn)
+  
+*	PMOS still strongly ON (VgsP = –1.5 V)
+  
+*	Intersection: 1.5 < Vout < 2 V
+  
+*	VTC point: (0.5 V, ~1.5–2 V) | Transistor states: PMOS linear, NMOS saturation
 
 Vin = 1 V:
-•	NMOS and PMOS have comparable drive strengths
-•	Both transistors in saturation → maximum gain region (sharpest VTC slope)
-•	Intersection near Vout ≈ 1 V (midpoint of supply)
-•	VTC point: (1 V, ~1 V) | Transistor states: PMOS sat, NMOS sat
+*	NMOS and PMOS have comparable drive strengths
+
+*	Both transistors in saturation → maximum gain region (sharpest VTC slope)
+  
+*	Intersection near Vout ≈ 1 V (midpoint of supply)
+  
+*	VTC point: (1 V, ~1 V) | Transistor states: PMOS sat, NMOS sat
 
 Vin = 1.5 V:
-•	NMOS strongly ON (VgsN = 1.5 V)
-•	PMOS barely ON (VgsP = –0.5 V, close to |Vtp|)
-•	Output pulled low: Vout between 0 and 0.5 V
-•	VTC point: (1.5 V, ~0.5 V) | Transistor states: PMOS sat, NMOS linear
+*	NMOS strongly ON (VgsN = 1.5 V)
+  
+*	PMOS barely ON (VgsP = –0.5 V, close to |Vtp|)
+  
+*	Output pulled low: Vout between 0 and 0.5 V
+  
+*	VTC point: (1.5 V, ~0.5 V) | Transistor states: PMOS sat, NMOS linear
 
 Vin = 2 V (= Vdd):
-•	PMOS: OFF (VgsP = 0 V, |VgsP| < |Vtp|) → IdsP = 0
-•	NMOS strongly ON (VgsN = 2 V)
-•	Output pulled all the way to 0 V
-•	VTC point: (2 V, 0 V) | Transistor states: PMOS off, NMOS linear
+*	PMOS: OFF (VgsP = 0 V, |VgsP| < |Vtp|) → IdsP = 0
+  
+*	NMOS strongly ON (VgsN = 2 V)
+  
+*	Output pulled all the way to 0 V
+	
+*	VTC point: (2 V, 0 V) | Transistor states: PMOS off, NMOS linear
 
 # Complete VTC Curve
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/633ad184-291e-49b0-ac95-88365d668696" />
 
 The five plotted points form the characteristic S-shaped VTC. The three distinct regions of the VTC are:
-•	Flat HIGH region (low Vin): Vout ≈ Vdd. PMOS is ON and supplies current; NMOS is OFF. Output stays at logic HIGH.
-•	Transition region (mid Vin ≈ Vdd/2): Vout rapidly switches from HIGH to LOW. Both PMOS and NMOS are simultaneously in saturation — this gives the maximum gain and sharpest slope.
-•	Flat LOW region (high Vin): Vout ≈ 0 V. NMOS is ON and pulls output to ground; PMOS is OFF. Output stays at logic LOW.
-•	This graphical method of VTC construction using load-line analysis is the foundation for understanding CMOS DC characteristics
-
+*	Flat HIGH region (low Vin): Vout ≈ Vdd. PMOS is ON and supplies current; NMOS is OFF. Output stays at logic HIGH.
+  
+*	Transition region (mid Vin ≈ Vdd/2): Vout rapidly switches from HIGH to LOW. Both PMOS and NMOS are simultaneously in saturation — this gives the maximum gain and sharpest slope
+  
+*	Flat LOW region (high Vin): Vout ≈ 0 V. NMOS is ON and pulls output to ground; PMOS is OFF. Output stays at logic LOW.
+  
+*	This graphical method of VTC construction using load-line analysis is the foundation for understanding CMOS DC characteristics
 
 # DAY 3
 
@@ -838,11 +878,15 @@ Now we will write the SPICE deck for the CMOS inverter to simulate the Voltage T
 # Component Connectivity
 
 The CMOS inverter circuit consists of:
-•	M1 – PMOS transistor, source connected to Vdd
-•	M2 – NMOS transistor, source connected to Vss (ground)
-•	Gates of both M1 and M2 connected together at input node Vin
-•	Drains of M1 and M2 connected together at output node Vout
-•	Load capacitor cload connected from the output node to Vss
+*	M1 – PMOS transistor, source connected to Vdd
+
+*	M2 – NMOS transistor, source connected to Vss (ground)
+  
+*	Gates of both M1 and M2 connected together at input node Vin
+  
+*	Drains of M1 and M2 connected together at output node Vout
+  
+*	Load capacitor cload connected from the output node to Vss
 
 # Component Values
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/049b105f-bbba-46d8-b5c7-aa1e4d6401fc" />
@@ -857,8 +901,9 @@ The W/L ratio for both transistors is 0.375/0.25 = 1.5.
  # Adding Supply Voltage Sources
 
 The supply voltage sources are added to the circuit:
-•	Vdd = 2.5V connected from node vdd to Vss
-•	Vin = 2.5V (input source) connected from node in to Vss
+*	Vdd = 2.5V connected from node vdd to Vss
+  
+*	Vin = 2.5V (input source) connected from node in to Vss
 
 # Identifying Nodes
 
@@ -867,10 +912,13 @@ The supply voltage sources are added to the circuit:
 A node means there is no obstruction between two points, i.e., if two terminals are directly connected by a wire, they belong to the same node.
 
 The four nodes identified in this circuit are:
-•	vdd – supply voltage node
-•	in – input node (connected to gates of M1 and M2)
-•	out – output node (connected to drains of M1 and M2 and top plate of cload)
-•	0 (Vss) – ground node
+*	vdd – supply voltage node
+  
+*	in – input node (connected to gates of M1 and M2)
+  
+*	out – output node (connected to drains of M1 and M2 and top plate of cload)
+  
+*	0 (Vss) – ground node
 
 SPICE Netlist Description
 
@@ -886,24 +934,33 @@ M1  out  in  vdd  vdd  pmos  W=0.375u  L=0.25u
 M2  out  in  0    0    nmos  W=0.375u  L=0.25u
 
 Explanation:
-•	M1: drain = out, gate = in, source = vdd, substrate = vdd, model = pmos
-•	M2: drain = out, gate = in, source = 0 (GND), substrate = 0 (GND), model = nmos
-•	The PMOS substrate is connected to vdd (highest potential) and the NMOS substrate is connected to 0 (ground) — this is standard CMOS practice
+*	M1: drain = out, gate = in, source = vdd, substrate = vdd, model = pmos
+  
+*	M2: drain = out, gate = in, source = 0 (GND), substrate = 0 (GND), model = nmos
+  
+*	The PMOS substrate is connected to vdd (highest potential) and the NMOS substrate is connected to 0 (ground) — this is standard CMOS practice
 
-•	A SPICE deck for CMOS inverter requires: component connectivity, component values, and node identification
-•	Both M1 (PMOS) and M2 (NMOS) have W = 0.375u, L = 0.25u giving W/L = 1.5 for both
-•	MOSFET SPICE syntax order is: drain, gate, source, substrate, model name, W, L
-•	Four nodes are defined: vdd, in, out, and 0 (ground)
-•	PMOS source and substrate are connected to vdd; NMOS source and substrate are connected to 0 (GND)
+*	A SPICE deck for CMOS inverter requires: component connectivity, component values, and node identification
+  
+*	Both M1 (PMOS) and M2 (NMOS) have W = 0.375u, L = 0.25u giving W/L = 1.5 for both
+	MOSFET SPICE syntax order is: drain, gate, source, substrate, model name, W, L
+
+*	Four nodes are defined: vdd, in, out, and 0 (ground)
+  
+*	PMOS source and substrate are connected to vdd; NMOS source and substrate are connected to 0 (GND)
 
 # L2 -SPICE simulation for CMOS inverter
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/5a3ceb0a-653d-4f2d-8c04-2320c60b3580" />
 
 The complete SPICE deck for simulating the Voltage Transfer Characteristic (VTC) of the CMOS inverter is built in the following sections:
-•	 MODEL Descriptions 
-•	NETLIST Description 
-•	Component values (passive elements and sources)
-•	 SIMULATION Commands 
+*	 MODEL Descriptions
+	
+*	NETLIST Description
+	
+*	Component values (passive elements and sources)
+  
+*	 SIMULATION Commands
+  
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/35515b2d-c794-4142-8438-da9ff0c4277e" />
 
 # SPICE Netlist – Transistors
@@ -935,8 +992,8 @@ Two simulation commands are used:
 .op
 .dc  Vin  0  2.5  0.05
 
-•	.op – Calculates the DC operating point of the circuit
-•	.dc Vin 0 2.5 0.05 – Performs a DC sweep of Vin from 0V to 2.5V in steps of 0.05V
+*	.op – Calculates the DC operating point of the circuit
+*	.dc Vin 0 2.5 0.05 – Performs a DC sweep of Vin from 0V to 2.5V in steps of 0.05V
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/598cab89-7c1a-4456-90ee-c461421ff024" />
 
@@ -955,38 +1012,48 @@ The technology model file is included in the SPICE deck to provide the foundry-s
 # Technology Model File (tsmc_025um_model.mod)
 
 The model file tsmc_025um_model.mod contains the SPICE model parameters for both NMOS and PMOS transistors from the TSMC 0.25um process. The file defines:
-•	.MODEL nmos NMOS – NMOS model with all technology parameters
-•	.MODEL pmos PMOS – PMOS model with all technology parameters
+*	.MODEL nmos NMOS – NMOS model with all technology parameters
+  
+*	.MODEL pmos PMOS – PMOS model with all technology parameters
 
 The PMOS model parameters include technology constants such as:
-•	VERSION, TNOM, TOX (gate oxide thickness)
-•	XJ (junction depth), NCH (channel doping), VTH0 (threshold voltage)
-•	K1, K2, K3, K3B – body effect parameters
-•	W0, NLX – narrow width and length parameters
-•	DVT0W, DVT1W, DVT2W, DVT0, DVT1, DVT2 – short channel effect parameters
-•	U0 (mobility), UA, UB, UC – mobility degradation parameters
-•	VSAT – saturation velocity
-•	AGS, B0, B1 – gate-induced drain leakage parameters
-•	KETA, A1, A2, RDSW, PRWG, PRWB – additional parameters
+*	VERSION, TNOM, TOX (gate oxide thickness)
+  
+*	XJ (junction depth), NCH (channel doping), VTH0 (threshold voltage)
+  
+*	K1, K2, K3, K3B – body effect parameters
+  
+*	W0, NLX – narrow width and length parameters
+  
+*	DVT0W, DVT1W, DVT2W, DVT0, DVT1, DVT2 – short channel effect parameters
+  
+*	U0 (mobility), UA, UB, UC – mobility degradation parameters
+  
+*	VSAT – saturation velocity
+  
+*	AGS, B0, B1 – gate-induced drain leakage parameters
+  
+*	KETA, A1, A2, RDSW, PRWG, PRWB – additional parameters
+  
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/596432b8-bcc3-4daf-8a18-4e2529a30223" />
-
 
 # Running the Simulation in ngspice
 
 The simulation is run using ngspice (version 26). The steps to run the simulation are:
 
 Step 1:
-•	Open ngspice and navigate to the folder containing the SPICE deck file
-•	Command: cd C:\VLSICADDevelopment\ngspice-26_140112\ForUdemy\CMOSVinVout
+*	Open ngspice and navigate to the folder containing the SPICE deck file
+  
+*	Command: cd C:\VLSICADDevelopment\ngspice-26_140112\ForUdemy\CMOSVinVout
 
 Step 2:
-•	Source (load) the SPICE deck file:
+*	Source (load) the SPICE deck file:
 ngspice 2 -> source cmosVTC_PMOSwidth_NMOSwidth.cir
 
 Step 3:
-•	Check the available simulation vectors using the display command:
+*	Check the available simulation vectors using the display command:
 ngspice 5 -> display
-•	The display output shows vectors: in, out, v-sweep, vdd, vdd#branch, vin#branch — all of type voltage or current, 51 long (corresponding to 51 Vin sweep points from 0 to 2.5V in 0.05V steps)
+*	The display output shows vectors: in, out, v-sweep, vdd, vdd#branch, vin#branch — all of type voltage or current, 51 long (corresponding to 51 Vin sweep points from 0 to 2.5V in 0.05V steps)
 
 Step 4:
 •	Plot the output voltage vs input voltage to get the VTC:
@@ -1111,9 +1178,11 @@ Static behavior Evaluation: CMOS inverter Robustness
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/668c404d-4eb9-43f3-9cc8-84d92ff21c72" />
 
 CMOS inverter circuit with VTC showing Vm~0.98v and Vm~1.2v for the two configurations
-•	Vm is the point where Vin = Vout
-•	From the two SPICE simulations: Vm ≈ 0.98V (symmetric sizing) and Vm ≈ 1.2V (balanced sizing)
-•	The key condition: IdsP = - IdsN which means IdsP + IdsN = 0
+*	Vm is the point where Vin = Vout
+  
+*	From the two SPICE simulations: Vm ≈ 0.98V (symmetric sizing) and Vm ≈ 1.2V (balanced sizing)
+  
+*	The key condition: IdsP = - IdsN which means IdsP + IdsN = 0
 
 # Deriving the Analytical Expression for Vm
 Setting up the Current Equation
@@ -1620,7 +1689,7 @@ We will now plot Noise margins
 
 <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/2e823e7a-4484-4699-b40a-b302f21f64be" />
 
-<img width="676" height="82" alt="image" src="https://github.com/user-attachments/assets/2b7e75c5-348d-4771-acff-d2a8f9cb2bf3" />
+
 
 We will take the point where the slope is -1 ; x axis will give VIL and VIH, whereas y axis will give VOH and VOL.
 
