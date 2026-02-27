@@ -27,7 +27,7 @@ It is an inverter image where
 - PMOS and NMOS characteristic curves are simulated using SPICE to understand their behavior. The resulting waveforms are analyzed to determine parameters such as delay  performance.
   
 - The W/L ratio controls the amount of current flowing through the transistor where W is width of transistor and L is the  length of gate oxide of transistor, and this current influences the shape of the waveform. 
-# why do we need spice ?
+#  0-L1 why do we need spice ?
 
 SPICE acts as the base tool for verifying CMOS circuit behavior. It helps in analyzing:
 * NMOS and PMOS characteristics
@@ -44,7 +44,7 @@ It allows us to validate theoretical equations using practical simulations.
 <img width="1600" height="409" alt="image" src="https://github.com/user-attachments/assets/4d3a98b8-f1dc-4d2b-84c2-1da17749ebc3" />
 The figure shows a buffer circuit with given specifications and output load. To calculate the delay of the buffer, we use delay tables based on input slew rate and output load. From the delay tables of CBUF1 and CBUF2, we can see that even for the same input slew and load values, the delay differs. This difference occurs because the NMOS and PMOS transistors in the two buffers have different W/L ratios, which change their drive strength and switching behavior.
 
-# NMOS BASIC ELEMENTS IN CIRCUIT DESIGN
+# L2 NMOS BASIC ELEMENTS IN CIRCUIT DESIGN
 
 <img width="1600" height="1338" alt="image" src="https://github.com/user-attachments/assets/9d270771-18eb-4555-9f63-e673226d8f0f" />
 STRUCTURE OF NMOS DEVICE 
@@ -67,7 +67,7 @@ B means Body
 * Body terminal is connected directly to P substrate and it is grounded.It is important in finding threshold voltage the nmos.
 
 * PMOS is inverted to nmos
-# THRESHOLD VOLTAGE 
+# L3 THRESHOLD VOLTAGE 
 
 <img width="1027" height="515" alt="image" src="https://github.com/user-attachments/assets/168eb4f5-e5ab-45a6-affe-76594534a1cf" />
 * let us take vt is a function of x,y,z .
@@ -113,7 +113,7 @@ B means Body
   
   <img width="642" height="553" alt="image" src="https://github.com/user-attachments/assets/a58d12af-23c7-4ae8-aa55-3d36e51bd0f5" />
 
-  #  L1 NMOS RESISTIVE OPERATION WITH SMALL DRAIN TO SOURCE VOLTAGE 
+  # 1.1  L1 NMOS RESISTIVE OPERATION WITH SMALL DRAIN TO SOURCE VOLTAGE 
 
 * It is also known as the Linear Region of operation
 *  observe changes when Vgs > Vt .
@@ -124,7 +124,7 @@ B means Body
 
 *  lets plot a graph ,'x' is along the channel and 'y' is perpendicular to channel , y axis represents width , when x=0,1,2,3...,n  at every point v1,v2 ,..,vn the voltage will be different ,all values are different because of small voltage applied ie vds . Every point on x axis will vary w.r.t to Vgs-V(x), this will decide the current equation. where V(x) be the voltage at any point 'x' along the channel and  Vgs-V(x) is the gate-to-channel voltage at that point .
   
-# L2 Drift current theory 
+# 1.1 L2 Drift current theory 
 We know the effective channel voltage will vary w.r.t x, for example at x=0, Vgs=1V and V(x)=0, So the Vgs-Vx=1V. At x=Vds=0.05V, Vgs-Vx=0.95V. 
  * The induced charge at any point 'x' is  Qi(x) α - ((Vgs-V(x))-Vt) ie  Qi(x) = -cox ((Vgs-V(x))-Vt)
    
@@ -137,7 +137,7 @@ From device point of view ,we have  2 kinds of currents in
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/ebdef17f-9787-45a7-9983-db3b7aa98fdc" />
 
-# L3 Drain current model for linear region of operation 
+# 1.1 L3 Drain current model for linear region of operation 
 
 *drain  current id = (velocity of charge carriers * available charge) over the chanel width .
 
@@ -161,7 +161,7 @@ The equation is simplified into this form where kn' is Cox * mobility. still we 
 
 we need to find the impact of Vds and Vgs on Id drain current.The NMOS works in linear region only when Vds <= Vgs-Vt.
 
-# L4 SPICE conclusion to resistive operation 
+# 1.1 L4 SPICE conclusion to resistive operation 
 
 <img width="729" height="221" alt="image" src="https://github.com/user-attachments/assets/1154ef38-6afa-4269-ad46-ae8e95a3263a" />
 
@@ -177,7 +177,7 @@ A MOSFET operates in the linear (resistive) region when: Vds < (Vgs − Vt) ,Whe
 For each Vgs value, Vds is swept from 0 to (Vgs − Vt) to maintain linear operation.
 SPICE simulation is performed to sweep Vds, calculate Id, and verify resistive behavior of the MOSFET.
 
-#  L5 SATURATION REGION 
+# 1.1 L5 SATURATION REGION 
 
 when Drain-source voltage exceeds the value (Vgs-Vt), the region of operation is called "Saturation Region" .
 
@@ -197,7 +197,7 @@ when Drain-source voltage exceeds the value (Vgs-Vt), the region of operation is
   
 * When Vgs-Vds<=Vt, there is no channel present near the Drain terminal, this region is saturation region .
   
-# L6 DRAIN CURRENT MODEL FOR SATURATION REGION OF OPERATION 
+# 1.1 L6 DRAIN CURRENT MODEL FOR SATURATION REGION OF OPERATION 
 
 <img width="734" height="640" alt="image" src="https://github.com/user-attachments/assets/584a15e7-c939-4509-b667-ef66dcc1eeb0" />
 
@@ -280,7 +280,7 @@ we just plug in this packaged file in .mod file and call this file in top level 
 
 2 VDS ARE LEFT 
 
-# L4 first spice simulation 
+# 1.2  L4 first spice simulation 
 * Open Virtual box
 
 * Type cd
@@ -290,7 +290,12 @@ we just plug in this packaged file in .mod file and call this file in top level 
 <img width="656" height="363" alt="image" src="https://github.com/user-attachments/assets/fd90e6f3-2b91-4c69-93c3-3c41331b942b" />
 
 
-# DAY -2  L1 SPICE SIMULATIONS FOR LOWER NODES AND VELOCITY SATURATION 
+
+
+# 1.2 L5 SPICE LAB WITH SKY 130 MODELS 
+
+
+# DAY -2 2.1 L1 SPICE SIMULATIONS FOR LOWER NODES AND VELOCITY SATURATION 
 
 Result of spice simulation 
 
@@ -312,7 +317,7 @@ When Vds reaches the value equal to (Vgs − Vt), the device enters saturation. 
  
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/a7c2702d-bbda-4112-9c29-d4a5d56d9f28" />
 
-# L2 Drain current vs gate voltage for long and short channel device 
+# 2.1 L2 Drain current vs gate voltage for long and short channel device 
 
 compare the two simulations :
 observation 1: 
@@ -335,7 +340,7 @@ by  spice simulating for Id s Vgs at constant vds .
 
 The plot we get is quadratic, it is only when Vds=2.5V .
 
-# L3 velocity saturation at lower and higher electric fields 
+# 2.1 L3 velocity saturation at lower and higher electric fields 
 
 observation 1: For long channel ,the drain current (Id) follows clear quadratic relationship with Vgs . and for short channel ,at lower vgs drain current still shows quadratic but drain current increases linearly with increasing gate voltage .This happens due to velocity saturation .
 
@@ -367,7 +372,7 @@ we simplify the above equation using 2 different modes.
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/991ba605-cfef-4b5e-ab04-48b4b4b82c4a" />
 
-# L4 velocity saturation drain current 
+# 2.1 L4 velocity saturation drain current 
 
 *lets call (vgs-vt)= vgt , we are dealing with higher values of  vgs.  we will use the drain current equation mentioned earlier.
 
@@ -393,7 +398,7 @@ we simplify the above equation using 2 different modes.
 
 * The saturation current at lower nodes is smaller, not higher. This happens because velocity saturation makes the device enter saturation earlier than expected. As a result, the maximum current reached at lower nodes is much less compared to higher nodes
 
-  # L5 labs
+  # 2.1  L5 labs
   We will now do simulation for lower nodes.
   <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/d18e0d61-9681-4dfe-996d-2cf9de50be50" />
 
@@ -415,7 +420,7 @@ Here again we are taking values for L=0.15u and W=0.39u, Keeping Vds constant at
 
 <img width="692" height="538" alt="image" src="https://github.com/user-attachments/assets/0f7a9c5f-934c-4e74-b5d9-8545ac860336" />
 
-# L6  labs sky 130 vt 
+# 2.1 L6  labs sky 130 vt 
 Now we will calculate Threshold Voltage Vt for Id vs Vgs curve.
 
 <img width="292" height="30" alt="image" src="https://github.com/user-attachments/assets/394bf262-73f8-4fb9-9c97-78cea21b8206" />
@@ -426,7 +431,7 @@ In the curve we can see that Vt is the value when current increases drastically 
 
 
 
-  # cmos voltage transfer characteristrics
+  # 2.2 L1 cmos voltage transfer characteristrics
   
  The MOSFET switch model is a simplified but very powerful way to understand how digital logic works without solving complex equations. 
  
@@ -460,7 +465,7 @@ In the curve we can see that Vt is the value when current increases drastically 
 
    <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/01ee6cdd-84e8-4b4c-9663-42fda00aebac" />
    
-# L2 INTRODUCTION TO STANDARD MOS VOLTAGE CURRENT PARAMETERS 
+# 2.2 L2 INTRODUCTION TO STANDARD MOS VOLTAGE CURRENT PARAMETERS 
 
  # CASE 1: Vin =Vdd  
   
@@ -538,7 +543,7 @@ Let us give the naming convention of the CMOS
   
 *	IdsP = Drain–Source current through PMOS
 
-#  L3 PMOS/NMOS drain current v/s drain voltage
+#  2.2 L3 PMOS/NMOS drain current v/s drain voltage
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/76e1b909-4bf9-41c8-8486-34a6a8131ea7" />
 
@@ -600,7 +605,7 @@ Since PMOS operates with negative voltages:
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/0b51c4f8-2ca3-4b9c-83ea-c3ddbbea0274" />
 
-# L4 Step 1- Convert PMOS gate-source-voltage to Vin
+# 2.2 L4 Step 1- Convert PMOS gate-source-voltage to Vin
 
 * We have seen various internal voltages, but actually in terms of user's perspective we can't see the internal voltages and only see the external Vin and Vout. From these we calculate the VTC and eventually we get to know the delay.
 
@@ -629,7 +634,7 @@ Since IdsP = – IdsN, the PMOS load curve is relabeled with Vin values on the Y
 
 *The order of Vin values on the PMOS curve is reversed compared to NMOS. This is because lower Vin makes VgsP more negative, turning PMOS on harder.
 
-# L5 Step2 & Step3 – Convert PMOS and NMOS drain-source-voltage to vout 
+# 2.2 L5 Step2 & Step3 – Convert PMOS and NMOS drain-source-voltage to vout 
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/edd4f97c-03cd-4250-a57f-d45b19866869" />
 
@@ -681,7 +686,7 @@ final comparision
   
 *	Plotting these operating points for all Vin values gives the complete Voltage Transfer Characteristic (VTC)
 	
-# L6 Merge PMOS – NMOS load curves and plot VTC
+# 2.2 L6 Merge PMOS – NMOS load curves and plot VTC
 
 Before merging, we have two separate Id vs Vout load curves derived from the previous lectures:
 NMOS Load Curve:
