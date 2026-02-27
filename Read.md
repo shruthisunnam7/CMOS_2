@@ -1743,7 +1743,9 @@ We will check by simulation, taking two case
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/455b72ab-dd90-431e-9bcb-0f8731e6cf51" />
 
 From above picture we can observe the inverter circuit used for this experiment. Here we took bigger PMOS compared to NMOS to match resistances. 
+
 Circuit parameters are:
+
 *Vdd = 2.5V (starting value, will be scaled down)
 
 *Wp = 0.9375u (PMOS width) 
@@ -1756,10 +1758,14 @@ Circuit parameters are:
 
 From above picture we can observe the VTC curve at Vdd = 2.5V with region labels. 
 5 regions are visible on the curve: 
-* PMOS linear, NMOS off - at very low Vin,output = Vdd 
-* PMOS linear, NMOS sat - Vin just above Vtn,NMOS starts conducting 
-* PMOS sat, NMOS sat - both in saturation,sharp transition region 
+* PMOS linear, NMOS off - at very low Vin,output = Vdd
+  
+* PMOS linear, NMOS sat - Vin just above Vtn,NMOS starts conducting
+  
+* PMOS sat, NMOS sat - both in saturation,sharp transition region
+   
 * PMOS sat, NMOS linear - Vin high,NMOS pulls output low
+  
 * PMOS off, NMOS linear - at very high Vin,output = 0 This is the full VTC at 2.5V.Now we want to see what happens at lower Vdd values.
   
 The Smart SPICE Netlist - How the loop works Instead of writing 5 separate netlists,the instructor writes ONE netlist with a loop
@@ -1783,18 +1789,25 @@ Here we use SPICE simulation to evaluate the effect of power supply scaling on t
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/ad35e0e8-c59a-440d-81ce-ff55886cae41" />
 
 SPICE Simulation — VTC at Different Supply Voltages
-The SPICE simulation plots five VTC curves on the same graph. Each curve corresponds to a different supply voltage, from dc1 out (highest supply, green) down to dc5 out (lowest supply, purple). The X-axis is the input voltage and the Y-axis is the output voltage.
-•	dc1 out (green) — highest supply voltage: VTC is widest, transition spans full range from near 2.5V to 0V
-•	dc2 out (red) — second supply level: VTC is narrower, Vdd is about 2.0V
-•	dc3 out (yellow) — mid supply: transition region is compressing
-•	dc4 out (blue) — lower supply: VTC is further compressed
-•	dc5 out (purple) — lowest supply (0.5V): VTC is very narrow and highly compressed
+
+* The SPICE simulation plots five VTC curves on the same graph. Each curve corresponds to a different supply voltage, from dc1 out (highest supply, green) down to dc5 out (lowest supply, purple). The X-axis is the input voltage and the Y-axis is the output voltage.
+  
+*	dc1 out (green) — highest supply voltage: VTC is widest, transition spans full range from near 2.5V to 0V
+  
+*	dc2 out (red) — second supply level: VTC is narrower, Vdd is about 2.0V
+  
+*	dc3 out (yellow) — mid supply: transition region is compressing
+  
+*	dc4 out (blue) — lower supply: VTC is further compressed
+  
+*	dc5 out (purple) — lowest supply (0.5V): VTC is very narrow and highly compressed
 
 |gain| Observation from SPICE
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/664e4f97-c9f1-4bc0-9f0a-31408ae7c132" />
 
 The gain of the inverter at the switching threshold Vm is an important parameter. The gain magnitude |gain| is the slope of the VTC at the Vm point (where the VTC is steepest).
+
 *	|gain| = 7.38 for the highest supply voltage (dc1 out, 2.5V)
 Notice that the gain is measured by the steepness of the transition region. A higher gain means a sharper, more ideal transition from HIGH to LOW
 
@@ -1878,14 +1891,18 @@ Single Inverter — Layout and Circuit
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/f469f178-962e-4a37-b8e1-0a498d8ecee5" />
 
 Let us look at a single inverter to understand how it is represented at different levels of abstraction. The three representations shown are:
-•	Circuit symbol (left) — standard inverter symbol with In, Out, Vdd and Vss connections
-•	Transistor-level schematic (middle) — shows Poly Gate connected to both PMOS and NMOS, P Diffusion region for PMOS and N Diffusion region for NMOS
-•	Layout view (right) — shows the physical placement of Poly (red), P Diff (green), N Diff (green), metal connections (blue), Vdd rail at top and Vss rail at bottom
+*	Circuit symbol (left) — standard inverter symbol with In, Out, Vdd and Vss connections
+  
+*	Transistor-level schematic (middle) — shows Poly Gate connected to both PMOS and NMOS, P Diffusion region for PMOS and N Diffusion region for NMOS
+  
+*	Layout view (right) — shows the physical placement of Poly (red), P Diff (green), N Diff (green), metal connections (blue), Vdd rail at top and Vss rail at bottom
+  
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/65b5b87b-e424-48a2-8f77-efaf5995f7ce" />
 
 In the layout, the key physical parameters that control transistor behavior are:
-•	L — channel length, which is the width of the Poly Gate stripe between source and drain diffusions
-•	W — transistor width, which is the length of the overlap between Poly and the diffusion region
+*	L — channel length, which is the width of the Poly Gate stripe between source and drain diffusions
+  
+*	W — transistor width, which is the length of the overlap between Poly and the diffusion region
 
 # Inverter Chain — Layout
 
@@ -1893,24 +1910,33 @@ In the layout, the key physical parameters that control transistor behavior are:
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/6eb07a86-027b-403f-92e9-81fbae2ddfbf" />
 
-When multiple inverters are placed in a chain, each inverter cell has the same layout structure. The Poly Gate stripes of all inverters run vertically, and the P Diff and N Diff regions alternate across the chain. The critical observation is:
-•	Gates in the middle of the chain have the same structure on either side
-•	The Vdd rail runs along the top and the Vss rail runs along the bottom for the entire chain
-•	Each cell is a mirror image of the adjacent cell sharing the same diffusion regions
+When multiple inverters are placed in a chain, each inverter cell has the same layout structure. The Poly Gate stripes of all inverters run vertically, and the P Diff and N Diff regions alternate across the chain. 
+
+*The critical observation is:
+
+*	Gates in the middle of the chain have the same structure on either side
+  
+*	The Vdd rail runs along the top and the Vss rail runs along the bottom for the entire chain
+  
+*	Each cell is a mirror image of the adjacent cell sharing the same diffusion regions
 
 # Ideal Mask vs Actual Mask — Etching Process Variation
+
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/6b73bd41-e4d0-4125-b59b-ea60e06121f0" />
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/c6cd9256-0e5d-4971-8ed3-9556ab7d7720" />
 
-During semiconductor fabrication, a mask is used to define the shape of each layer. The Ideal Mask defines a perfectly rectangular Poly stripe with exact L and W dimensions. However, during the etching process, the chemicals used to remove unwanted material do not always follow the mask edges perfectly. This causes the Actual Mask to have irregular, uneven boundaries.
-•	The Ideal Mask produces a Poly stripe with uniform width L along its entire length
-•	The Actual Mask produces a Poly stripe with non-uniform edges — the width varies along the length
-•	This variation in the Poly dimensions directly translates to variation in the channel length L of the fabricated transistor
+* During semiconductor fabrication, a mask is used to define the shape of each layer. The Ideal Mask defines a perfectly rectangular Poly stripe with exact L and W dimensions. However, during the etching process, the chemicals used to remove unwanted material do not always follow the mask edges perfectly. This causes the Actual Mask to have irregular, uneven boundaries.
+  
+*	The Ideal Mask produces a Poly stripe with uniform width L along its entire length
+  
+*	The Actual Mask produces a Poly stripe with non-uniform edges — the width varies along the length
+  
+*	This variation in the Poly dimensions directly translates to variation in the channel length L of the fabricated transistor
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/5cbda179-d3e7-40e3-a8c3-a7be68ae1762" />
 
-The etching process variation affects not just a single inverter but all inverters in the chain. Since the middle gates have the same structure on either side, any variation in the Poly shape during etching will affect all gates equally due to the uniform etch environment across the chip. This is called global variation or systematic variation
+* The etching process variation affects not just a single inverter but all inverters in the chain. Since the middle gates have the same structure on either side, any variation in the Poly shape during etching will affect all gates equally due to the uniform etch environment across the chip. This is called global variation or systematic variation
 
 # Effect of Etching Variation on W/L Ratio
 
@@ -1918,23 +1944,30 @@ The etching process variation affects not just a single inverter but all inverte
 
 The etching variation changes the effective W/L ratio of the transistor. The drain current equation depends directly on W/L:
 Id = u Cox (W/L) [(Vgs − Vt)Vds − Vds²/2]
-•	If L increases due to extra Poly remaining (under-etch) — the W/L ratio decreases, reducing Id
-•	If L decreases due to excess Poly removal (over-etch) — the W/L ratio increases, increasing Id
+*	If L increases due to extra Poly remaining (under-etch) — the W/L ratio decreases, reducing Id
+  
+*	If L decreases due to excess Poly removal (over-etch) — the W/L ratio increases, increasing Id
+  
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/19b920ce-1e42-4c43-875e-4882c592328e" />
 
-•	Both cases cause the actual Id to differ from the designed Id, shifting the VTC and changing Vm, NMH, NML, and delay
+*	Both cases cause the actual Id to differ from the designed Id, shifting the VTC and changing Vm, NMH, NML, and delay
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/f5683cfe-9030-4416-903a-43f4654b47e7" />
 
-Notice that in the drain current equation, Cox, u, Vgs, Vt, and Vds are all controlled by process parameters or applied voltages. The W/L ratio is the one parameter that is set by the mask dimensions. When etching variation occurs, W and L deviate from their designed values, making the actual Id different from the expected Id for every transistor on the chip
+* Notice that in the drain current equation, Cox, u, Vgs, Vt, and Vds are all controlled by process parameters or applied voltages. The W/L ratio is the one parameter that is set by the mask dimensions. When etching variation occurs, W and L deviate from their designed values, making the actual Id different from the expected Id for every transistor on the chip
 
 Oxide Thickness Variation
-The gate oxide layer (SiO2) is grown on the substrate surface during fabrication. The thickness of this oxide layer, known as Tox (oxide thickness), determines the gate oxide capacitance per unit area Cox:
+
+* The gate oxide layer (SiO2) is grown on the substrate surface during fabrication. The thickness of this oxide layer, known as Tox (oxide thickness), determines the gate oxide capacitance per unit area Cox:
 Cox = εox / Tox
-Where εox is the permittivity of the gate oxide. During fabrication, the oxide growth process is not perfectly uniform across the wafer. This means Tox can vary from its designed value.
-•	If Tox is thicker than designed — Cox decreases, which reduces the drain current Id and weakens the transistor
-•	If Tox is thinner than designed — Cox increases, which increases the drain current Id and strengthens the transistor
-•	This variation also affects the threshold voltage Vt through the body effect coefficient γ, since γ = (1/Cox) √(2qεsi NA)
+
+* Where εox is the permittivity of the gate oxide. During fabrication, the oxide growth process is not perfectly uniform across the wafer. This means Tox can vary from its designed value.
+
+*	If Tox is thicker than designed — Cox decreases, which reduces the drain current Id and weakens the transistor
+  
+*	If Tox is thinner than designed — Cox increases, which increases the drain current Id and strengthens the transistor
+  
+*	This variation also affects the threshold voltage Vt through the body effect coefficient γ, since γ = (1/Cox) √(2qεsi NA)
 
 Both etching process variation and oxide thickness variation are examples of device variation that affect the static and dynamic performance of the CMOS inverter. They cause spread in parameters like Vm, NMH, NML, rise delay, and fall delay across different chips and different dies on the same wafer.
 
@@ -1946,10 +1979,13 @@ Single Inverter
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/6ee84560-fd30-4331-a09b-d4f1dbc3fa63" />
 
 The  single inverter has:
-•	PMOS connected to Vdd (Pull-up network)
-•	NMOS connected to Vss (Pull-down network)
-•	Gates of both transistors tied together at input (In)
-•	Drains connected together at output (Out)
+*	PMOS connected to Vdd (Pull-up network)
+  
+*	NMOS connected to Vss (Pull-down network)
+  
+*	Gates of both transistors tied together at input (In)
+  
+*	Drains connected together at output (Out)
 
 Inverter Chain
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/91d3ac57-b168-4f9a-b254-e04ef01c9376" />
@@ -1962,11 +1998,15 @@ Ideal Oxidation Process
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/2452de41-a60f-45a8-b495-a3403456db58" />
 
 The gate oxide layer (SiO2) is grown on the P-substrate surface during fabrication. In the ideal oxidation process, the oxide grows uniformly to a designed thickness tox. The cross-section shows:
-•	tox — the gate oxide thickness, indicated at the top of the cross-section
-•	Gate oxide — the thin SiO2 dielectric layer grown on the P-substrate between source and drain
-•	Poly-Si or metal gate — deposited on top of the gate oxide to form the gate terminal
-•	n+ diffusion regions — the source and drain regions on either side of the channel
-•	P-substrate — the body of the transistor, connected to terminal B
+*	tox — the gate oxide thickness, indicated at the top of the cross-section
+  
+*	Gate oxide — the thin SiO2 dielectric layer grown on the P-substrate between source and drain
+  
+*	Poly-Si or metal gate — deposited on top of the gate oxide to form the gate terminal
+  
+*	n+ diffusion regions — the source and drain regions on either side of the channel
+  
+*	P-substrate — the body of the transistor, connected to terminal B
 
 Ideal vs Actual Oxidation Process
 
@@ -1974,28 +2014,38 @@ Ideal vs Actual Oxidation Process
 
 
 During the actual fabrication process, the oxidation is not perfectly uniform across the wafer. The actual oxidation process produces a gate oxide layer with non-uniform thickness. This means tox varies from its designed value at different points on the wafer or even within the same die:
-•	Ideal Oxidation Process — tox is uniform and equals the designed value everywhere
-•	Actual Oxidation Process — tox varies locally. Some regions may have a thicker oxide (over-oxidation) and some may have a thinner oxide (under-oxidation)
+*	Ideal Oxidation Process — tox is uniform and equals the designed value everywhere
+  
+*	Actual Oxidation Process — tox varies locally. Some regions may have a thicker oxide (over-oxidation) and some may have a thinner oxide (under-oxidation)
+  
 Effect of Oxide Thickness Variation on Drain Current
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/f794c838-40c1-4833-baf3-3b6f75940fa0" />
 
 The gate oxide capacitance per unit area Cox is given by: Cox = εox / tox
+
 where εox is the permittivity of the gate oxide material. The drain current equation for a MOSFET in the linear region is:
 Id = u Cox (W/L) [(Vgs - Vt)Vds - Vds²/2]
+
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/a2ddf792-6637-4346-a6e3-6bcea0a11881" />
 
  we can observe that oxide thickness variation directly impacts Cox and therefore Id:
-•	If tox is thicker than designed — Cox = εox/tox decreases, which reduces the drain current Id and weakens the transistor
-•	If tox is thinner than designed — Cox = εox/tox increases, which increases the drain current Id and strengthens the transistor
-•	This variation causes the actual Id to differ from the designed Id, shifting the VTC, changing Vm, NMH, NML, and delay
+*	If tox is thicker than designed — Cox = εox/tox decreases, which reduces the drain current Id and weakens the transistor
+  
+*	If tox is thinner than designed — Cox = εox/tox increases, which increases the drain current Id and strengthens the transistor
+  
+*	This variation causes the actual Id to differ from the designed Id, shifting the VTC, changing Vm, NMH, NML, and delay
 
 Oxide thickness variation is one of two main sources of device variation in CMOS fabrication. The other source is Etching Process Variation, which affects the W/L ratio. Both sources cause spread in the performance characteristics of the CMOS inverter across different chips and different dies on the same wafer.
 
 # 5.2 L3 - SMART SPICE SIMULATIONS FOR DEVICE VARIATIONS 
 
 Now we will be doing the SPICE simulation for device variations, and prove the robustness of CMOS inverter inspite of different extreme conditions.
-We will see the characteristics for Strong PMOS and week NMOS, this means PMOS width is wider and it has least resistance. Also for weak PMOS and strong PMOS, that means the width of NMOS is more than PMOS and it has least resitance.
+
+* We will see the characteristics for Strong PMOS and week NMOS, this means PMOS width is wider and it has least resistance.
+
+* Also for weak PMOS and strong PMOS, that means the width of NMOS is more than PMOS and it has least resitance.
+
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/0de59ef9-2ab3-45ab-af0a-c36564b79a9a" />
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/e99efc46-46d3-4737-bb90-90d386b1602a" />
@@ -2007,59 +2057,74 @@ We will see the characteristics for Strong PMOS and week NMOS, this means PMOS w
 # 5.2 L4 CONCLUSION 
 
 SPICE Simulation Setup — Strong PMOS and Strong NMOS Conditions
+
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/dc13e14e-7497-4ed3-953f-858e4471a133" />
 
 The SPICE simulation is set up to show the effect of device variation on the VTC. Five simulation runs are performed corresponding to different combinations of strong and weak PMOS and NMOS conditions:
-•	dc1.out (green) — one device variation condition
+*	dc1.out (green) — one device variation condition
 
-•	dc2.out (red) — second device variation condition
+*	dc2.out (red) — second device variation condition
 
-•	dc3.out (blue) — third device variation condition
+*	dc3.out (blue) — third device variation condition
 
-•	dc4.out (yellow) — fourth device variation condition
+*	dc4.out (yellow) — fourth device variation condition
 
-•	dc5.out (purple) — fifth device variation condition
+*	dc5.out (purple) — fifth device variation condition
 
 The two device configurations shown are:
-•	Strong PMOS — the PMOS is stronger than the NMOS. Wp = 0.375u (shown with the P block larger in the inverter icon on the left)
-•	Strong NMOS — the NMOS is stronger than the PMOS. Wn = 1.875u (shown on the right with Wn highlighted in yellow)
-
+*	Strong PMOS — the PMOS is stronger than the NMOS. Wp = 0.375u
+  
+*	Strong NMOS — the NMOS is stronger than the PMOS. Wn = 1.875u
+  
 VTC Curves with Vin = Vout Diagonal Line
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/e4b8f25f-80ca-4976-8c5f-3e505ca619ba" />
 
 The Vin = Vout diagonal line is drawn on the same graph as all five VTC curves. The point where each VTC curve intersects this diagonal gives the switching threshold Vm for that particular device variation condition. We can observe that:
-•	The five VTC curves are spread across a wide range of input voltages
-•	Each curve intersects the Vin = Vout diagonal at a different point, giving a different Vm
-•	The leftmost curve (dc5.out, purple) has the lowest Vm — this is the Strong PMOS condition where the PMOS drives the output to ground much earlier
-•	The rightmost curve (dc1.out, green) has the highest Vm — this is the Strong NMOS condition where the NMOS keeps the output high for longer
+*	The five VTC curves are spread across a wide range of input voltages
+  
+*	Each curve intersects the Vin = Vout diagonal at a different point, giving a different Vm
+  
+*	The leftmost curve (dc5.out, purple) has the lowest Vm — this is the Strong PMOS condition where the PMOS drives the output to ground much earlier
+  
+*	The rightmost curve (dc1.out, green) has the highest Vm — this is the Strong NMOS condition where the NMOS keeps the output high for longer
 
 Shift in Vm due to Device Variation
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/721de9b8-3eed-4ba5-bffd-02d28b287452" />
+
 The annotation 'Shift in Vm' with a bracket on the left side of the plot shows the total range of Vm variation across all five conditions. The two yellow dashed lines mark:
-•	Lower dashed line — the lowest Vm (Strong PMOS case), approximately 0.7v
-•	Upper dashed line — the highest Vm (Strong NMOS case), approximately 1.4v
-•	The shift in Vm is significant — device variation causes Vm to move by approximately 0.7v across the range of conditions
+*	Lower dashed line — the lowest Vm (Strong PMOS case), approximately 0.7v
+  
+*	Upper dashed line — the highest Vm (Strong NMOS case), approximately 1.4v
+  
+*	The shift in Vm is significant — device variation causes Vm to move by approximately 0.7v across the range of conditions
 
 Variation in NMH and NML
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/44e2de71-c456-4c41-a10b-6cc982154cff" />
 
 In addition to the shift in Vm, device variation also causes variation in the noise margins:
-•	Variation in NMH — the top yellow dashed lines show the spread of VOH values across all five VTCs. For the Strong PMOS case, VOH is lower. For the Strong NMOS case, VOH is higher
-•	Variation in NML — the bottom yellow dashed lines show the spread of VOL values. For the Strong NMOS case, VOL is higher. For the Strong PMOS case, VOL is lower
-•	This means that device variation affects NMH = VOH − VIH and NML = VIL − VOL for every transistor on the chip
+
+*	Variation in NMH — the top yellow dashed lines show the spread of VOH values across all five VTCs. For the Strong PMOS case, VOH is lower. For the Strong NMOS case, VOH is higher
+  
+*	Variation in NML — the bottom yellow dashed lines show the spread of VOL values. For the Strong NMOS case, VOL is higher. For the Strong PMOS case, VOL is lower
+  
+*	This means that device variation affects NMH = VOH − VIH and NML = VIL − VOL for every transistor on the chip
 
 CONCLUSION 
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/8f0d2748-a3cb-4f88-b78d-a524fa5403cf" />
 
 The important conclusion from the device variation simulation is that despite the spread in switching threshold Vm, noise margins NMH and NML across the five device variation conditions, the operation of the gate is intact:
-•	All five VTC curves still show a valid transition from logic HIGH (Vout ≈ Vdd) to logic LOW (Vout ≈ 0V)
-•	The inverter correctly inverts the input logic level (0/1 → 1/0) for all five conditions
-•	The variation in Vm, NMH, and NML affects the performance of the inverter but does not cause a functional failure
-•	The CMOS inverter is robust to device variation in terms of its basic logic operation .
+
+*	All five VTC curves still show a valid transition from logic HIGH (Vout ≈ Vdd) to logic LOW (Vout ≈ 0V)
+  
+*	The inverter correctly inverts the input logic level (0/1 → 1/0) for all five conditions
+  
+*	The variation in Vm, NMH, and NML affects the performance of the inverter but does not cause a functional failure
+  
+*	The CMOS inverter is robust to device variation in terms of its basic logic operation .
 
 # 5.2 L5 Sky130 Device Variation Labs
 
