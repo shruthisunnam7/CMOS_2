@@ -399,7 +399,8 @@ we simplify the above equation using 2 different modes.
 
 <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/916cbdb1-6e2f-48e4-9cf4-fa87f57f8db9" />
 
-<img width="733" height="530" alt="image" src="https://github.com/user-attachments/assets/1991f057-6e23-4625-bbea-d2e8ea72cb98" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/a4a7e32f-47d5-4a98-a950-5831a516aca6" />
+
 
 The above plot is Id vs Vds for different values of Vgs. We can see for lower values of Vgs it is showing quadratic behaviour and for higher values of Vgs it is showing Linear behaviour. Now if want to see the peak current for Vgs=1.8V, just 'press' left click on mouse at Vgs=1.8V
 
