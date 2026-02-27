@@ -903,7 +903,271 @@ Case 2: Wn = 0.375u, Wp = 0.9375u, Ln,p = 0.25u (Wn/Ln = 1.5, Wp/Lp = 2.5):
 •	The VTC becomes more symmetric around Vdd/2
 The difference in switching threshold between the two cases arises because the PMOS mobility (µp) is approximately 2–3× lower than the NMOS mobility (µn). To compensate and balance the drive strength of PMOS and NMOS, the PMOS width (Wp) needs to be increased by the same factor
 
+# Labs Sky130 SPICE simulation for CMOS
+We now get the VTC characteristics
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/0299dca6-26a7-4553-8aba-c74603bc6dbe" />
+
+Now we need to know the Switching Threshold from this graph, it is the point when Vin=Vout.
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/92844c1f-de96-4444-99fe-a43dc599a45c" />
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/88308c66-64ce-4b8b-b1a1-f1676c0228da" />
 
 
 
+
+
+
+
+
+
+
+
+
+# 3.2  - L1 SPICE WAVEFORM RESULTS AND STATIC BEHAVIOR EVALUATION: SWITCHING THRESHOLD, Vm
+SPICE Waveform Results – VTC
+Two VTC plots are obtained from the simulation comparing different PMOS width configurations.
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/f6a22cc8-58be-4227-be39-5486ddff40ea" />
+
+SPICE waveform: Wn=0.375, Wp=0.9375u, Ln,p=0.25u device (Wn/Ln=1.5, Wp/Lp=3.75)
+Case 1: Wn = Wp = 0.375u, Ln,p = 0.25u (Wn/Ln = Wp/Lp = 1.5)
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/316a898c-1e3e-4212-a715-d2479d6a44f0" />
+
+Both SPICE waveforms side by side - equal width vs increased PMOS width
+•	The VTC shows Vout vs Vin sweep from 0 to approximately 1.5V
+•	Vout stays close to Vdd (2.5V) for low Vin, then drops sharply
+•	The switching threshold (midpoint of VTC) does not occur exactly at Vdd/2 = 1.25V
+Case 2: Wn = 0.375u, Wp = 0.9375u, Ln,p = 0.25u (Wn/Ln = 1.5, Wp/Lp = 3.75)
+•	PMOS W is increased to make the PMOS drive strength comparable to NMOS
+•	The switching threshold shifts closer to Vdd/2 = 1.25V
+•	The VTC becomes more symmetric around Vdd/2
+The difference in switching threshold between the two cases arises because PMOS mobility (µp) is approximately 2–3x lower than NMOS mobility (µn). To compensate and balance the drive strength, Wp needs to be increased by the same factor.
+Static behavior Evaluation: CMOS inverter Robustness
+1. Switching Threshold, Vm
+   <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/dabb94fe-8df5-4eca-afc6-02544fdfd698" />
+
+VTC with Vin=Vout diagonal line showing Vm - the switching threshold point
+•	Vm is defined as the point where Vin = Vout
+•	It is found by drawing the line Vin = Vout (a 45-degree diagonal) on the VTC graph and identifying where it intersects the VTC curve
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/151570bc-7fb0-4a10-a8c7-4fd5d1e8ceca" />
+
+Both VTC waveforms with Vm labeled for each case
+•	For the symmetric case (Wn/Ln = Wp/Lp = 1.5): Vm ≈ 0.98V
+•	For the balanced case (Wn/Ln = 1.5, Wp/Lp = 3.75): Vm ≈ 1.2V
+•	Vm is the point where Vin = Vout
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/9afb076e-0a2e-41ab-b011-bc7ba589dadc" />
+
+VTC curve with transistor operating regions labeled at key points
+The VTC operating regions at each point on the curve are:
+•	At top-left (Vin low, Vout high): PMOS linear, NMOS off
+•	As Vin increases slightly: PMOS linear, NMOS saturation
+•	At midpoint (both in saturation): PMOS saturation, NMOS saturation — this is the maximum gain region
+•	As Vin increases further: PMOS saturation, NMOS linear
+•	At bottom-right (Vin high, Vout low): PMOS off, NMOS linear
+CMOS inverter circuit with VGS=VDS condition and VTC curve showing IdsP = -IdsN
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/72e4ba14-51e9-4bc8-b1d4-436c87a9f1d7" />
+
+The key relationship used at the switching threshold is:
+•	At Vm, the condition Vgs = Vds holds for the NMOS transistor
+•	The current condition is: IdsP = - IdsN (current continuity at output node)
+•	Both values of Vm (0.98V and 1.2V) confirm that by increasing Wp/Lp ratio, Vm shifts closer to Vdd/2 = 1.25V
+
+# L2 Analytical expression of Vm as a function of (W/L)p and (W/L)n
+Static behavior Evaluation: CMOS inverter Robustness
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/668c404d-4eb9-43f3-9cc8-84d92ff21c72" />
+
+CMOS inverter circuit with VTC showing Vm~0.98v and Vm~1.2v for the two configurations
+•	Vm is the point where Vin = Vout
+•	From the two SPICE simulations: Vm ≈ 0.98V (symmetric sizing) and Vm ≈ 1.2V (balanced sizing)
+•	The key condition: IdsP = - IdsN which means IdsP + IdsN = 0
+
+# Deriving the Analytical Expression for Vm
+Setting up the Current Equation
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/030edf86-c4cc-4516-8553-659b2372c178" />
+
+NMOS Id vs Vds characteristics with Vds = Vgs - Vt boundary shown
+Starting from the current continuity condition at the output node:
+•	IdsP + IdsN = 0
+•	Both NMOS and PMOS are in saturation at Vm (both gates and drains have the same potential since Vgs = Vds at Vm)
+
+Applying the Drain Current Equation
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/391950a5-56f6-4f0f-8513-5d2929613f43" />
+
+CMOS inverter circuit with IdsP = -IdsN condition and general drain current equation shown
+The general drain current equation used for this derivation is:
+Id = µn . Cox . (W/L) . [(Vgt . Vdsat) – Vdsat²/2] . [1 + λ Vds]
+Where Vgt = (Vgs - Vt)
+
+The channel length modulation term [1 + λ Vds] is ignored for this derivation
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/c70bb7cc-9c1d-4309-9102-9773e9d6fe82" />
+
+Simplified drain current equation without the lambda term
+After ignoring the lambda term, the simplified equation becomes:
+Id = µn . Cox . (W/L) . [(Vgs – Vt) . Vdsat – Vdsat²/2]
+
+Writing Current Equations for NMOS and PMOS
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/89cb5499-4507-4102-b6b3-a5092c97d02e" />
+
+NMOS drain current equation with Vm substituted for Vgs
+For NMOS (Vgs = Vm, Vds = Vm):
+Idsn = kn . [([Vm – Vt] . Vdsatn) – Vdsatn²/2]
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/4fa02eab-a81e-4ce3-b3d5-68ac3eb30fbd" />
+
+PMOS drain current equation with Vm-Vdd substituted
+For PMOS (Vgs = Vm – Vdd, Vds = Vm – Vdd):
+Idsp = kp . [([Vm – Vdd – Vt] . Vdsatp) – Vdsatp²/2]
+
+Combined Equation and Solution
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/2532d70a-7583-4569-a4c1-9c9c2edefecc" />
+
+Full combined equation with both NMOS and PMOS terms set to zero
+Applying the condition IdsP + IdsN = 0:
+kp . [([Vm – Vdd – Vt] . Vdsatp) – Vdsatp²/2] + kn . [([Vm – Vt] . Vdsatn) – Vdsatn²/2] = 0
+
+Final Vm formula: Vm = R.Vdd/(1+R) where R = Kp.Vdsatp/Kn.Vdsatn
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/85e8b9cb-a88a-429a-b817-8d92bb4989d7" />
+
+Solving the above equation for Vm gives:
+Vm = R . Vdd / (1+R)
+Where:
+R = Kp . Vdsatp / Kn . Vdsatn = (Wp/Lp) Kp’ . Vdsatp / (Wn/Ln) Kn’ . Vdsatn
+•	R captures the ratio of PMOS to NMOS drive strength
+•	Vm is directly controlled by the ratio of (Wp/Lp) to (Wn/Ln)
+•	By changing the W/L ratio of either transistor, Vm can be shifted closer to or further from Vdd/2
+•	This is the analytical formula that explains why the two SPICE simulations gave different values of Vm (0.98V and 1.2V)
+
+# L3 Analytical expression of (W/L)p and (W/L)n as a function of Vm
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/3cdf9223-491e-41ed-8619-0c41291f5d2c" />
+
+* Summary of Vm equation and key conditions: IdsP = -IdsN, IdsP + IdsN = 0
+  
+* The combined equation from the previous lecture is:
+kp . [([Vm – Vdd – Vt] . Vdsatp) – Vdsatp²/2] + kn . [([Vm – Vt] . Vdsatn) – Vdsatn²/2] = 0
+
+* And the Vm formula: Vm = R . Vdd / (1+R)
+Where R = Kp . Vdsatp / Kn . Vdsatn = (Wp/Lp) Kp’ . Vdsatp / (Wn/Ln) Kn’ . Vdsatn
+
+Deriving the Required PMOS/NMOS Size Ratio
+
+The above Vm equation can also be used the other way — to find the required transistor size ratio to achieve a specific desired value of Vm.
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/b177ee4c-f47a-408b-93a8-49b3238d925e" />
+
+Rearranged equation: the required ratio of PMOS vs NMOS transistor size can be derived such that Vm is set
+*	Alternatively, the required ratio of PMOS v/s NMOS transistor size can be derived, such that Vm is set to a desired value
+Starting from the current balance equation and rearranging
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/1bec9430-e92b-4ce9-9c23-af7497dbc597" />
+
+Step 1: kn term moved to the right side of the equation
+kn . [([Vm – Vt] . Vdsatn) – Vdsatn²/2] = - kp . [([Vm – Vdd – Vt] . Vdsatp) – Vdsatp²/2]
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/9da75bcb-f0c8-4e35-ac0e-cd9d6c99fbd1" />
+
+Dividing both sides: Kp.Vdsatp/Kn.Vdsatn = ([Vm-Vt] - Vdsatn/2) / ([-Vm+Vdd+Vt] + Vdsatp/2)
+Dividing both sides:
+Kp . Vdsatp / Kn . Vdsatn = ([Vm – Vt]) – Vdsatn/2) / ([-Vm + Vdd + Vt]) + Vdsatp/2)
+Expanded form: (Wp/Lp)Kp’.Vdsatp / (Wn/Ln)Kn’.
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/ab24ad61-3c42-4a42-856a-7379ce3bd0db" />
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/095d1964-7630-4692-8e77-d0665151bedf" />
+
+Final ratio form: Wp/Lp / Wn/Ln = right-hand side expression
+The final expression gives the required (Wp/Lp) / (Wn/Ln) ratio directly in terms of a desired Vm value.
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/e8777924-dd59-461c-8e6d-37bdc488cd5a" />
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/8fe84faf-d092-4a21-81e8-bc7711bff15d" />
+
+Table showing Wp/Lp vs x.Wn/Ln for 5 different ratio values (1x to 5x)
+
+Table filled with Wn/Ln, 2Wn/Ln, 3Wn/Ln, 4Wn/Ln, 5Wn/Ln and the corresponding ratio formula
+*	By plugging in different W/L ratios into the formula, the corresponding Vm can be calculated for each case
+  
+*	This table allows designers to directly read off what sizing is needed to achieve a target switching threshold
+  
+*	Vm is the point where Vin = Vout, and it shifts with the PMOS-to-NMOS size ratio
+  
+*	For Vm = Vdd/2 (ideal symmetric inverter), R must equal 1, which requires (Wp/Lp) Kp’ Vdsatp = (Wn/Ln) Kn’ Vdsatn
+
+# L4 Static and dynamic simulation of CMOS inverter
+
+1. Switching Threshold, Vm
+
+Vm is the point where Vin = Vout. It is the midpoint of the VTC where the inverter transitions from HIGH output to LOW output.
+
+# Vm Equation
+
+The switching threshold Vm is given by:
+Vm = R · Vdd / (1 + R)
+Where R is defined as:
+R = (Kp · Vdsatp) / (Kn · Vdsatn) = ((Wp/Lp) · Kp' · Vdsatp) / ((Wn/Ln) · Kn' · Vdsatn)
+
+The Wp/Lp to Wn/Ln ratio is:
+(Wp/Lp) / (Wn/Ln) = [Kn' · Vdsatn · (Vm – Vt) – Vdsatn/2] / [Kp' · Vdsatp · (–Vm + Vdd + Vt) + Vdsatp/2]
+
+ <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/9b86b5ad-fa96-45a0-a870-dba2b8b60b56" />
+
+Figure 1: Vm equation and expanded form (left), and Wp/Lp sweep table showing 5 cases from Wn/Ln to 5Wn/Ln (right)
+
+Here we are going to find the value so SWITCHNG THRESHOLD by varying W/L ratios of NMOS. we did our SPICE simlation.
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/70802caf-2d04-4a3e-9485-76695332c0c1" />
+
+* To calculate switching threshold we will draw a line with slope 1 and find intersection point.This is Vm.
+
+* From this we can ind dynamic simulation such as Rise and Fall delay.we identify what is Rsie and All and how doe sit vary with Vm.
+* everything is same,we just change input to Pulse.This is known as Transient analysis.
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/a45f6fc5-bcc5-44a5-a015-c6bf5ccb8ff3" />
+
+* Pulse starts from Zero and ends at 2.5V with shit value zero.
+
+* starts exactly ar=t time unit 0.
+
+* rise time of 10ps and fall time of 10ps.
+
+* complete cycle of 2ns with duty cycle of 1ns.
+
+Results:
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/081a7818-f017-4e27-93d8-b29e40c7e642" />
+
+
+we can find rise delay from graph.
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/bace45fd-b2dc-4b70-935a-aae5cbd41ead" />
+
+Rise delay is difference between Vin at falling edge and Vout at raising point exactly at midpoint..
+
+similarly for fall delay.It is dierence between the Voltage at raising of Vin and falling of Vout exactly at 50% value of Vin i.e 1.25V.
+
+# L5 Static and dynamic simulation of CMOS inverter with increased PMOS width
+
+In previous lecture we did simulation for only one condition.Here we will do simulation s fror remaining conditions and we will compare results.
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/33aca37a-8186-467d-9244-104300945fca" />
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/22ad07dd-4b1c-4a9d-9301-1d8bc37b438f" />
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/f5356d60-e5ab-4372-bae4-db9fcd20c447" />
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/7a69f3ee-480a-4c68-a338-fe1ec1b20aeb" />
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/55b57f96-b5cd-4cd4-b29a-6f202d0c70e8" />
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/46b4c399-c451-4dc9-b03b-c1f48edfc202" />
+
+From above simulation results we can observe that Rise delay is decreasing with ncrease in power of PMOS and all delay is incresing with decrease in power of CMOS.
 
