@@ -6,7 +6,7 @@ The training emphasized both theoretical derivations and practical SPICE-based s
 # DAY 1
 # Basics of NMOS structure and operation ,Understanding Drain Current (Id) and Drain-to-Source Voltage (Vds) Regions of operation (Cutoff, Linear, Saturation)
 
-# Introduction to  circuit designs and SPICE simulations
+#  Introduction to  circuit designs and SPICE simulations
 
 <img width="1000" height="800" alt="image" src="https://github.com/user-attachments/assets/deab1783-a221-4103-9079-e9f86df42924" /> 
 It is an inverter image where
@@ -216,7 +216,7 @@ The drain current equation is given below and  λ is  called channel length modu
 
  <img width="1600" height="312" alt="image" src="https://github.com/user-attachments/assets/e74e9892-b699-4538-a243-136d19bd378a" />
 
-# Introduction to spice 
+# 1.2 L1 Introduction to spice 
 
 * SPICE is a software its a engine that has predefined models and models are part of engine we need to feed correct values inputs  to the engine and correct netlist to the engine ,and it will derive some wave forms , these waveforms are used to calculate delay of the cell, basic backups for delays . 
 
@@ -238,7 +238,7 @@ when spice model parameters +spice netlist added to spice software it gives grap
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/678d1fca-d7b0-414d-a9ce-abe26ff67c14" />
 
-# Circuit description in SPICE syntax
+#  1.2 L2 Circuit description in SPICE syntax
 * Defining nodes 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/522129d1-b7da-4daa-807c-3910322d7d6d" />
 
@@ -263,7 +263,7 @@ The MOSFET is defined with a width (W) of 1.8μ and a long channel length (L) of
 
  The technology file is defined by including all the necessary model parameters and constraints required for proper device operation and simulation, ensuring that the circuit follows the fabrication process specifications.
 
-# Define technology parameters 
+# 1.2 L3 Define technology parameters 
 
 Here we will see how to model this NMOS transistor. The model parameters are already given, so it is easy to create the model using them. These parameters are available in the technology file. The NMOS model can be found in the file with the same or a similar model name.
 
@@ -279,6 +279,16 @@ we just plug in this packaged file in .mod file and call this file in top level 
 * All these models can be stored in .lib format .This can be used in spice console .
 
 2 VDS ARE LEFT 
+
+# L4 first spice simulation 
+* Open Virtual box
+
+* Type cd
+
+* git clone https://github.com/kunalg123/sky130CircuitDesignWorkshop.git
+
+<img width="656" height="363" alt="image" src="https://github.com/user-attachments/assets/fd90e6f3-2b91-4c69-93c3-3c41331b942b" />
+
 
 # DAY -2  L1 SPICE SIMULATIONS FOR LOWER NODES AND VELOCITY SATURATION 
 
@@ -382,6 +392,41 @@ we simplify the above equation using 2 different modes.
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/1a425842-d5f8-450e-bf60-85185958f972" />
 
 * The saturation current at lower nodes is smaller, not higher. This happens because velocity saturation makes the device enter saturation earlier than expected. As a result, the maximum current reached at lower nodes is much less compared to higher nodes
+
+  # L5 labs
+  We will now do simulation for lower nodes.
+  <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/d18e0d61-9681-4dfe-996d-2cf9de50be50" />
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/916cbdb1-6e2f-48e4-9cf4-fa87f57f8db9" />
+
+<img width="733" height="530" alt="image" src="https://github.com/user-attachments/assets/1991f057-6e23-4625-bbea-d2e8ea72cb98" />
+
+The above plot is Id vs Vds for different values of Vgs. We can see for lower values of Vgs it is showing quadratic behaviour and for higher values of Vgs it is showing Linear behaviour. Now if want to see the peak current for Vgs=1.8V, just 'press' left click on mouse at Vgs=1.8V
+
+<img width="290" height="22" alt="image" src="https://github.com/user-attachments/assets/2d9819fb-92a8-46cc-8c66-4d945f1103d9" />
+So we can see it is approximately 198uA.
+
+* Now let us observe Id vs Vgs
+Here again we are taking values for L=0.15u and W=0.39u, Keeping Vds constant at 1.8V and sweeping Vgs from 0 to 1.8V with step of 0.1V.
+
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/46092cd5-8143-456d-b178-a9ecb30e8b82" />
+
+
+<img width="692" height="538" alt="image" src="https://github.com/user-attachments/assets/0f7a9c5f-934c-4e74-b5d9-8545ac860336" />
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/a612a673-ecbc-40c0-a6c5-9b1a79d50153" />
+
+
+# L6  labs sky 130 vt 
+Now we will calculate Threshold Voltage Vt for Id vs Vgs curve.
+
+<img width="292" height="30" alt="image" src="https://github.com/user-attachments/assets/394bf262-73f8-4fb9-9c97-78cea21b8206" />
+
+In the curve we can see that Vt is the value when current increases drastically for small change in Vgs. To calculate we will draw tangent on the curve and see where it touches.
+
+![Uploading image.png…]()
+
 
   # cmos voltage transfer characteristrics
   
