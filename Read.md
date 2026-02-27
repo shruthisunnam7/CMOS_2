@@ -1308,12 +1308,14 @@ Vm is the point where Vin = Vout. It is the midpoint of the VTC where the invert
 
 # Vm Equation
 
-The switching threshold Vm is given by:
-Vm = R · Vdd / (1 + R)
+The switching threshold Vm is given by: Vm = R · Vdd / (1 + R)
+
 Where R is defined as:
+
 R = (Kp · Vdsatp) / (Kn · Vdsatn) = ((Wp/Lp) · Kp' · Vdsatp) / ((Wn/Ln) · Kn' · Vdsatn)
 
 The Wp/Lp to Wn/Ln ratio is:
+
 (Wp/Lp) / (Wn/Ln) = [Kn' · Vdsatn · (Vm – Vt) – Vdsatn/2] / [Kp' · Vdsatp · (–Vm + Vdd + Vt) + Vdsatp/2]
 
  <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/9b86b5ad-fa96-45a0-a870-dba2b8b60b56" />
@@ -1429,22 +1431,31 @@ Application in Static Timing Analysis (STA)
 The delay values from the CMOS inverter simulation are used directly in Static Timing Analysis (STA). The setup analysis for a single clock domain is shown below.
 
 Specifications:
-•	Clock Frequency (F) = 1GHz
-•	Clock Period (T) = 1/F = 1/1GHz = 1ns
-•	Skew (S) = 10ps = 0.01ns
-•	Uncertainty = 90ps = 0.09ns
+*	Clock Frequency (F) = 1GHz
+  
+*	Clock Period (T) = 1/F = 1/1GHz = 1ns
+  
+*	Skew (S) = 10ps = 0.01ns
+  
+*	Uncertainty = 90ps = 0.09ns
 
 The setup timing condition is:
 
 (Theta + Delta1) < (T + Delta2 + 3x) – S – SU
 Where:
-•	Theta (Θ) = clock-to-Q delay of the Launch Flop
-•	Delta1 (Δ1) = data path delay through combinational logic
-•	T = clock period
-•	Delta2 (Δ2) = clock network delay to Capture Flop
-•	3x = uncertainty buffer
-•	S = clock skew
-•	SU = setup time of Capture Flop
+*	Theta (Θ) = clock-to-Q delay of the Launch Flop
+  
+*	Delta1 (Δ1) = data path delay through combinational logic
+  
+*	T = clock period
+  
+*	Delta2 (Δ2) = clock network delay to Capture Flop
+  
+*	3x = uncertainty buffer
+  
+*	S = clock skew
+  
+*	SU = setup time of Capture Flop
 
 The SLACK must be ≥ 0:
 
@@ -1461,24 +1472,29 @@ Static behavior evaluation focuses on the CMOS inverter robustness. In this lect
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/9fd817e3-17f9-4810-9f74-7dca22397370" />
 
 Consider a CMOS inverter. Its function is:
-•	Input 0 gives output 1
-•	Input 1 gives output 0
+*	Input 0 gives output 1
+  
+*	Input 1 gives output 0
 The Ideal I/O characteristic of an inverter shows a perfect step: Vout stays at Vdd for all Vin below Vdd/2, and drops instantly to 0 for all Vin above Vdd/2. This ideal step transition happens exactly at Vin = Vdd/2.
 
 # Ideal VTC with Infinite Slope
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/04fc3bcf-8c85-4c41-95f7-0c3b1dbb813f" />
 
-In the ideal case, the transition region has infinite slope. This means the inverter switches instantaneously between logic 0 and logic 1. There is no ambiguity in output for any input voltage
+* In the ideal case, the transition region has infinite slope. This means the inverter switches instantaneously between logic 0 and logic 1. There is no ambiguity in output for any input voltage .
+  
 # Actual VTC with Finite Slope
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/617e8b1d-6aed-472c-b5ec-a332342f8d3a" />
 
 In a real inverter, the VTC has a finite slope in the transition region. The output does not switch instantly. Because of this finite slope, we need to define voltage levels that guarantee correct logic operation. These are called noise margin parameters. The four key parameters are:
-•	VOH — Output High Voltage
-•	VOL — Output Low Voltage
-•	VIH — Input High Voltage
-•	VIL — Input Low Voltage
+*	VOH — Output High Voltage
+  
+*	VOL — Output Low Voltage
+  
+*	VIH — Input High Voltage
+  
+*	VIL — Input Low Voltage
 
 VOH — Output High Voltage
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/01eb308e-0854-4b1d-99d0-a8037af0a5bc" />
@@ -1513,7 +1529,8 @@ Ideal Inverter VTC — Infinite Slope In an ideal inverter:
 
 This gives a perfectly rectangular VTC with infinite slope at the switching point. No ambiguity — any input either produces exactly Vdd or exactly 0.
 
-Actual Inverter VTC — Finite Slope In a real CMOS inverter the VTC has a finite slope. This means: 
+Actual Inverter VTC — Finite Slope In a real CMOS inverter the VTC has a finite slope. This means:
+
 *Vout starts near Vdd (but not exactly Vdd) for low Vin
 
 * Vout falls gradually through a transition region around Vdd/2 
@@ -1525,7 +1542,7 @@ We will define all four noise margin voltage parameters on the actual VTC of the
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/b3774aad-ad07-4ca5-b37a-fdbb99b19a54" />
 
-The actual VTC of a CMOS inverter has a finite slope transition region. In this transition region, the output switches from HIGH to LOW. To define the valid logic levels, we identify four key voltage parameters from the actual VTC.
+* The actual VTC of a CMOS inverter has a finite slope transition region. In this transition region, the output switches from HIGH to LOW. To define the valid logic levels, we identify four key voltage parameters from the actual VTC.
 
  # Defining VIL and VIH from the Actual VTC
  
@@ -1572,21 +1589,29 @@ NMH — Noise Margin High
 
 NMH (Noise Margin High) is defined as:
 NMH = VOH - VIH
-•	VOH is the minimum output voltage that counts as logic '1'
-•	VIH is the minimum input voltage required to be recognised as logic '1'
-•	NMH represents how much noise can be added to a logic '1' signal at the output before it is no longer recognised as logic '1' at the next stage's input
-•	Any voltage in the NMH range (between VIH and VOH) will be detected as logic '1'
-NML - NOISE MARGIN LOW 
+*	VOH is the minimum output voltage that counts as logic '1'
+  
+*	VIH is the minimum input voltage required to be recognised as logic '1'
+  
+*	NMH represents how much noise can be added to a logic '1' signal at the output before it is no longer recognised as logic '1' at the next stage's input
+  
+*	Any voltage in the NMH range (between VIH and VOH) will be detected as logic '1'
+  
+NML - NOISE MARGIN LOW
+
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/ea7c82a2-e950-4156-831a-1685909455fd" />
 
 NML (Noise Margin Low) is defined as:
 NML = VIL - VOL
-•	VOL is the maximum output voltage that counts as logic '0'
-•	VIL is the maximum input voltage that is recognised as logic '0'
-•	NML represents how much noise can be added to a logic '0' signal at the output before it is no longer recognised as logic '0' at the next stage's input
-•	Any voltage in the NML range (between VOL and VIL) will be detected as logic '0'
+*	VOL is the maximum output voltage that counts as logic '0'
+  
+*	VIL is the maximum input voltage that is recognised as logic '0'
+  
+*	NML represents how much noise can be added to a logic '0' signal at the output before it is no longer recognised as logic '0' at the next stage's input
+  
+*	Any voltage in the NML range (between VOL and VIL) will be detected as logic '0'
 
-UNDEFINED REGION 
+# UNDEFINED REGION 
 
  <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/4c10eeec-8545-494b-8292-0a0165129412" />
 
@@ -1630,16 +1655,18 @@ Case 1: Wp/Lp = Wn/Ln (x = 1)
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/da9da85a-929a-46a9-b04b-3382db53866e" />
 
 When the PMOS width equals the NMOS width (x = 1), the VTC is not symmetric. The switching threshold Vm = 0.99v which is below Vdd/2. The noise margins are equal in this case:
-•	NMH = 0.3
-•	NML = 0.3
+*	NMH = 0.3
+  
+*	NML = 0.3
 
 Case 2: Wp/Lp = 2Wn/Ln (x = 2)
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/0e22248b-5502-4833-87be-85458b3e60c6" />
 
 When the PMOS width is doubled, the VTC shifts to the right. The switching threshold Vm increases to 1.2v. Notice that:
-•	NMH = 0.35 — slightly improved compared to Case 1
-•	NML = 0.3 — unchanged
+*	NMH = 0.35 — slightly improved compared to Case 1
+  
+*	NML = 0.3 — unchanged
 
 Case 3: Wp/Lp = 3Wn/Ln (x = 3)
 
@@ -1652,9 +1679,11 @@ Case 4: Wp/Lp = 4Wn/Ln (x = 4)
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/1b06510b-0ca0-45c8-8410-50761b985c62" />
 
 At x = 4, the PMOS is now considerably stronger than the NMOS. The VTC is shifted well to the right:
-•	Vm = 1.35v
-•	NMH = 0.42 — NMH has increased significantly
-•	NML = 0.27 — NML has decreased slightly
+*	Vm = 1.35v
+  
+*	NMH = 0.42 — NMH has increased significantly
+  
+*	NML = 0.27 — NML has decreased slightly
 
 Case 5: Wp/Lp = 5Wn/Ln (x = 5)
 
@@ -1665,10 +1694,13 @@ At x = 5, the VTC shifts even further right with Vm = 1.4v. Notice that NMH and 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/70010580-c1e7-416b-9c30-1729345a51d6" />
 
 From the table we can observe:
-•	As PMOS width increases, NMH increases from 0.3 to 0.42
-•	NML decreases slightly from 0.3 to 0.27 as PMOS becomes stronger
-•	Vm increases from 0.99v to 1.4v as PMOS drive strength increases
-•	The improvement in NMH saturates between x = 4 and x = 5
+*	As PMOS width increases, NMH increases from 0.3 to 0.42
+  
+*	NML decreases slightly from 0.3 to 0.27 as PMOS becomes stronger
+  
+*	Vm increases from 0.99v to 1.4v as PMOS drive strength increases
+  
+*	The improvement in NMH saturates between x = 4 and x = 5
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/6b4cec34-0f08-4497-946e-0d1305a6c96a" />
 
@@ -1689,6 +1721,7 @@ We will now plot Noise margins
 
 <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/2e823e7a-4484-4699-b40a-b302f21f64be" />
 
+<img width="278" height="60" alt="image" src="https://github.com/user-attachments/assets/47d4515d-5e55-4455-8a83-1b7a787fb5a5" />
 
 
 We will take the point where the slope is -1 ; x axis will give VIL and VIH, whereas y axis will give VOH and VOL.
