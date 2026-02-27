@@ -351,6 +351,9 @@ we just plug in this packaged file in .mod file and call this file in top level 
 
 # 1.2 L5 SPICE LAB WITH SKY 130 MODELS 
 
+If we go inside models folder, we will see all.spice file. If we open it we will see the scale of Width and Length.
+
+<img width="1600" height="654" alt="image" src="https://github.com/user-attachments/assets/d3e50b25-111b-4bc9-936e-11e11de6b025" />
 
 # DAY -2 2.1 L1 SPICE SIMULATIONS FOR LOWER NODES AND VELOCITY SATURATION 
 
@@ -1018,8 +1021,15 @@ Now we need to know the Switching Threshold from this graph, it is the point whe
 
 <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/88308c66-64ce-4b8b-b1a1-f1676c0228da" />
 
+<img width="280" height="30" alt="image" src="https://github.com/user-attachments/assets/8fbafb32-6de0-43b8-a00e-84f09068d1cb" />
+
+So switching threshold for W/L=2.3 is around 0.876V
+
 We can see that it is for typical corner as before and the W/L is also same. But now we taking transient pulse from 0v to 1V with shift of 0 with rise time and fall time being 0.1ns and 0.1ns respectively, pulse width of 2ns and total time period of 4ns. Let us run this.
+
+ We will now see the transient analysis:
  
+For that we will go inside the tansient SPICE file for day3
 <img width="1600" height="858" alt="image" src="https://github.com/user-attachments/assets/52f52463-10a9-4835-aab5-0501768182fd" />
 
 <img width="1600" height="892" alt="image" src="https://github.com/user-attachments/assets/e1fd6d3d-0bfb-42b3-8e20-aa2cc2cb2e72" />
