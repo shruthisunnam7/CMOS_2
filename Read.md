@@ -761,7 +761,7 @@ The five plotted points form the characteristic S-shaped VTC. The three distinct
 
 # DAY 3
 
-# VOLTAGE TRANSFER CHRACTERISTICS - SPICE SIMULATIONS 
+#  L1 VOLTAGE TRANSFER CHRACTERISTICS - SPICE SIMULATIONS 
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/70e2bb4c-862a-4f21-b9ba-4aa022cb1251" />
 
@@ -831,7 +831,7 @@ Explanation:
 •	Four nodes are defined: vdd, in, out, and 0 (ground)
 •	PMOS source and substrate are connected to vdd; NMOS source and substrate are connected to 0 (GND)
 
-# L2 SPICE simulation for CMOS inverter
+# L2 -SPICE simulation for CMOS inverter
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/5a3ceb0a-653d-4f2d-8c04-2320c60b3580" />
 
 The complete SPICE deck for simulating the Voltage Transfer Characteristic (VTC) of the CMOS inverter is built in the following sections:
@@ -946,7 +946,7 @@ Case 2: Wn = 0.375u, Wp = 0.9375u, Ln,p = 0.25u (Wn/Ln = 1.5, Wp/Lp = 2.5):
 •	The VTC becomes more symmetric around Vdd/2
 The difference in switching threshold between the two cases arises because the PMOS mobility (µp) is approximately 2–3× lower than the NMOS mobility (µn). To compensate and balance the drive strength of PMOS and NMOS, the PMOS width (Wp) needs to be increased by the same factor
 
-# Labs Sky130 SPICE simulation for CMOS
+#  3.1 L3 Labs Sky130 SPICE simulation for CMOS
 We now get the VTC characteristics
 <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/0299dca6-26a7-4553-8aba-c74603bc6dbe" />
 
@@ -966,6 +966,7 @@ Now we need to know the Switching Threshold from this graph, it is the point whe
 
 
 
+# 3.2 STATIC BEHAVIOUR EVALUATION -CMOS INVERTER ROUBSTNESS -SWITCHING THRESHOLD 
 
 # 3.2  - L1 SPICE WAVEFORM RESULTS AND STATIC BEHAVIOR EVALUATION: SWITCHING THRESHOLD, Vm
 SPICE Waveform Results – VTC
@@ -1020,7 +1021,7 @@ The key relationship used at the switching threshold is:
 •	The current condition is: IdsP = - IdsN (current continuity at output node)
 •	Both values of Vm (0.98V and 1.2V) confirm that by increasing Wp/Lp ratio, Vm shifts closer to Vdd/2 = 1.25V
 
-# L2 Analytical expression of Vm as a function of (W/L)p and (W/L)n
+#  3.2 L2 Analytical expression of Vm as a function of (W/L)p and (W/L)n
 Static behavior Evaluation: CMOS inverter Robustness
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/668c404d-4eb9-43f3-9cc8-84d92ff21c72" />
@@ -1090,7 +1091,7 @@ R = Kp . Vdsatp / Kn . Vdsatn = (Wp/Lp) Kp’ . Vdsatp / (Wn/Ln) Kn’ . Vdsatn
 •	By changing the W/L ratio of either transistor, Vm can be shifted closer to or further from Vdd/2
 •	This is the analytical formula that explains why the two SPICE simulations gave different values of Vm (0.98V and 1.2V)
 
-# L3 Analytical expression of (W/L)p and (W/L)n as a function of Vm
+# 3.2 L3 Analytical expression of (W/L)p and (W/L)n as a function of Vm
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/3cdf9223-491e-41ed-8619-0c41291f5d2c" />
 
@@ -1146,7 +1147,7 @@ Table filled with Wn/Ln, 2Wn/Ln, 3Wn/Ln, 4Wn/Ln, 5Wn/Ln and the corresponding ra
   
 *	For Vm = Vdd/2 (ideal symmetric inverter), R must equal 1, which requires (Wp/Lp) Kp’ Vdsatp = (Wn/Ln) Kn’ Vdsatn
 
-# L4 Static and dynamic simulation of CMOS inverter
+# 3.2 L4 Static and dynamic simulation of CMOS inverter
 
 1. Switching Threshold, Vm
 
@@ -1196,7 +1197,7 @@ Rise delay is difference between Vin at falling edge and Vout at raising point e
 
 similarly for fall delay.It is dierence between the Voltage at raising of Vin and falling of Vout exactly at 50% value of Vin i.e 1.25V.
 
-# L5 Static and dynamic simulation of CMOS inverter with increased PMOS width
+# 3.2 L5 Static and dynamic simulation of CMOS inverter with increased PMOS width
 
 In previous lecture we did simulation for only one condition.Here we will do simulation s fror remaining conditions and we will compare results.
 
@@ -1214,7 +1215,7 @@ In previous lecture we did simulation for only one condition.Here we will do sim
 
 From above simulation results we can observe that Rise delay is decreasing with ncrease in power of PMOS and all delay is incresing with decrease in power of CMOS.
 
-# L6 Applications of CMOS inverter in clock network and STA
+# 3.2 L6 Applications of CMOS inverter in clock network and STA
 
 The transient SPICE simulation is run for all five Wp/Lp cases. The complete results table from the ngspice simulation:
 
@@ -1345,7 +1346,7 @@ VOL is the Output Low Voltage.
   
 *	VIH is the corresponding input voltage at this point (the upper transition boundary)
 
-# L2 Noise margin voltage parameters
+# 4.1 L2 Noise margin voltage parameters
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/e54acbf2-e228-47d4-89d9-b8c4bdff9b5a" />
 
@@ -1403,7 +1404,7 @@ The slope = −1 criterion is the standard method to determine the noise margin 
 
 This method is used because the slope of −1 represents the unity gain point. Any gain below this (magnitude < 1) means the inverter is in a stable region, and beyond it (magnitude > 1) the circuit is in the high-gain amplification region.
 
-# L3 Noise margin equation and summary
+# 4.1  L3 Noise margin equation and summary
 
  we will derive the noise margin equations for NMH and NML,that  introduces the undefined region, and presents the full noise margin summary with noise-induced bump characteristics.
 
@@ -1459,7 +1460,7 @@ The noise margin summary diagram shows a signal waveform on the time axis with t
   
 For any signal to be considered as logic '0' and logic '1', it should be in the NML and NMH ranges respectively.
 
-# L4 Noise margin variation with respect to PMOS width
+# 4.1 L4 Noise margin variation with respect to PMOS width
 we  will observe how the noise margins NMH and NML change as the PMOS width is varied from Wn/Ln to 5Wn/Ln while keeping NMOS width constant at Wp/Lp .
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/ac22cbb4-6d3d-4c43-b52c-5fd19068b7c9" />
@@ -1528,7 +1529,7 @@ As the PMOS width increases, the VTC curve shifts to the right. For digital desi
 *	At x = 3 and above, Vm exceeds Vdd/2 and the VTC is shifted too far to the right for typical digital applications
 
 
-# L5 Sky130 Noise margin labs
+# 4.1 L5 Sky130 Noise margin labs
 We will now plot Noise margins
 
 <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/1e36eab8-fe90-4a42-bac6-7798d1caa92c" />
@@ -1547,7 +1548,7 @@ Noise margin NL = VIL - VOL = 0.7733-0.09523 = 0.67807
 
 # Static behaviour evaluation-CMOS inverter robustness-Power supply variation
 
- # L1  Smart SPICE simulation for power supply variations
+ # 5.1L1  Smart SPICE simulation for power supply variations
 
 While evaluating the robustness of CMOS inverter another factor is Power Supply Scaling. On reducing the gate length, the operating power is also reduced. On power scaling the Cmos characteristics should not change.
 
@@ -1589,7 +1590,7 @@ We will now plot the VTC charactersitics for Vdd= 2.5V, 2V, 1.5V, 1V, 0.5V
 
 <img width="970" height="688" alt="image" src="https://github.com/user-attachments/assets/bdf3a131-2617-47e0-89ed-8a46d97e0a09" />
 
- # L2 ADVANTAGES AND DISADVANTAGES USING LOW SUPPLY VOLTAGE
+ # 5.2 L2 ADVANTAGES AND DISADVANTAGES USING LOW SUPPLY VOLTAGE
 
 Here we use SPICE simulation to evaluate the effect of power supply scaling on the CMOS inverter. We look at how reducing the supply voltage affects the gain, energy, and delay characteristics of the inverter.
 
@@ -1661,7 +1662,7 @@ The fall delay is the time difference between:
   
 * The reduced overdrive voltage at low Vdd means transistors take longer to switch, which increases both rise and fall delays.
 
-# L3 Sky130 Supply Variation Labs
+# 5.1 L3 Sky130 Supply Variation Labs
 
 We will calculate the supply variation.
 
@@ -1740,7 +1741,7 @@ Where εox is the permittivity of the gate oxide. During fabrication, the oxide 
 
 Both etching process variation and oxide thickness variation are examples of device variation that affect the static and dynamic performance of the CMOS inverter. They cause spread in parameters like Vm, NMH, NML, rise delay, and fall delay across different chips and different dies on the same wafer.
 
-# L2 
+# 5.2 L2 SOURCES OF VARIATION - OXIDE THICKNESS
 
  Here we look at oxide thickness as a source of variation in the CMOS inverter. The gate oxide layer grown during fabrication is not perfectly uniform, and this non-uniformity directly affects the Cox parameter in the drain current equation
 
@@ -1794,9 +1795,8 @@ Id = u Cox (W/L) [(Vgs - Vt)Vds - Vds²/2]
 
 Oxide thickness variation is one of two main sources of device variation in CMOS fabrication. The other source is Etching Process Variation, which affects the W/L ratio. Both sources cause spread in the performance characteristics of the CMOS inverter across different chips and different dies on the same wafer.
 
+# 5.2 L3 - SMART SPICE SIMULATIONS FOR DEVICE VARIATIONS 
 
-
-L3 
 Now we will be doing the SPICE simulation for device variations, and prove the robustness of CMOS inverter inspite of different extreme conditions.
 We will see the characteristics for Strong PMOS and week NMOS, this means PMOS width is wider and it has least resistance. Also for weak PMOS and strong PMOS, that means the width of NMOS is more than PMOS and it has least resitance.
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/0de59ef9-2ab3-45ab-af0a-c36564b79a9a" />
@@ -1807,7 +1807,7 @@ We will see the characteristics for Strong PMOS and week NMOS, this means PMOS w
 
 <img width="959" height="745" alt="image" src="https://github.com/user-attachments/assets/f8f1ff42-672a-4d60-8193-66296ce716d1" />
 
-# L4 CONCLUSION 
+# 5.2 L4 CONCLUSION 
 
 SPICE Simulation Setup — Strong PMOS and Strong NMOS Conditions
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/dc13e14e-7497-4ed3-953f-858e4471a133" />
@@ -1864,7 +1864,7 @@ The important conclusion from the device variation simulation is that despite th
 •	The variation in Vm, NMH, and NML affects the performance of the inverter but does not cause a functional failure
 •	The CMOS inverter is robust to device variation in terms of its basic logic operation .
 
-# L5 Sky130 Device Variation Labs
+# 5.2 L5 Sky130 Device Variation Labs
 
 <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/5c941019-054c-4275-988c-acc49ad31b7a" />
 
