@@ -3,6 +3,58 @@ This intensive 10-day workshop focused on CMOS circuit design and SPICE simulati
 
 The training emphasized both theoretical derivations and practical SPICE-based simulations to understand real-world transistor-level circuit behavior.
 
+# 📑 Table of Contents
+
+## DAY 1
+- [Why Do We Need SPICE?](#why-do-we-need-spice)
+- [NMOS Basic Elements in Circuit Design](#nmos-basic-elements-in-circuit-design)
+- [Threshold Voltage](#threshold-voltage)
+- [NMOS Resistive Operation (Small Vds)](#nmos-resistive-operation-small-vds)
+- [Drift Current Theory](#drift-current-theory)
+- [Drain Current Model – Linear Region](#drain-current-model--linear-region)
+- [SPICE Conclusion to Resistive Operation](#spice-conclusion-to-resistive-operation)
+- [Saturation Region](#saturation-region)
+- [Drain Current Model – Saturation Region](#drain-current-model--saturation-region)
+- [Introduction to SPICE](#introduction-to-spice)
+- [Circuit Description in SPICE Syntax](#circuit-description-in-spice-syntax)
+- [Define Technology Parameters](#define-technology-parameters)
+- [First SPICE Simulation](#first-spice-simulation)
+- [SPICE Lab with SKY130 Models](#spice-lab-with-sky130-models)
+
+## DAY 2
+- [SPICE Simulations for Lower Nodes and Velocity Saturation](#spice-simulations-for-lower-nodes-and-velocity-saturation)
+- [Drain Current vs Gate Voltage (Long vs Short Channel)](#drain-current-vs-gate-voltage-long-vs-short-channel)
+- [Velocity Saturation at Different Electric Fields](#velocity-saturation-at-different-electric-fields)
+- [Velocity Saturation Drain Current Model](#velocity-saturation-drain-current-model)
+- [SKY130 Threshold Voltage Labs](#sky130-threshold-voltage-labs)
+- [CMOS Voltage Transfer Characteristics (VTC)](#cmos-voltage-transfer-characteristics-vtc)
+- [PMOS/NMOS Drain Current vs Drain Voltage](#pmosnmos-drain-current-vs-drain-voltage)
+- [Merge PMOS-NMOS Load Curves](#merge-pmos-nmos-load-curves)
+
+## DAY 3
+- [Voltage Transfer Characteristics – SPICE Simulations](#voltage-transfer-characteristics--spice-simulations)
+- [SPICE Simulation for CMOS Inverter](#spice-simulation-for-cmos-inverter)
+- [Static Behaviour Evaluation – CMOS Inverter Robustness](#static-behaviour-evaluation--cmos-inverter-robustness)
+- [Analytical Expression of Vm](#analytical-expression-of-vm)
+- [Static and Dynamic Simulation of CMOS Inverter](#static-and-dynamic-simulation-of-cmos-inverter)
+- [Applications of CMOS Inverter](#applications-of-cmos-inverter)
+
+## DAY 4
+- [Introduction to Noise Margin](#introduction-to-noise-margin)
+- [Noise Margin Voltage Parameters](#noise-margin-voltage-parameters)
+- [Noise Margin Equation](#noise-margin-equation)
+- [Noise Margin Variation with PMOS Width](#noise-margin-variation-with-pmos-width)
+- [SKY130 Noise Margin Labs](#sky130-noise-margin-labs)
+
+## DAY 5
+- [Smart SPICE Simulation for Power Supply Variations](#smart-spice-simulation-for-power-supply-variations)
+- [Advantages and Disadvantages of Low Supply Voltage](#advantages-and-disadvantages-of-low-supply-voltage)
+- [Sources of Variation – Etching Process](#etching-process-variation)
+- [Sources of Variation – Oxide Thickness](#oxide-thickness-variation)
+- [Smart SPICE Simulations for Device Variations](#smart-spice-simulations-for-device-variations)
+- [SKY130 Device Variation Labs](#sky130-device-variation-labs)
+
+
 # DAY 1
 # Basics of NMOS structure and operation ,Understanding Drain Current (Id) and Drain-to-Source Voltage (Vds) Regions of operation (Cutoff, Linear, Saturation)
 
@@ -287,10 +339,15 @@ we just plug in this packaged file in .mod file and call this file in top level 
 
 * git clone https://github.com/kunalg123/sky130CircuitDesignWorkshop.git
 
-<img width="656" height="363" alt="image" src="https://github.com/user-attachments/assets/fd90e6f3-2b91-4c69-93c3-3c41331b942b" />
+<img width="1600" height="1028" alt="image" src="https://github.com/user-attachments/assets/8a6df2fb-a98c-4f61-8e34-8cb7fc709a7d" />
 
+<img width="1600" height="785" alt="image" src="https://github.com/user-attachments/assets/aa462a34-8431-42e8-91de-14c3a79cfda6" />
 
+<img width="1600" height="271" alt="image" src="https://github.com/user-attachments/assets/aef0be0d-528f-4229-8011-c443aebe2eae" />
 
+<img width="1597" height="972" alt="image" src="https://github.com/user-attachments/assets/49f2944c-5adf-4cd0-8c80-0e162a046496" />
+
+<img width="1600" height="992" alt="image" src="https://github.com/user-attachments/assets/b19040c7-7ed6-470b-b9a2-569a42966133" />
 
 # 1.2 L5 SPICE LAB WITH SKY 130 MODELS 
 
@@ -961,15 +1018,27 @@ Now we need to know the Switching Threshold from this graph, it is the point whe
 
 <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/88308c66-64ce-4b8b-b1a1-f1676c0228da" />
 
+We can see that it is for typical corner as before and the W/L is also same. But now we taking transient pulse from 0v to 1V with shift of 0 with rise time and fall time being 0.1ns and 0.1ns respectively, pulse width of 2ns and total time period of 4ns. Let us run this.
+ 
+<img width="1600" height="858" alt="image" src="https://github.com/user-attachments/assets/52f52463-10a9-4835-aab5-0501768182fd" />
 
+<img width="1600" height="892" alt="image" src="https://github.com/user-attachments/assets/e1fd6d3d-0bfb-42b3-8e20-aa2cc2cb2e72" />
 
+<img width="1600" height="894" alt="image" src="https://github.com/user-attachments/assets/00d3617b-2bce-453f-a263-4535925aded1" />
 
+RISE TIME 
+<img width="1600" height="878" alt="image" src="https://github.com/user-attachments/assets/2526253a-feb0-43e6-b143-1b0a72de0888" />
 
+<img width="623" height="306" alt="image" src="https://github.com/user-attachments/assets/9ea43e4b-89c0-4684-9cde-f13a0c5e8361" />
+With output X0 = 2.48 and Input X = 2.15  Rise delay = 2.48 - 2.15 = 0.33
 
+FALL TIME 
 
+<img width="1600" height="898" alt="image" src="https://github.com/user-attachments/assets/f33c30e3-ef3e-46c5-9b27-646d40135194" />
 
+<img width="426" height="85" alt="image" src="https://github.com/user-attachments/assets/cf7c8796-f7ab-4699-84f8-c8b5f0ad8c60" />
 
-
+Output Xo = 4.33    input X = 4.05    Fall delay = 4.33 - 4.05 = 0.28
 
 # 3.2 STATIC BEHAVIOUR EVALUATION -CMOS INVERTER ROUBSTNESS -SWITCHING THRESHOLD 
 
