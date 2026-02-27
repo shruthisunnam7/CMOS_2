@@ -1360,7 +1360,7 @@ The slope = −1 criterion is the standard method to determine the noise margin 
 
 This method is used because the slope of −1 represents the unity gain point. Any gain below this (magnitude < 1) means the inverter is in a stable region, and beyond it (magnitude > 1) the circuit is in the high-gain amplification region.
 
-# L4 Noise margin equation and summary
+# L3 Noise margin equation and summary
 
  we will derive the noise margin equations for NMH and NML,that  introduces the undefined region, and presents the full noise margin summary with noise-induced bump characteristics.
 
@@ -1395,20 +1395,120 @@ UNDEFINED REGION
 
  Three regions visible on the voltage scale: NMH (logic '1'), Undefined Region, and NML (logic '0')
 Between VIH and VIL there is a region that is not covered by either NMH or NML. This is called the Undefined Region.
-•	The Undefined Region lies between VIL (top of NML) and VIH (bottom of NMH)
-•	Any signal in the Undefined Region will produce an indefinite logic level at the output
-•	The circuit behaviour is unpredictable for inputs in this range
-•	A well-designed inverter minimises the width of this undefined region
+*	The Undefined Region lies between VIL (top of NML) and VIH (bottom of NMH)
 
+*	Any signal in the Undefined Region will produce an indefinite logic level at the 
 
+*	The circuit behaviour is unpredictable for inputs in this range
 
+*	A well-designed inverter minimises the width of this undefined region
 
+Noise Margin Summary
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/9db0cddf-231c-4a7f-b174-1af96a164aa7" />
 
 The noise margin summary diagram shows a signal waveform on the time axis with three noise-induced bumps at different voltage levels:
-•	a) Bump height lies between VOL and VIL — it is within NML range, so the output will be treated as logic '0'
-•	b) Bump height lies between VIL and VIH — it is in the Undefined Region, so the output logic level is indefinite
-•	c) Bump height lies between VIH and VOH — it is within NMH range, so the output will be treated as logic '1'
+*	a) Bump height lies between VOL and VIL — it is within NML range, so the output will be treated as logic '0'
+  
+*	b) Bump height lies between VIL and VIH — it is in the Undefined Region, so the output logic level is indefinite
+  
+*	c) Bump height lies between VIH and VOH — it is within NMH range, so the output will be treated as logic '1'
+  
 For any signal to be considered as logic '0' and logic '1', it should be in the NML and NMH ranges respectively.
+
+# L4 Noise margin variation with respect to PMOS width
+we  will observe how the noise margins NMH and NML change as the PMOS width is varied from Wn/Ln to 5Wn/Ln while keeping NMOS width constant at Wp/Lp .
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/ac22cbb4-6d3d-4c43-b52c-5fd19068b7c9" />
+
+* SPICE simulation set up 
+
+The SPICE simulation is run for five different PMOS width conditions. The table on the left shows the Wp/Lp value kept constant at Wp/Lp while x.Wn/Ln is varied from 1x to 5x. The NMH and NML columns at the bottom of the table track how the noise margins change with each condition.
+•	Wp/Lp is kept constant
+•	x.Wn/Ln is swept through five values: Wn/Ln, 2Wn/Ln, 3Wn/Ln, 4Wn/Ln, and 5Wn/Ln
+•	For each case, the VTC is plotted and the NMH and NML values are read off
+
+Case 1: Wp/Lp = Wn/Ln (x = 1)
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/da9da85a-929a-46a9-b04b-3382db53866e" />
+
+When the PMOS width equals the NMOS width (x = 1), the VTC is not symmetric. The switching threshold Vm = 0.99v which is below Vdd/2. The noise margins are equal in this case:
+•	NMH = 0.3
+•	NML = 0.3
+
+Case 2: Wp/Lp = 2Wn/Ln (x = 2)
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/0e22248b-5502-4833-87be-85458b3e60c6" />
+
+When the PMOS width is doubled, the VTC shifts to the right. The switching threshold Vm increases to 1.2v. Notice that:
+•	NMH = 0.35 — slightly improved compared to Case 1
+•	NML = 0.3 — unchanged
+
+Case 3: Wp/Lp = 3Wn/Ln (x = 3)
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/096e4c58-4511-4225-8ca0-5c587ad7e014" />
+
+When the PMOS width is tripled, the VTC shifts further right and the switching threshold increases further. The NMH continues to increase as the PMOS becomes stronger and drives VOH higher, while NML remains relatively unchanged.
+
+Case 4: Wp/Lp = 4Wn/Ln (x = 4)
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/1b06510b-0ca0-45c8-8410-50761b985c62" />
+
+At x = 4, the PMOS is now considerably stronger than the NMOS. The VTC is shifted well to the right:
+•	Vm = 1.35v
+•	NMH = 0.42 — NMH has increased significantly
+•	NML = 0.27 — NML has decreased slightly
+
+Case 5: Wp/Lp = 5Wn/Ln (x = 5)
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/d9ac6336-78bb-4e84-89cf-54bfa8e2b7e0" />
+
+At x = 5, the VTC shifts even further right with Vm = 1.4v. Notice that NMH and NML are the same as Case 4 (NMH = 0.42, NML = 0.27), indicating that beyond a certain PMOS width the improvement in NMH saturates.
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/70010580-c1e7-416b-9c30-1729345a51d6" />
+
+From the table we can observe:
+•	As PMOS width increases, NMH increases from 0.3 to 0.42
+•	NML decreases slightly from 0.3 to 0.27 as PMOS becomes stronger
+•	Vm increases from 0.99v to 1.4v as PMOS drive strength increases
+•	The improvement in NMH saturates between x = 4 and x = 5
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/6b4cec34-0f08-4497-946e-0d1305a6c96a" />
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/1ea3b5e6-1917-46d5-9220-5d315e1216bd" />
+
+As the PMOS width increases, the VTC curve shifts to the right. For digital design purposes, the ideal target is to have the switching threshold Vm as close to Vdd/2 as possible. From the simulation results:
+*	At x = 1 (equal sizing), Vm = 0.99v which is below Vdd/2 — NMOS dominates
+
+*	At x = 2 (Wp = 2Wn), Vm = 1.2v which is much closer to Vdd/2 = 1.25v — this is a balanced design
+
+*	At x = 3 and above, Vm exceeds Vdd/2 and the VTC is shifted too far to the right for typical digital applications
+
+
+# L5 Sky130 Noise margin labs
+We will now plot Noise margins
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/1e36eab8-fe90-4a42-bac6-7798d1caa92c" />
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/2e823e7a-4484-4699-b40a-b302f21f64be" />
+
+<img width="676" height="82" alt="image" src="https://github.com/user-attachments/assets/2b7e75c5-348d-4771-acff-d2a8f9cb2bf3" />
+
+We will take the point where the slope is -1 ; x axis will give VIL and VIH, whereas y axis will give VOH and VOL.
+
+Noise margin NH = VOH - VIH = 1.70952-0.98778 = 0.72 
+Noise margin NL = VIL - VOL = 0.7733-0.09523 = 0.67807
+
+
+# DAY 5  NgspiceSky130-Day5-CMOS power supply and device variation robustness evaluation
+# Static behaviour evaluation-CMOS inverter robustness-Power supply variation
+ # L1  Smart SPICE simulation for power supply variations
+
+
+
+
+
+
 
 
  
