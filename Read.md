@@ -397,10 +397,9 @@ we simplify the above equation using 2 different modes.
   We will now do simulation for lower nodes.
   <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/d18e0d61-9681-4dfe-996d-2cf9de50be50" />
 
-<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/916cbdb1-6e2f-48e4-9cf4-fa87f57f8db9" />
-
 <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/a4a7e32f-47d5-4a98-a950-5831a516aca6" />
 
+<img width="733" height="530" alt="image" src="https://github.com/user-attachments/assets/fabf1aef-aaf7-48d8-af91-3962f8532116" />
 
 The above plot is Id vs Vds for different values of Vgs. We can see for lower values of Vgs it is showing quadratic behaviour and for higher values of Vgs it is showing Linear behaviour. Now if want to see the peak current for Vgs=1.8V, just 'press' left click on mouse at Vgs=1.8V
 
@@ -416,9 +415,6 @@ Here again we are taking values for L=0.15u and W=0.39u, Keeping Vds constant at
 
 <img width="692" height="538" alt="image" src="https://github.com/user-attachments/assets/0f7a9c5f-934c-4e74-b5d9-8545ac860336" />
 
-<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/a612a673-ecbc-40c0-a6c5-9b1a79d50153" />
-
-
 # L6  labs sky 130 vt 
 Now we will calculate Threshold Voltage Vt for Id vs Vgs curve.
 
@@ -426,7 +422,8 @@ Now we will calculate Threshold Voltage Vt for Id vs Vgs curve.
 
 In the curve we can see that Vt is the value when current increases drastically for small change in Vgs. To calculate we will draw tangent on the curve and see where it touches.
 
-![Uploading image.png…]()
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/2e3fc211-2ebc-49c5-b6fc-df812ac3bf5d" />
+
 
 
   # cmos voltage transfer characteristrics
