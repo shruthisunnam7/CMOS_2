@@ -1304,32 +1304,111 @@ VOL is the Output Low Voltage.
 
 # L2 Noise margin voltage parameters
 
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/e54acbf2-e228-47d4-89d9-b8c4bdff9b5a" />
+
+Ideal Inverter VTC — Infinite Slope In an ideal inverter: 
+
+*Vout = Vdd for all Vin < Vdd/2
+
+*Vout switches instantly to 0 at Vin = Vdd/2 
+
+*Vout = 0 for all Vin > Vdd/2
+
+This gives a perfectly rectangular VTC with infinite slope at the switching point. No ambiguity — any input either produces exactly Vdd or exactly 0.
+
+Actual Inverter VTC — Finite Slope In a real CMOS inverter the VTC has a finite slope. This means: 
+*Vout starts near Vdd (but not exactly Vdd) for low Vin
+
+* Vout falls gradually through a transition region around Vdd/2 
+* Vout settles near 0 (but not exactly 0) for high Vin
+
 We will define all four noise margin voltage parameters on the actual VTC of the CMOS inverter and explain how they are determined using the slope = −1 criterion .
 
-Actual I/O Characteristic of a CMOS Inverter
+# Actual I/O Characteristic of a CMOS Inverter
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/b3774aad-ad07-4ca5-b37a-fdbb99b19a54" />
 
 The actual VTC of a CMOS inverter has a finite slope transition region. In this transition region, the output switches from HIGH to LOW. To define the valid logic levels, we identify four key voltage parameters from the actual VTC.
 
-Defining VIL and VIH from the Actual VTC
+ # Defining VIL and VIH from the Actual VTC
+ 
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/ef686d19-29d4-4ee0-8edc-e38976dab140" />
 
 The points VIL and VIH are determined by drawing tangent lines on the actual VTC curve at the points where the slope equals −1.
-•	VIL (Input Low Voltage): the Vin value where the VTC slope first reaches −1 on the upper part of the curve. For any input below VIL, the output is guaranteed to be HIGH.
-•	VIH (Input High Voltage): the Vin value where the VTC slope reaches −1 on the lower part of the curve. For any input above VIH, the output is guaranteed to be LOW.
-The region between VIL and VIH is the transition (undefined) region. Signals in this region do not guarantee a valid logic level at the output.
+*	VIL (Input Low Voltage): the Vin value where the VTC slope first reaches −1 on the upper part of the curve. For any input below VIL, the output is guaranteed to be HIGH.
+
+*	VIH (Input High Voltage): the Vin value where the VTC slope reaches −1 on the lower part of the curve. For any input above VIH, the output is guaranteed to be LOW.
+  
+* The region between VIL and VIH is the transition (undefined) region. Signals in this region do not guarantee a valid logic level at the output.
 
 Defining VOH and VOL from the VTC
 VOH and VOL are the output voltage levels corresponding to VIL and VIH respectively.
-•	VOH (Output High Voltage): the output voltage when Vin = VIL. Any output between VOH and Vdd is treated as logic '1'.
-•	VOL (Output Low Voltage): the output voltage when Vin = VIH. Any output between 0 and VOL is treated as logic '0'.
+*	VOH (Output High Voltage): the output voltage when Vin = VIL. Any output between VOH and Vdd is treated as logic '1'.
+
+*	VOL (Output Low Voltage): the output voltage when Vin = VIH. Any output between 0 and VOL is treated as logic '0'.
 
 Slope = −1 Criterion
  
-Fig 4: Two slope = −1 tangent points on the actual VTC. Upper tangent gives VIL and VOH. Lower tangent gives VIH and VOL
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/08c57fe1-8b3b-4c27-a27f-79f5d4a9b123" />
+
 The slope = −1 criterion is the standard method to determine the noise margin voltage parameters.
-•	On the actual VTC curve, draw tangent lines at the two inflection points where the slope of the curve equals exactly −1
-•	Upper inflection: where the curve just starts to fall steeply — this gives VIL (x-axis) and VOH (y-axis)
-•	Lower inflection: where the curve is completing its fall — this gives VIH (x-axis) and VOL (y-axis)
+*	On the actual VTC curve, draw tangent lines at the two inflection points where the slope of the curve equals exactly −1
+
+*	Upper inflection: where the curve just starts to fall steeply — this gives VIL (x-axis) and VOH (y-axis)
+
+*	Lower inflection: where the curve is completing its fall — this gives VIH (x-axis) and VOL (y-axis)
+
 This method is used because the slope of −1 represents the unity gain point. Any gain below this (magnitude < 1) means the inverter is in a stable region, and beyond it (magnitude > 1) the circuit is in the high-gain amplification region.
 
+# L4 Noise margin equation and summary
+
+ we will derive the noise margin equations for NMH and NML,that  introduces the undefined region, and presents the full noise margin summary with noise-induced bump characteristics.
+
+ I/O Characteristic Plotted to Scale
+ 
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/2365e36c-0c49-4fa8-b818-3440cef3fcf3" />
+
+The actual VTC is now plotted to scale with all four voltage parameters (VOH, VOL, VIH, VIL) marked. On the right side of the slide, a vertical scale from 0 to Vdd is drawn to show where each parameter falls and how the noise margins are derived from them.
+
+NMH — Noise Margin High
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/de0df71f-849e-4d67-9ff4-6545bf48a8bb" />
+
+NMH (Noise Margin High) is defined as:
+NMH = VOH - VIH
+•	VOH is the minimum output voltage that counts as logic '1'
+•	VIH is the minimum input voltage required to be recognised as logic '1'
+•	NMH represents how much noise can be added to a logic '1' signal at the output before it is no longer recognised as logic '1' at the next stage's input
+•	Any voltage in the NMH range (between VIH and VOH) will be detected as logic '1'
+NML - NOISE MARGIN LOW 
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/ea7c82a2-e950-4156-831a-1685909455fd" />
+
+NML (Noise Margin Low) is defined as:
+NML = VIL - VOL
+•	VOL is the maximum output voltage that counts as logic '0'
+•	VIL is the maximum input voltage that is recognised as logic '0'
+•	NML represents how much noise can be added to a logic '0' signal at the output before it is no longer recognised as logic '0' at the next stage's input
+•	Any voltage in the NML range (between VOL and VIL) will be detected as logic '0'
+
+UNDEFINED REGION 
+
+ <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/4c10eeec-8545-494b-8292-0a0165129412" />
+
+ Three regions visible on the voltage scale: NMH (logic '1'), Undefined Region, and NML (logic '0')
+Between VIH and VIL there is a region that is not covered by either NMH or NML. This is called the Undefined Region.
+•	The Undefined Region lies between VIL (top of NML) and VIH (bottom of NMH)
+•	Any signal in the Undefined Region will produce an indefinite logic level at the output
+•	The circuit behaviour is unpredictable for inputs in this range
+•	A well-designed inverter minimises the width of this undefined region
+
+
+
+
+
+The noise margin summary diagram shows a signal waveform on the time axis with three noise-induced bumps at different voltage levels:
+•	a) Bump height lies between VOL and VIL — it is within NML range, so the output will be treated as logic '0'
+•	b) Bump height lies between VIL and VIH — it is in the Undefined Region, so the output logic level is indefinite
+•	c) Bump height lies between VIH and VOH — it is within NMH range, so the output will be treated as logic '1'
+For any signal to be considered as logic '0' and logic '1', it should be in the NML and NMH ranges respectively.
+
+
+ 
