@@ -1825,6 +1825,17 @@ The initial supply voltage is 1.8V and we are reducing it with the step of 0.2V,
 
 <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/29a6428f-0775-4ec8-ae37-ff132b4cf097" />
 
+* Vdd=1.8V
+  
+* |Gain| = 7.6229
+  
+<img width="292" height="61" alt="image" src="https://github.com/user-attachments/assets/bdcafdd2-483f-4842-be15-53687b181afb" />
+* Vdd=0.8V
+  
+* |Gain| = 9.3844
+  
+<img width="267" height="52" alt="image" src="https://github.com/user-attachments/assets/f92b07d8-c579-4a3c-9209-324eeff8d9c3" />
+
 # 5.2 L1 Sources of variation – Etching process
 
  Here we look at two sources of variation that affect the CMOS inverter: Etching Process Variation and Oxide Thickness Variation. These sources of variation cause the actual fabricated transistor dimensions to differ from the designed values, which in turn affects circuit performance.
